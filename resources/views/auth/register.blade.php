@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
+    <div id="register-div" class="text-center">
         <main class="form-signin">
             <img class="mb-4" src="/img/logo.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Create Account</h1>
@@ -13,10 +13,10 @@
                     <div class="row">
                         <div class="form-floating col no-left-right-padding">
                             <input id="firstname" type="text"
-                                   class="form-control @error('firstname') is-invalid @enderror"
+                                   class="no-bottom-border form-control @error('firstname') is-invalid @enderror"
                                    name="name" value="{{ old('name') }}" autocomplete="name"
                                    placeholder="Vorname"
-                                   autofocus>
+                                   autofocus style="border-top-right-radius: 0;">
 
                             @error('firstname')
                             <span class="invalid-feedback" role="alert">
@@ -27,10 +27,10 @@
                         </div>
                         <div class="form-floating col no-left-right-padding">
                             <input id="lastname" type="text"
-                                   class="form-control @error('lastname') is-invalid @enderror"
+                                   class="no-bottom-border form-control @error('lastname') is-invalid @enderror"
                                    name="name" value="{{ old('name') }}" autocomplete="name"
                                    placeholder="Nachname"
-                                   autofocus>
+                                   autofocus style="border-top-left-radius: 0; border-left: none;">
 
                             @error('lastname')
                             <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
 
                 <div class="form-floating">
                     <input id="telephone-number" type="tel"
-                           class="form-control @error('telephoneNumber') is-invalid @enderror" name="email"
+                           class="no-border form-control @error('telephoneNumber') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" autocomplete="email" placeholder="Telefonnummer">
 
                     @error('telephoneNumber')
@@ -70,7 +70,7 @@
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="form-control @error('password') is-invalid @enderror"
+                           class="no-border form-control @error('password') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
 
                     @error('password')
@@ -90,6 +90,8 @@
 
                 <button class="w-100 btn btn-lg btn-hairy" type="submit"
                         name="register">{{ __('Register') }}</button>
+
+                <p class="mt-5 mb-3 text-muted">&copy; Hairy 2021–2022</p>
             </form>
         </main>
     </div>
