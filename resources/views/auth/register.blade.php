@@ -6,6 +6,26 @@
             <img class="mb-4" src="/img/logo.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Create Account</h1>
 
+            @error('firstname')
+            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @enderror
+
+            @error('lastname')
+            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @enderror
+
+            @error('telephoneNumber')
+            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @enderror
+
+            @error('email')
+            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @enderror
+
+            @error('password')
+            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            @enderror
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
@@ -17,12 +37,6 @@
                                    name="name" value="{{ old('name') }}" autocomplete="name"
                                    placeholder="Vorname"
                                    autofocus style="border-top-right-radius: 0;">
-
-                            @error('firstname')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
                             <label for="firstname">{{ __('Vorname') }}</label>
                         </div>
                         <div class="form-floating col no-left-right-padding">
@@ -31,12 +45,6 @@
                                    name="name" value="{{ old('name') }}" autocomplete="name"
                                    placeholder="Nachname"
                                    autofocus style="border-top-left-radius: 0; border-left: none;">
-
-                            @error('lastname')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
                             <label for="lastname">{{ __('Nachname') }}</label>
                         </div>
                     </div>
@@ -46,12 +54,6 @@
                     <input id="telephone-number" type="tel"
                            class="no-border form-control @error('telephoneNumber') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" autocomplete="email" placeholder="Telefonnummer">
-
-                    @error('telephoneNumber')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
 
@@ -59,12 +61,6 @@
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                            name="email" value="{{ old('email') }}" autocomplete="tel"
                            placeholder="E-Mail Adresse">
-
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
                 </div>
 
@@ -72,12 +68,6 @@
                     <input id="password" type="password"
                            class="no-border form-control @error('password') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
-
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 
