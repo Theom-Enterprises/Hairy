@@ -34,7 +34,7 @@
                         <div class="form-floating col no-left-right-padding">
                             <input id="firstname" type="text"
                                    class="no-bottom-border form-control @error('firstname') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" autocomplete="name"
+                                   name="name" value="{{ old('firstname') }}" autocomplete="name"
                                    placeholder="Vorname"
                                    autofocus style="border-top-right-radius: 0;">
                             <label for="firstname">{{ __('Vorname') }}</label>
@@ -42,7 +42,7 @@
                         <div class="form-floating col no-left-right-padding">
                             <input id="lastname" type="text"
                                    class="no-bottom-border form-control @error('lastname') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" autocomplete="name"
+                                   name="name" value="{{ old('lastname') }}" autocomplete="name"
                                    placeholder="Nachname"
                                    autofocus style="border-top-left-radius: 0; border-left: none;">
                             <label for="lastname">{{ __('Nachname') }}</label>
@@ -53,7 +53,7 @@
                 <div class="form-floating">
                     <input id="telephone-number" type="tel"
                            class="no-border form-control @error('telephoneNumber') is-invalid @enderror" name="email"
-                           value="{{ old('email') }}" autocomplete="email" placeholder="Telefonnummer">
+                           value="{{ old('telephoneNumber') }}" autocomplete="email" placeholder="Telefonnummer">
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
 
