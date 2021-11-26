@@ -1,7 +1,6 @@
 html,
 body {
     height: 100%;
-    background-color: #f5f5f5;
 }
 
 .main-sign-up-in-div {
@@ -57,7 +56,6 @@ body {
 }
 
 .a-hairy, .a-hairy:link {
-    color: #DB9F13;
     text-decoration: none;
 }
 
@@ -99,10 +97,4 @@ body {
 
 #togglePassword {
     font-size: 30px;
-}
-
-.hurensohn {
-    padding: 0;
-    margin: 0;
-    width: 100% !important;
 }
