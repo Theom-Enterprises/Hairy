@@ -57,22 +57,22 @@
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
 
-                <div class="form-floating">
+                <div class="form-floating add-margin">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                            name="email" value="{{ old('email') }}" autocomplete="tel"
-                           placeholder="E-Mail Adresse">
+                           placeholder="E-Mail Adresse" style="border-radius: 0 0 .25rem .25rem">
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
                 </div>
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="no-border form-control @error('password') is-invalid @enderror"
+                           class="no-bottom-border form-control @error('password') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 
                 <div class="form-floating">
-                    <input id="password-confirm" type="password" class="form-control"
+                    <input id="password-confirm" type="password" class="add-margin form-control"
                            name="password_confirmation"
                            autocomplete="new-password" placeholder="Passwort bestätigen">
                     <label for="password-confirm">{{ __('Passwort bestätigen') }}</label>
