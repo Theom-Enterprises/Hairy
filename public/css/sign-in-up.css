@@ -1,96 +1,102 @@
 html,
 body {
-  height: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
+.main-sign-up-in-div {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
 }
 
 .form-signin .checkbox {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 .form-signin .form-floating:focus-within {
-  z-index: 2;
+    z-index: 2;
 }
 
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+#password-confirm, .remember-div, .login-password {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 @media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
 }
 
 .btn-hairy {
-  background-color: #D5AF36;
+    background-color: #D5AF36;
 }
 
 .a-hairy, .a-hairy:link {
-  color: #DB9F13;
-  text-decoration: none;
+    color: #DB9F13;
+    text-decoration: none;
 }
 
 .a-hairy:visited {
-  color: #b1800f;
-  text-decoration: none;
+    color: #b1800f;
+    text-decoration: none;
 }
 
 .a-hairy:hover {
-  color: #ffb200;
-  text-decoration: none;
+    color: #ffb200;
+    text-decoration: none;
 }
 
 .no-border {
-  border-bottom: none;
-  border-radius: 0;
+    border-bottom: none;
+    border-radius: 0;
 }
 
 .no-bottom-border {
-  border-bottom: none;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .no-left-right-padding {
-  padding-left: 0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #togglePassword:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #togglePassword {
-  font-size: 30px;
+    font-size: 30px;
+}
+
+.hurensohn {
+    padding: 0;
+    margin: 0;
+    width: 100% !important;
 }
