@@ -32,7 +32,7 @@ body {
     border-bottom-left-radius: 0;
 }
 
-#password-confirm, .remember-div, .login-password {
+.add-margin {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -74,6 +74,12 @@ body {
 .no-border {
     border-bottom: none;
     border-radius: 0;
+}
+
+.no-top-border {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .no-bottom-border {

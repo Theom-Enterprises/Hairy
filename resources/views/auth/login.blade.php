@@ -27,12 +27,12 @@
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="login-password form-control @error('password') is-invalid @enderror"
+                           class="add-margin form-control @error('password') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 
-                <div class="form-check remember-div">
+                <div class="form-check add-margin">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                     <label class="form-check-label" for="remember">
