@@ -12,9 +12,9 @@ a:focus {
 
 #sidebar {
     width: 250px;
-    position: fixed;
+    position: absolute;
     left: 0;
-    height: 100vh;
+    height: 99vh;
     z-index: 999;
     background: #7386D5;
     color: #fff;
@@ -59,15 +59,16 @@ a[aria-expanded="true"] {
 .content {
     width: calc(100% - 250px);
     padding: 40px;
-    height: 100vh;
     transition: all 0.3s;
     position: absolute;
     right: 0;
+    height: 90vh;
 }
 
 .content.active {
     width: 100%;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

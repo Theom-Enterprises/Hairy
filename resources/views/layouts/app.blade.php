@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm p-2">
         <button type="button" id="sidebarCollapse" class="btn btn-info">
             Toggle Sidebar
         </button>
@@ -80,7 +80,6 @@
             </ul>
         </div>
     </nav>
-
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -116,7 +115,6 @@
             </li>
         </ul>
     </nav>
-
     <main class="py-4 content">
         @yield('content')
     </main>
