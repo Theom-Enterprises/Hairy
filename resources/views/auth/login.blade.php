@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
+@push('stylesheets')
+    <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div id="main-sign-up-in-div" class="text-center">
         <main class="form-signin">
             <img class="mb-4" src="/img/logo.svg" alt="Hairy Logo" width="70" height="70">
-            <h1 class="h3 mb-3 fw-normal">Welcome Back</h1>
+            <h1 class="h3 mb-3 fw-normal">Willkommen zurück</h1>
 
             @error('email')
             <div class="alert alert-danger" role="alert">{{ $message }}</div>
@@ -27,21 +31,21 @@
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="login-password form-control @error('password') is-invalid @enderror"
+                           class="add-margin form-control @error('password') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 
-                <div class="form-check remember-div">
+                <div class="form-check add-margin" style="text-align: left">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                     <label class="form-check-label" for="remember">
-                        {{ __('Remember Me') }}
+                        {{ __('Angemeldet bleiben') }}
                     </label>
                 </div>
 
                 <button class="w-100 btn btn-lg btn-hairy" type="submit"
-                        name="login">{{ __('Login') }}</button>
+                        name="login">{{ __('Anmelden') }}</button>
 
                 @if (Route::has('password.request'))
                     <a class="btn btn-link a-hairy" href="{{ route('password.request') }}">
