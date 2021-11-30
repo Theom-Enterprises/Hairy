@@ -38,7 +38,7 @@
                         <div class="form-floating col no-left-right-padding">
                             <input id="firstname" type="text"
                                    class="no-bottom-border form-control @error('firstname') is-invalid @enderror"
-                                   name="name" value="{{ old('firstname') }}"
+                                   name="firstname" value="{{ old('firstname') }}"
                                    placeholder="firstname"
                                    autofocus style="border-top-right-radius: 0;">
                             <label for="firstname">{{ __('Vorname') }}</label>
@@ -56,7 +56,8 @@
 
                 <div class="form-floating">
                     <input id="telephone-number" type="tel"
-                           class="no-border form-control @error('telephoneNumber') is-invalid @enderror" name="telephoneNumber"
+                           class="no-border form-control @error('telephoneNumber') is-invalid @enderror"
+                           name="telephoneNumber"
                            value="{{ old('telephoneNumber') }}" placeholder="Telefonnummer">
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
