@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('stylesheets')
+    <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div id="register-div" class="text-center">
         <main class="form-signin">
