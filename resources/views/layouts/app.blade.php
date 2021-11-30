@@ -61,7 +61,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->firstname }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -104,7 +104,7 @@
             </li>
             <li>
                 <a href="#">
-                    <img src="/img/logo.svg" alt="" width="20">
+                    <img src="/img/icon.svg" alt="" width="20">
                     Angebote
                 </a>
             </li>

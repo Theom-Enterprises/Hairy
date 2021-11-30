@@ -12,7 +12,7 @@ a:focus {
 
 #sidebar {
     width: 250px;
-    position: fixed;
+    position: absolute;
     left: 0;
     height: 100vh;
     z-index: 999;
@@ -34,11 +34,14 @@ a:focus {
     border-bottom: 1px solid #47748b;
 }
 
-
 #sidebar ul li a {
     padding: 10px;
     font-size: 1.1em;
     display: block;
+}
+
+#sidebar ul.components {
+    padding-top: 10px;
 }
 
 #sidebar ul li a:hover {
