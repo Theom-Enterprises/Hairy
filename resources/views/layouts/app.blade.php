@@ -24,20 +24,15 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
-            Toggle Sidebar
-        </button>
+    <nav class="navbar navbar-expand navbar-light bg-white shadow-sm px-4" style="height: 55px">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Hairy') }}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-popper="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
+        <button type="button" id="sidebarCollapse" class="btn" style="font-size: 1.125rem">
+            <i class="bi bi-list"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
             </ul>
@@ -59,12 +54,12 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" aria-expanded="false" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->firstname }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -117,7 +112,7 @@
         </ul>
     </nav>
 
-    <main class="py-4 content">
+    <main class="content">
         @yield('content')
     </main>
 </div>
