@@ -1,21 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+    @guest
+        Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
+    @else
     <div class="container">
         <h1>Termine</h1>
-        <table class="table table-striped">
+        <table class="table table-responsive table-hover table-borderless">
             <thead>
             <tr>
+                <th scope="col"><i class="bi bi-pencil-fill"></i></th>
                 <th scope="col">Datum</th>
                 <th scope="col">Dienstleistung</th>
                 <th scope="col">Friseur</th>
                 <th scope="col">Kunde</th>
-                <th scope="col">Bearbeiten</th>
             </tr>
             </thead>
             <tbody>
             <?php
-            use Illuminate\Support\Facades\DB;
+
 
             $users = DB::table('users')
                 ->select('firstname', 'lastname')
@@ -34,11 +37,11 @@
 
             foreach ($users as $user) {
                 echo "<tr>";
+                echo "<td><i class=\"bi bi-x-circle-fill\" style='color: #DC3545'></i></td>";
                 echo "<td>02.12.2021</td>";
                 echo "<td>Haare färben</td>";
                 echo "<td>Max Mustermann</td>";
                 echo "<td>{{ \"{$user->firstname} {$user->lastname}\" }}</td>";
-                echo "<td><i class=\"bi bi-x-square-fill\"></i></td>";
                 echo "</tr>";
             }
             ?>
@@ -46,7 +49,7 @@
         </table>
 
         <h1>Friseure</h1>
-        <table class="table table-striped">
+        <table class="table table-responsive table-hover table-borderless">
             <thead>
             <tr>
                 <th scope="col">Kürzel</th>
@@ -56,22 +59,23 @@
             </thead>
             <tbody>
             <?php
-                /*
-                 TODO Erstellen des SQL Tables Angestellter
-            $angestellte = DB::table('angestellter')
-                ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
-                ->get()->toArray();
+            /*
+             TODO Erstellen des SQL Tables Angestellter
+        $angestellte = DB::table('angestellter')
+            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
+            ->get()->toArray();
 
-            foreach ($angestellte as $angestellter) {
-                echo "<tr>";
-                echo "<td>{{ $angestellter->friseurkuerzel }}</td>";
-                echo "<td>{{ \"{$angestellter->vorname} {$angestellter->nachname}\" }}</td>";
-                echo "<td>{{ $angestellter->erstelldatum }}</td>";
-                echo "</tr>";
-            }
-                */
+        foreach ($angestellte as $angestellter) {
+            echo "<tr>";
+            echo "<td>{{ $angestellter->friseurkuerzel }}</td>";
+            echo "<td>{{ \"{$angestellter->vorname} {$angestellter->nachname}\" }}</td>";
+            echo "<td>{{ $angestellter->erstelldatum }}</td>";
+            echo "</tr>";
+        }
+            */
             ?>
             </tbody>
         </table>
     </div>
+    @endguest
 @endsection
