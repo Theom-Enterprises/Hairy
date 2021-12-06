@@ -11,33 +11,42 @@
 
     <!-- Scripts -->
 @stack('scripts')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
 
-<!-- Fonts -->
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
+    @auth
+        <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
+    @endauth
     @stack('stylesheets')
+
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm p-2">
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
-            Toggle Sidebar
-        </button>
+    <nav class="navbar navbar-expand navbar-light bg-white shadow-sm px-4" style="height: 55px">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Hairy') }}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-popper="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        @auth
+            <button type="button" id="sidebarCollapse" class="btn" style="font-size: 1.125rem">
+                <i class="bi bi-list"></i>
+            </button>
+        @endauth
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+            class="navbar-collapse"
+            id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
             </ul>
@@ -59,15 +68,14 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" aria-expanded="false" href="#"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->firstname }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -80,54 +88,63 @@
             </ul>
         </div>
     </nav>
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Hairy
-                <img src="/img/logo.svg" alt="" width="30">
-            </h3>
-        </div>
 
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#">
-                    <i class="bi bi-house"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-calendar3"></i>
-                    Termine
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/img/logo.svg" alt="" width="20">
-                    Angebote
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-person-circle"></i>
-                    Profil
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <main class="py-4 content">
+@auth
+    <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>
+                    Dashboard
+                </h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#">
+                        <i class="bi bi-house-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-calendar3"></i>
+                        Termine
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-basket3-fill"></i>
+                        Angebote
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-person-circle"></i>
+                        Profil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @endauth
+
+    <main
+        @auth
+        class="content"
+        @endauth>
         @yield('content')
     </main>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            // open or close navbar
-            $('#sidebar, .content').toggleClass('active');
+@auth
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                // open or close navbar
+                $('#sidebar, .content').toggleClass('active');
+            });
         });
-    });
-</script>
+    </script>
+@endauth
 @stack('body-js')
 </body>
 

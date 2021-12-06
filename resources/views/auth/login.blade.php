@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@push('stylesheets')
+    <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div id="main-sign-up-in-div" class="text-center">
         <main class="form-signin">
-            <img class="mb-4" src="/img/logo.svg" alt="Hairy Logo" width="70" height="70">
+            <img class="mb-4" src="/img/icon.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Willkommen zurück</h1>
 
             @error('email')
