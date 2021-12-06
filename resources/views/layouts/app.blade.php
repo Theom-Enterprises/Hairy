@@ -135,8 +135,7 @@
     </main>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-@guest
-@else
+@auth
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
@@ -145,7 +144,7 @@
             });
         });
     </script>
-@endguest
+@endauth
 @stack('body-js')
 </body>
 
