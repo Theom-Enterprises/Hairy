@@ -3,7 +3,7 @@
 @section('content')
     <div id="register-div" class="text-center">
         <main class="form-signin">
-            <img class="mb-4" src="/img/logo.svg" alt="Hairy Logo" width="70" height="70">
+            <img class="mb-4" src="/img/icon.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Account erstellen</h1>
 
             @error('firstname')

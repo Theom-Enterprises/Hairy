@@ -79,15 +79,15 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Hairy
-                <img src="/img/logo.svg" alt="" width="30">
+            <h3>
+                Dashboard
             </h3>
         </div>
 
         <ul class="list-unstyled components">
             <li class="active">
                 <a href="#">
-                    <i class="bi bi-house"></i>
+                    <i class="bi bi-house-fill"></i>
                     Home
                 </a>
             </li>
@@ -99,7 +99,7 @@
             </li>
             <li>
                 <a href="#">
-                    <img src="/img/icon.svg" alt="" width="20">
+                    <i class="bi bi-basket3-fill"></i>
                     Angebote
                 </a>
             </li>

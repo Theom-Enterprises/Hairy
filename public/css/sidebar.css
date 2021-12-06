@@ -16,8 +16,8 @@ a:focus {
     left: 0;
     height: calc(100vh - 55px);
     z-index: 999;
-    background: #7386D5;
-    color: #fff;
+    background: #D5AF36;
+    color: #F5F5F5;
     transition: all 0.3s;
 }
 
@@ -27,7 +27,10 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #cea300;
+    -webkit-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar-header h3 {
@@ -35,7 +38,7 @@ a:focus {
 }
 
 #sidebar ul.components {
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #c0930a;
 }
 
 #sidebar ul li a {
@@ -45,14 +48,14 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #F5F5F5;
+    background: #efce78;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: #F5F5F5;
+    background: #cea300;
 }
 
 /* ---------------------------------------------------
