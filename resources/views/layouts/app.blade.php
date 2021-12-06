@@ -19,7 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
+    @auth
+        <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
+    @endauth
     @stack('stylesheets')
 </head>
 <body>
@@ -28,11 +30,15 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Hairy') }}
         </a>
-        <button type="button" id="sidebarCollapse" class="btn" style="font-size: 1.125rem">
-            <i class="bi bi-list"></i>
-        </button>
+        @auth
+            <button type="button" id="sidebarCollapse" class="btn" style="font-size: 1.125rem">
+                <i class="bi bi-list"></i>
+            </button>
+        @endauth
 
-        <div class="navbar-collapse" id="navbarSupportedContent">
+        <div
+            class="navbar-collapse"
+            id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
             </ul>
@@ -54,7 +60,8 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" aria-expanded="false" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" aria-expanded="false" href="#"
+                           role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->firstname }}
                         </a>
@@ -76,55 +83,63 @@
         </div>
     </nav>
 
+@auth
     <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>
-                Dashboard
-            </h3>
-        </div>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>
+                    Dashboard
+                </h3>
+            </div>
 
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#">
-                    <i class="bi bi-house-fill"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-calendar3"></i>
-                    Termine
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-basket3-fill"></i>
-                    Angebote
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-person-circle"></i>
-                    Profil
-                </a>
-            </li>
-        </ul>
-    </nav>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#">
+                        <i class="bi bi-house-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-calendar3"></i>
+                        Termine
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-basket3-fill"></i>
+                        Angebote
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-person-circle"></i>
+                        Profil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @endauth
 
-    <main class="content">
+    <main
+        @auth
+        class="content"
+        @endauth>
         @yield('content')
     </main>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            // open or close navbar
-            $('#sidebar, .content').toggleClass('active');
+@guest
+@else
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                // open or close navbar
+                $('#sidebar, .content').toggleClass('active');
+            });
         });
-    });
-</script>
+    </script>
+@endguest
 @stack('body-js')
 </body>
 
