@@ -42,9 +42,13 @@ a:focus {
 }
 
 #sidebar ul li a {
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 1.1em;
     display: block;
+}
+
+#sidebar ul li a i {
+    margin-right: 5px;
 }
 
 #sidebar ul li a:hover {
@@ -54,6 +58,7 @@ a:focus {
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
+    padding-top: 10px;
     color: #F5F5F5;
     background: #cea300;
 }
