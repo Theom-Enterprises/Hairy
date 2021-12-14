@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('stylesheets')
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <!-- Überprüfen ob der User angemeldet ist -->
     @guest
@@ -10,78 +14,94 @@
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
         @else
             <div class="container">
-                <h1>Willkommen zurück, {{ Auth::user()->firstname }}!</h1>
+                <div id="business-card" class="container">
+                    <div class="row">
+                        <p class="h3 col brand">Friseur Lorem</p>
+                        <p class="h2 col text-right">
+                            <!--<img id="logo" src="img/logo.svg" alt="Hairy Logo">-->
+                            Hairy
+                        </p>
+                    </div>
+                    <div class="row">
+                        <p class="h1 col">Alexander Sarka</p>
+                    </div>
+                    <div class="row">
+                        <p class="h4 col">Rennweg 89b, 1030 Wien</p>
+                    </div>
+                </div>
 
-                <h2>Termine</h2>
-                <table class="table table-responsive table-hover table-borderless">
-                    <thead>
-                    <tr>
-                        <th scope="col"><i class="bi bi-pencil-fill"></i></th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Von - Bis</th>
-                        <th scope="col">Dienstleistung</th>
-                        <th scope="col">Friseur</th>
-                        <th scope="col">Kunde</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @php
-                        $users = DB::table('users')
-                            ->select('firstname', 'lastname')
-                            ->get()->toArray();
-
-                        /*
-                        TODO Erstellen der SQL Tables
-                        $termine = DB::table('termin')
-                            ->join('users', 'users.id', '=', 'termin.user_id')
-                            ->join('dienstleistung', 'dienstleistung.id', '=', 'termin.dienstleistung_id')
-                            ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_friseurkuerzel')
-                            ->orderBy('datum')
-                            ->select('datum', 'dienstleistung.bezeichnung', 'users.vorname', 'users.nachname', 'users.firstname', 'users.lastname')
-                            ->get()->toArray();
-                        */
-                    @endphp
-
-                    @foreach ($users as $user)
+                <div class="tables">
+                    <h2>Termine</h2>
+                    <table class="table table-responsive table-hover table-borderless">
+                        <thead>
                         <tr>
-                            <td><i class="bi bi-x-circle-fill" style='color: #DC3545'></i></td>
-                            <td>02.12.2021</td>
-                            <td>10:15 - 10:45</td>
-                            <td>Haare schneiden</td>
-                            <td>Max Mustermann</td>
-                            <td>{{ "{$user->firstname} {$user->lastname}" }}</td>
+                            <th scope="col"><i class="bi bi-pencil-fill"></i></th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Von - Bis</th>
+                            <th scope="col">Dienstleistung</th>
+                            <th scope="col">Friseur</th>
+                            <th scope="col">Kunde</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @php
+                            $users = DB::table('users')
+                                ->select('firstname', 'lastname')
+                                ->get()->toArray();
 
-                <h2>Friseure</h2>
-                <table class="table table-responsive table-hover table-borderless">
-                    <thead>
-                    <tr>
-                        <th scope="col">Kürzel</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Anstellungsdatum</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{-- TODO Erstellen des SQL Tables Angestellter
-                    @php
-                    $angestellte = DB::table('angestellter')
-                        ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
-                        ->get()->toArray();
-                    @endphp
+                            /*
+                            TODO Erstellen der SQL Tables
+                            $termine = DB::table('termin')
+                                ->join('users', 'users.id', '=', 'termin.user_id')
+                                ->join('dienstleistung', 'dienstleistung.id', '=', 'termin.dienstleistung_id')
+                                ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_friseurkuerzel')
+                                ->orderBy('datum')
+                                ->select('datum', 'dienstleistung.bezeichnung', 'users.vorname', 'users.nachname', 'users.firstname', 'users.lastname')
+                                ->get()->toArray();
+                            */
+                        @endphp
 
-                    @foreach ($angestellte as $angestellter)
+                        @foreach ($users as $user)
+                            <tr>
+                                <td><i class="bi bi-x-circle-fill" style='color: #DC3545'></i></td>
+                                <td>02.12.2021</td>
+                                <td>10:15 - 10:45</td>
+                                <td>Haare schneiden</td>
+                                <td>Max Mustermann</td>
+                                <td>{{ "{$user->firstname} {$user->lastname}" }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                    <h2>Friseure</h2>
+                    <table class="table table-responsive table-hover table-borderless">
+                        <thead>
                         <tr>
-                            <td>{{ $angestellter->friseurkuerzel }}</td>
-                            <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
-                            <td>{{ $angestellter->erstelldatum }}</td>
+                            <th scope="col">Kürzel</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Anstellungsdatum</th>
                         </tr>
-                    @endforeach
-                    --}}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {{-- TODO Erstellen des SQL Tables Angestellter
+                        @php
+                        $angestellte = DB::table('angestellter')
+                            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
+                            ->get()->toArray();
+                        @endphp
+
+                        @foreach ($angestellte as $angestellter)
+                            <tr>
+                                <td>{{ $angestellter->friseurkuerzel }}</td>
+                                <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
+                                <td>{{ $angestellter->erstelldatum }}</td>
+                            </tr>
+                        @endforeach
+                        --}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         @endif
     @endguest

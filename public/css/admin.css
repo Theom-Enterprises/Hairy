@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+#business-card {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
+    border-radius: 15px;
+    max-width: 550px;
+    height: 300px;
+    box-shadow: 0 15px 25px -4px rgba(30, 30, 60, 0.25);
+    margin: auto auto 45px auto;
+    padding: 30px;
+    color: white
+}
+
+.brand {
+    font-family: Roboto, serif;
+    text-transform: uppercase;
+    padding-bottom: 80px;
+}
+
+#logo {
+    transform: scale(0.33);
+}
+
+.tables {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+}
