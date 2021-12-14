@@ -26,3 +26,5 @@ Route::get('/admin', function()
 {
     return view('admin');
 });
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
