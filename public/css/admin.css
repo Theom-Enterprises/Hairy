@@ -24,7 +24,7 @@
 
 .tables {
     max-width: 800px;
-    margin: auto;
+    margin: auto auto 25px auto;
     background: white;
     padding: 25px;
     border-radius: 20px;
