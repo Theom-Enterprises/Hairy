@@ -22,7 +22,7 @@ class CreateAngestellterTable extends Migration
             $table->string('passwort');
             $table->boolean('ist_admin');
             $table->date('erstelldatum');
-            $table->index('friseursalon_id');
+            $table->bigInteger('friseursalon_id')->index();
 
             $table->foreign('friseursalon_id')->references('id')->on('friseursalon')->onDelete('cascade');
 

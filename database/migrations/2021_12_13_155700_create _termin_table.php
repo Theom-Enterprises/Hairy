@@ -19,9 +19,9 @@ class CreateTerminTable extends Migration
             $table->date('datum');
             $table->time('von');
             $table->time('bis');
-            $table->index('user_id');
-            $table->index('angestellter_friseurkuerzel');
-            $table->index('dienstleistung_id');
+            $table->bigInteger('user_id')->index();
+            $table->bigInteger('angestellter_friseurkuerzel')->index();
+            $table->bigInteger('dienstleistung_id')->index();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('angestellter_friseurkuerzel')->references('friseurkuerzel')->on('angestellter')->onDelete('cascade');
