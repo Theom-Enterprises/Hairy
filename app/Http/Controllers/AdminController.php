@@ -13,13 +13,15 @@ class AdminController extends Controller
             ->join('users', 'users.id', '=', 'termin.user_id')
             ->join('angebot', 'angebot.id', '=', 'termin.angebot_id')
             ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_id')
-            ->orderBy('datum')
+            ->orderBy('datum', 'desc')
+            ->orderBy('von')
+            ->orderBy('von')
             ->select('termin.id', 'datum', 'von', 'bis', 'angebot.bezeichnung', 'users.firstname', 'users.lastname', 'angestellter.vorname', 'angestellter.nachname')
             ->get();
 
         $angestellte = DB::table('angestellter')
             ->orderBy('friseurkuerzel')
-            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
+            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
             ->get();
 
         return view('admin', compact('termine', 'angestellte'));

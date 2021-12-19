@@ -53,7 +53,7 @@
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-                                                <button type="button" class="btn-remove float-end">Stornieren</button>
+                                                <button type="button" class="btn-remove float-end">Löschen</button>
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
                                                             class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>
@@ -78,6 +78,7 @@
                                 <th scope="col">Kürzel</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Anstellungsdatum</th>
+                                <th scope="col">Admin</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -86,6 +87,11 @@
                                     <td>{{ $angestellter->friseurkuerzel }}</td>
                                     <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
                                     <td>{{ $angestellter->erstelldatum }}</td>
+                                    @if($angestellter->ist_admin == 'true')
+                                        <td>Ja</td>
+                                    @else
+                                        <td>Nein</td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
