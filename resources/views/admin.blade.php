@@ -68,7 +68,9 @@
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-                                                <button type="button" class="btn-remove float-end">Löschen</button>
+                                                <a href="delete/{{$termin->id}}">
+                                                    <button type="submit" class="btn-remove float-end">Löschen</button>
+                                                </a>
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
                                                             class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>

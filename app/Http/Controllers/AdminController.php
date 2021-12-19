@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -25,5 +26,13 @@ class AdminController extends Controller
             ->get();
 
         return view('admin', compact('termine', 'angestellte'));
+    }
+
+    public function delete($id)
+    {
+        DB::table('termin')
+            ->where('id', $id)
+            ->delete();
+        return Redirect::back();
     }
 }

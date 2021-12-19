@@ -24,4 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
+Route::get('delete/{id}', '\App\Http\Controllers\AdminController@delete');
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
