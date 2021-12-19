@@ -16,6 +16,15 @@ class TerminSeeder extends Seeder
     public function run()
     {
         DB::table('termin')->insert([
+            'datum' => '2021-12-20',
+            'von' => '14:40',
+            'bis' => '15:00',
+            'user_id' => '1',
+            'angestellter_id' => '3',
+            'angebot_id' => '1',
+        ]);
+
+        DB::table('termin')->insert([
             'datum' => '2021-12-19',
             'von' => '10:15',
             'bis' => '10:15',
@@ -57,7 +66,7 @@ class TerminSeeder extends Seeder
             'bis' => '19:40',
             'user_id' => '2',
             'angestellter_id' => '2',
-            'angebot_id' => '3',
+            'angebot_id' => '1',
         ]);
 
         DB::table('termin')->insert([
@@ -93,7 +102,7 @@ class TerminSeeder extends Seeder
             'bis' => '09:15',
             'user_id' => '2',
             'angestellter_id' => '3',
-            'angebot_id' => '3',
+            'angebot_id' => '1',
         ]);
     }
 }

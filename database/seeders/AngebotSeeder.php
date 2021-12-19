@@ -21,45 +21,5 @@ class AngebotSeeder extends Seeder
         DB::table('angebot')->insert([
             'bezeichnung' => 'Haare färben'
         ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben'
-        ]);
-
-        DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden'
-        ]);
     }
 }

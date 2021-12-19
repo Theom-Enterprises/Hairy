@@ -13,6 +13,9 @@
         @if(Auth::user()->ist_admin == false) <!--TODO Entfernen des Rufzeichens für korrekte If-Bedingung-->
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
         @else
+            @php
+                date_default_timezone_set('Europe/Vienna');
+            @endphp
             <div class="container">
                 <div id="business-card" class="container gradient-bg">
                     <h1>ADMINSEITE</h1>
@@ -47,13 +50,33 @@
                                                     <span>#{{ $termin->id }}</span>
                                                 </div>
                                             </div>
-                                            <div class="badge"><span>{{ $termin->datum }}</span></div>
+                                            @if($termin->datum == date('Y-m-d'))
+                                                <div class="badge"><span>Heute</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
+                                                <div class="badge"><span>Gestern</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
+                                                <div class="badge"><span>Gestern</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
+                                                <div class="badge"><span>Morgen</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
+                                                <div class="badge"><span>Übermorgen</span></div>
+                                            @else
+                                                <div class="badge"><span>{{ $termin->datum }}</span></div>
+                                            @endif
                                         </div>
                                         <div class="mt-5">
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-                                                <button type="button" class="btn-remove float-end">Löschen</button>
+                                                @if($termin->datum == date('Y-m-d') && $termin->bis > date('H:i'))
+                                                    <button type="button" class="btn-remove float-end">
+                                                        Löschen
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="btn-remove float-end" disabled>
+                                                        Löschen
+                                                    </button>
+                                                @endif
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
                                                             class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>

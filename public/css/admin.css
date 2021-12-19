@@ -33,16 +33,6 @@
     font-size: 15px;
 }
 
-.brand {
-    font-family: Roboto, serif;
-    text-transform: uppercase;
-    padding-bottom: 80px;
-}
-
-#logo {
-    transform: scale(0.33);
-}
-
 #friseure {
     margin: -15px 10px 25px 10px;
     background: white;
@@ -104,4 +94,18 @@
     padding: 14px;
     background: rgba(220, 53, 69, 0.82);
     color: white;
+}
+
+.btn-remove:disabled {
+    background: rgba(217, 217, 217, 0.82);
+}
+
+@media (max-width: 455px) {
+    #business-card {
+        padding-bottom: 160px;
+    }
+
+    #business-card button {
+        margin-bottom: 15px;
+    }
 }
