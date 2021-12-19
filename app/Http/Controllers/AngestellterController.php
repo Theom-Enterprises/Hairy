@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Angestellter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AngestellterController extends Controller
 {
@@ -30,8 +31,8 @@ class AngestellterController extends Controller
         $angestellter->vorname = $request->input('vorname');
         $angestellter->nachname = $request->input('nachname');
         $angestellter->email = $request->input('email');
-        $angestellter->passwort = $request->input('passwort');
-        $angestellter->ist_admin = $request->input('ist_admin') ? 1 : 0;
+        $angestellter->passwort = Hash::make($request->input('passwort'));
+        $angestellter->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
         $angestellter->erstelldatum = $request->input('erstelldatum');
         $angestellter->friseursalon_id = $request->input('friseursalon_id');
         $angestellter->save();

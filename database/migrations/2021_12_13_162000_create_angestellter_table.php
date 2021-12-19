@@ -21,7 +21,7 @@ class CreateAngestellterTable extends Migration
             $table->string('nachname');
             $table->string('email');
             $table->string('passwort');
-            $table->boolean('ist_admin')->default(0);;
+            $table->boolean('ist_admin');
             $table->date('erstelldatum');
             $table->bigInteger('friseursalon_id')->index();
 

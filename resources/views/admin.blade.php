@@ -114,7 +114,7 @@
                             </tbody>
                         </table>
                         <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modal">
-                            Angestellten hinzufügen
+                            Hinzufügen
                         </button>
                         <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
@@ -162,7 +162,7 @@
                                             </div>
                                             <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="ist_admin"
-                                                       name="ist_admin" value="0">
+                                                       name="ist_admin">
                                                 <label class="form-check-label" for="ist_admin">Der Angestellte ist
                                                     ein Admin</label>
                                             </div>
