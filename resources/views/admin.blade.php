@@ -10,117 +10,92 @@
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
     @else
         <!-- Überprüfen ob der angemeldete User ein Administrator ist -->
-        @if(!Auth::user()->ist_admin == false) <!--TODO Entfernen des Rufzeichens für korrekte If-Bedingung-->
+        @if(Auth::user()->ist_admin == false) <!--TODO Entfernen des Rufzeichens für korrekte If-Bedingung-->
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
         @else
             <div class="container">
-                <div id="business-card" class="container">
-                    <div class="row">
-                        <p class="h3 col brand">Friseur Lorem</p>
-                        <p class="h2 col text-right">
-                            <!--<img id="logo" src="img/logo.svg" alt="Hairy Logo">-->
-                            Hairy
-                        </p>
-                    </div>
-                    <div class="row">
-                        <p class="h1 col">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</p>
-                    </div>
-                    <div class="row">
-                        <p class="h4 col">Rennweg 89b, 1030 Wien</p>
+                <div id="business-card" class="container gradient-bg">
+                    <h1>ADMINSEITE</h1>
+                    <p>
+                        Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
+                        und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
+                        "Stornieren"-Button kann ein Termin abgesagt / gelöscht werden. In der Friseur-Tabelle lassen
+                        sich
+                        alle wichtigen Informationen auf einen Blick einfangen.
+                    </p>
+                    <div class="float-end">
+                        <a href="#termine">
+                            <button>Termine</button>
+                        </a>
+                        <a href="#friseure">
+                            <button>Friseure</button>
+                        </a>
                     </div>
                 </div>
 
-                <div class="tables">
-                    <h2>Termine</h2>
-                    <table class="table table-responsive table-hover table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col"><i class="bi bi-pencil-fill"></i></th>
-                            <th scope="col">Datum</th>
-                            <th scope="col">Von - Bis</th>
-                            <th scope="col">Dienstleistung</th>
-                            <th scope="col">Friseur</th>
-                            <th scope="col">Kunde</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @php
-                            $users = DB::table('users')
-                                ->select('firstname', 'lastname')
-                                ->get()->toArray();
+                @if(!empty($termine))
+                    <div id="termine" class="container mt-5 mb-3">
+                        <div class="row">
+                            @foreach($termine as $termin)
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card p-3 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="icon"><i class="bi bi-person-fill"></i></div>
+                                                <div class="ms-2 c-details">
+                                                    <h6 class="mb-0">{{"$termin->firstname $termin->lastname"}}</h6>
+                                                    <span>#{{ $termin->id }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="badge"><span>{{ $termin->datum }}</span></div>
+                                        </div>
+                                        <div class="mt-5">
+                                            <h3 class="heading">{{ $termin->bezeichnung }}
+                                                <br>{{ "$termin->von - $termin->bis" }}</h3>
+                                            <div class="mt-5">
+                                                <button type="button" class="btn-remove float-end">Stornieren</button>
+                                                <div class="mt-3"><span class="text1">Zugeteilt: <span
+                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        Es konnten keine Termine gefunden werden.
+                    </div>
+                @endif
 
-/*
-                            $termine = DB::table('termin')
-                                ->join('users', 'users.id', '=', 'termin.user_id')
-                                ->join('dienstleistung', 'dienstleistung.id', '=', 'termin.dienstleistung_id')
-                                ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_friseurkuerzel')
-                                ->orderBy('datum')
-                                ->select('datum', 'von', 'bis','dienstleistung.bezeichnung', 'users.vorname', 'users.nachname', 'angestellter.firstname', 'angestellter.lastname')
-                                ->get()->toArray();
-*/
-                        @endphp
-
-                        @foreach ($termine as $termin)
+                @if(!empty($angestellte))
+                    <div id="friseure">
+                        <table class="table table-responsive table-hover table-borderless">
+                            <thead>
                             <tr>
-
-                                {{--                                <td><i class="bi bi-x-circle-fill" style='color: #DC3545'></i></td>--}}
-                                {{--                                <td>{{ $termine->datum }}</td>--}}
-                                {{--                                <td>{{ "{$termine->von} - {$termine->bis}" }}</td>--}}
-                                {{--                                <td>{{ $termine->dienstleitung->bezeichnung }}</td>--}}
-                                {{--                                <td>{{ "{$termine->angestellter->vorname} {$termine->angestellter->lastname}" }}</td>--}}
-                                {{--                                <td>{{ "{$termine->users->vorname} {$termine->users->vorname}" }}</td>--}}
-
-                                <td><i class="bi bi-x-circle-fill" style='color: #DC3545'></i></td>
-                                <td>{{ $termin->datum }}</td>
-                                <td>10:15 - 10:32</td>
-                                <td>Haare schneiden</td>
-                                <td>Omar Faid</td>
-                                <td>Kunde Name</td>
+                                <th scope="col">Kürzel</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Anstellungsdatum</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="tables">
-                    <h2>Friseure</h2>
-                    <table class="table table-responsive table-hover table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Kürzel</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Anstellungsdatum</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>SAR</td>
-                            <td>Alexander Sarka</td>
-                            <td>10.01.2000</td>
-                        </tr>
-                        <tr>
-                            <td>LOZ</td>
-                            <td>Alejandro Lozada</td>
-                            <td>17.02.2000</td>
-                        </tr>
-                        {{-- TODO Erstellen des SQL Tables Angestellter
-                        @php
-                        $angestellte = DB::table('angestellter')
-                            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum')
-                            ->get()->toArray();
-                        @endphp
-
-                        @foreach ($angestellte as $angestellter)
-                            <tr>
-                                <td>{{ $angestellter->friseurkuerzel }}</td>
-                                <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
-                                <td>{{ $angestellter->erstelldatum }}</td>
-                            </tr>
-                        @endforeach
-                        --}}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                            @foreach ($angestellte as $angestellter)
+                                <tr>
+                                    <td>{{ $angestellter->friseurkuerzel }}</td>
+                                    <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
+                                    <td>{{ $angestellter->erstelldatum }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        Es sind keine Friseure angestellt.
+                    </div>
+                @endif
             </div>
         @endif
     @endguest

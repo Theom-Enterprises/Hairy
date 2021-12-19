@@ -1,15 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 #business-card {
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
     border-radius: 15px;
-    max-width: 550px;
-    height: 300px;
     box-shadow: 0 15px 25px -4px rgba(30, 30, 60, 0.25);
     margin: auto auto 45px auto;
-    padding: 30px;
-    color: white
+    padding: 30px 15% 105px 15%;
+    color: white;
+}
+
+.gradient-bg {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
+}
+
+#business-card h1 {
+    font-family: Roboto, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#business-card button {
+    border: none;
+    border-radius: 40px;
+    padding: 20px 40px;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    box-shadow: 0 15px 48px -26px rgba(30, 30, 60, 0.25);
+    margin-left: 15px;
+    color: white;
+    font-size: 15px;
 }
 
 .brand {
@@ -22,10 +43,65 @@
     transform: scale(0.33);
 }
 
-.tables {
-    max-width: 800px;
-    margin: auto auto 25px auto;
+#friseure {
+    margin: -15px 10px 25px 10px;
     background: white;
     padding: 25px;
     border-radius: 20px;
+}
+
+/* CARDS */
+
+.col-lg-4, .col-md-6, .col-sm-12 {
+    margin-bottom: 15px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
+
+.btn-remove {
+    border: none;
+    border-radius: 25px;
+    padding: 14px;
+    background: rgba(220, 53, 69, 0.82);
+    color: white;
 }
