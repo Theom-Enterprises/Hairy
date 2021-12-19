@@ -24,6 +24,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
+Route::get('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'create']);
+Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store']);
+
 Route::get('delete/{id}', '\App\Http\Controllers\AdminController@delete');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -8,78 +8,33 @@ use Illuminate\Http\Request;
 class AngestellterController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Angestellter $angestellter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Angestellter $angestellter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Angestellter $angestellter
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Angestellter $angestellter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Angestellter $angestellter
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Angestellter $angestellter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Angestellter $angestellter
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Angestellter $angestellter)
-    {
-        //
+        $angestellter = new Angestellter();
+        $angestellter->friseurkuerzel = $request->input('friseurkuerzel');
+        $angestellter->vorname = $request->input('vorname');
+        $angestellter->nachname = $request->input('nachname');
+        $angestellter->email = $request->input('email');
+        $angestellter->passwort = $request->input('passwort');
+        $angestellter->ist_admin = $request->input('ist_admin') ? 1 : 0;
+        $angestellter->erstelldatum = $request->input('erstelldatum');
+        $angestellter->friseursalon_id = $request->input('friseursalon_id');
+        $angestellter->save();
+        return redirect()->back();
     }
 }

@@ -113,6 +113,70 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modal">
+                            Angestellten hinzufügen
+                        </button>
+                        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <form action="{{ url('add-angestellter') }}" method="post">
+                                @csrf
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="title">Angestellten hinzufügen</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="kuerzel" class="form-label">Friseurkürzel</label>
+                                                <input class="form-control" id="kuerzel" name="friseurkuerzel" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="vorname" class="form-label">Vorname</label>
+                                                <input class="form-control" id="vorname" name="vorname" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nachname" class="form-label">Nachname</label>
+                                                <input class="form-control" id="nachname" name="nachname" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">E-Mail Adresse</label>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                       required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="passwort" class="form-label">Passwort</label>
+                                                <input type="password" class="form-control" id="passwort"
+                                                       name="passwort" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="erstelldatum" class="form-label">Angestellungsdatum</label>
+                                                <input class="form-control" id="ertelldatum" name="erstelldatum"
+                                                       required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="friseursalon" class="form-label">Friseursalon ID</label>
+                                                <input class="form-control" id="friseursalon" name="friseursalon_id"
+                                                       required>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="ist_admin"
+                                                       name="ist_admin" value="0">
+                                                <label class="form-check-label" for="ist_admin">Der Angestellte ist
+                                                    ein Admin</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn-modal">Hinzufügen</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 @else
                     <div class="alert alert-primary" role="alert">
