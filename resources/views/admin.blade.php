@@ -68,15 +68,7 @@
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-                                                @if($termin->datum == date('Y-m-d') && $termin->bis > date('H:i'))
-                                                    <button type="button" class="btn-remove float-end">
-                                                        Löschen
-                                                    </button>
-                                                @else
-                                                    <button type="button" class="btn-remove float-end" disabled>
-                                                        Löschen
-                                                    </button>
-                                                @endif
+                                                <button type="button" class="btn-remove float-end">Löschen</button>
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
                                                             class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>

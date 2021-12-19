@@ -96,10 +96,6 @@
     color: white;
 }
 
-.btn-remove:disabled {
-    background: rgba(217, 217, 217, 0.82);
-}
-
 @media (max-width: 455px) {
     #business-card {
         padding-bottom: 160px;
