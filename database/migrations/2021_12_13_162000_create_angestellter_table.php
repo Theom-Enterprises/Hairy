@@ -15,7 +15,8 @@ class CreateAngestellterTable extends Migration
     public function up()
     {
         Schema::create('angestellter', function (Blueprint $table) {
-            $table->id('friseurkuerzel');
+            $table->id();
+            $table->string('friseurkuerzel');
             $table->string('vorname');
             $table->string('nachname');
             $table->string('email');
@@ -25,7 +26,6 @@ class CreateAngestellterTable extends Migration
             $table->bigInteger('friseursalon_id')->index();
 
             $table->foreign('friseursalon_id')->references('id')->on('friseursalon')->onDelete('cascade');
-
         });
     }
 

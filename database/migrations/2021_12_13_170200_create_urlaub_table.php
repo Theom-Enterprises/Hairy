@@ -18,9 +18,9 @@ class CreateUrlaubTable extends Migration
             $table->id();
             $table->date('datum_von');
             $table->date('datum_bis');
-            $table->bigInteger('angestellter_friseurkuerzel')->index();
+            $table->bigInteger('angestellter_id')->index();
 
-            $table->foreign('angestellter_friseurkuerzel')->references('friseurkuerzel')->on('angestellter')->onDelete('cascade');
+            $table->foreign('angestellter_id')->references('id')->on('angestellter')->onDelete('cascade');
 
 
         });

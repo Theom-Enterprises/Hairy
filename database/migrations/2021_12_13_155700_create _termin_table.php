@@ -20,12 +20,12 @@ class CreateTerminTable extends Migration
             $table->time('von');
             $table->time('bis');
             $table->bigInteger('user_id')->index();
-            $table->bigInteger('angestellter_friseurkuerzel')->index();
-            $table->bigInteger('dienstleistung_id')->index();
+            $table->bigInteger('angestellter_id')->index();
+            $table->bigInteger('angebot_id')->index();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('angestellter_friseurkuerzel')->references('friseurkuerzel')->on('angestellter')->onDelete('cascade');
-            $table->foreign('dienstleistung_id')->references('id')->on('dienstleistung')->onDelete('cascade');
+            $table->foreign('angestellter_id')->references('id')->on('angestellter')->onDelete('cascade');
+            $table->foreign('angebot_id')->references('id')->on('angebot')->onDelete('cascade');
 
 
         });

@@ -17,8 +17,8 @@ class CreateAngebotTable extends Migration
         Schema::create('angebot', function (Blueprint $table) {
             $table->id();
             $table->string('bezeichnung');
-            $table->string('beschreibung');
-            $table->decimal('preis');
+            $table->string('beschreibung')->nullable();
+            $table->decimal('preis')->nullable();
         });
     }
 

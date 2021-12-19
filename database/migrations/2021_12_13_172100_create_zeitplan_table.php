@@ -19,9 +19,9 @@ class CreateZeitplanTable extends Migration
             $table->date('datum');
             $table->time('start_arbeitszeit');
             $table->time('ende_arbeitszeit');
-            $table->bigInteger('angestellter_friseurkuerzel')->index();
+            $table->bigInteger('angestellter_id')->index();
 
-            $table->foreign('angestellter_friseurkuerzel')->references('friseurkuerzel')->on('angestellter')->onDelete('cascade');
+            $table->foreign('angestellter_id')->references('id')->on('angestellter')->onDelete('cascade');
         });
     }
 
