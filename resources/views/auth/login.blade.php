@@ -11,11 +11,11 @@
             <h1 class="h3 mb-3 fw-normal">Willkommen zurück</h1>
 
             @error('email')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             @error('password')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             <form method="POST" action="{{ route('login') }}">

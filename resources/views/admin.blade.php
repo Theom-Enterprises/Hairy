@@ -7,7 +7,9 @@
 @section('content')
     <!-- Überprüfen ob der User angemeldet ist -->
     @guest
-        Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
+        <div class="alert alert-primary text-center" role="alert">
+            Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
+        </div>
     @else
         @php
             date_default_timezone_set('Europe/Vienna');
