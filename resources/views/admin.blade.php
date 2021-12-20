@@ -10,7 +10,7 @@
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
     @else
         <!-- Überprüfen ob der angemeldete User ein Administrator ist -->
-        @if(Auth::user()->ist_admin == false) <!--TODO Entfernen des Rufzeichens für korrekte If-Bedingung-->
+        @if(Auth::user()->ist_admin == 'false')
         Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
         @else
             @php
