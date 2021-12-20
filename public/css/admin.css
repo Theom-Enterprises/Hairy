@@ -105,12 +105,16 @@
     background-color: #D5AF36;
 }
 
-@media (max-width: 455px) {
+@media (max-width: 471.5px) {
     #business-card {
         padding-bottom: 160px;
     }
 
     #business-card button {
         margin-bottom: 15px;
+    }
+
+    #business-card h1 {
+        word-break: break-word;
     }
 }
