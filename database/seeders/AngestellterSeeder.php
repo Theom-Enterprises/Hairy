@@ -16,35 +16,24 @@ class AngestellterSeeder extends Seeder
     public function run()
     {
         DB::table('angestellter')->insert([
-            'friseurkuerzel' => 'FAH',
-            'vorname' => 'Heinz',
-            'nachname' => 'Faßmann',
-            'email' => 'heinz@fassma.nn',
+            'friseurkuerzel' => 'OTT',
+            'vorname' => 'Otto',
+            'nachname' => 'Normalverbraucher',
+            'email' => 'otto@normalverbrauch.er',
             'passwort' => Hash::make('Rennweg'),
             'ist_admin' => 'false',
-            'erstelldatum' => date('Y-m-d'),
+            'erstelldatum' => '2018-01-20',
             'friseursalon_id' => '1',
         ]);
 
         DB::table('angestellter')->insert([
-            'friseurkuerzel' => 'KSE',
-            'vorname' => 'Sebastian',
-            'nachname' => 'Kurz',
-            'email' => 'sebastian@ku.rz',
+            'friseurkuerzel' => 'MUE',
+            'vorname' => 'Erika',
+            'nachname' => 'Musterfrau',
+            'email' => 'erika@musterfr.au',
             'passwort' => Hash::make('Rennweg'),
             'ist_admin' => 'false',
-            'erstelldatum' => date('Y-m-d'),
-            'friseursalon_id' => '1',
-        ]);
-
-        DB::table('angestellter')->insert([
-            'friseurkuerzel' => 'BGE',
-            'vorname' => 'Gernot',
-            'nachname' => 'Blümel',
-            'email' => 'gernot@bluem.el',
-            'passwort' => Hash::make('Rennweg'),
-            'ist_admin' => 'true',
-            'erstelldatum' => date('Y-m-d'),
+            'erstelldatum' => '2014-07-07',
             'friseursalon_id' => '1',
         ]);
 
@@ -54,7 +43,7 @@ class AngestellterSeeder extends Seeder
             'nachname' => 'Mustermann',
             'email' => 'max@musterma.nn',
             'passwort' => Hash::make('Rennweg'),
-            'ist_admin' => 'false',
+            'ist_admin' => 'true',
             'erstelldatum' => date('Y-m-d'),
             'friseursalon_id' => '1',
         ]);

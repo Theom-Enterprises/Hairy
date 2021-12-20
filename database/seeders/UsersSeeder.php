@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
             'firstname' => 'Omar',
             'lastname' => 'Faid',
             'telephoneNumber' => '+4312345678',
-            'email' => 'omar.faid@htl.rennweg.at',
+            'email' => '8132@htl.rennweg.at',
             'password' => Hash::make('Rennweg'),
             'ist_admin' => 'false',
         ]);
@@ -47,6 +47,24 @@ class UsersSeeder extends Seeder
             'lastname' => 'Mustermann',
             'telephoneNumber' => '-',
             'email' => 'max@musterma.nn',
+            'password' => Hash::make('Rennweg'),
+            'ist_admin' => 'true',
+        ]);
+
+        DB::table('users')->insert([
+            'firstname' => 'Erika',
+            'lastname' => 'Musterfrau',
+            'telephoneNumber' => '-',
+            'email' => 'erika@musterfr.au',
+            'password' => Hash::make('Rennweg'),
+            'ist_admin' => 'false',
+        ]);
+
+        DB::table('users')->insert([
+            'firstname' => 'Otto',
+            'lastname' => 'Normalverbraucher',
+            'telephoneNumber' => '-',
+            'email' => 'otto@normalverbrauch.er',
             'password' => Hash::make('Rennweg'),
             'ist_admin' => 'false',
         ]);
