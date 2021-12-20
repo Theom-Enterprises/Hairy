@@ -4,6 +4,8 @@
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 @endpush
 
+@section('subtitle', 'Administration')
+
 @section('content')
     <!-- Überprüfen ob der User angemeldet ist -->
     @guest
@@ -21,9 +23,7 @@
                     Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
                     und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
                     "Bearbeiten"-Button kann ein Termin storniert oder bearbeitet werden. In der Friseur-Tabelle
-                    lassen
-                    sich
-                    alle wichtigen Informationen auf einen Blick einfangen.
+                    lassen sich alle wichtigen Informationen auf einen Blick einfangen.
                 </p>
                 <div class="float-end">
                     <a href="#termine">
@@ -278,6 +278,7 @@
                             </form>
                         </div>
                     </div>
+                    <p class="mt-5 mb-3 text-muted text-center">&copy; Hairy 2021–2022</p>
                 @else
                     <div class="alert alert-primary" role="alert">
                         Es sind keine Friseure angestellt.

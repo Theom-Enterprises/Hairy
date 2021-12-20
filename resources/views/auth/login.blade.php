@@ -4,6 +4,8 @@
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
 @endpush
 
+@section('subtitle', 'Anmeldung')
+
 @section('content')
     <div id="main-sign-up-in-div" class="text-center">
         <main class="form-signin">
@@ -46,12 +48,6 @@
 
                 <button class="w-100 btn btn-lg btn-hairy" type="submit"
                         name="login">{{ __('Anmelden') }}</button>
-
-                @if (Route::has('password.request'))
-                    <a class="btn btn-link a-hairy" href="{{ route('password.request') }}">
-                        {{ __('Passwort zurücksetzen?') }}
-                    </a>
-                @endif
 
                 <p class="mt-5 mb-3 text-muted">&copy; Hairy 2021–2022</p>
             </form>

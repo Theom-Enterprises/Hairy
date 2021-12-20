@@ -4,6 +4,8 @@
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
 @endpush
 
+@section('subtitle', 'Registrierung')
+
 @section('content')
     <div id="register-div" class="text-center">
         <main class="form-signin">
