@@ -182,8 +182,8 @@
 
             @if(Auth::user()->ist_admin == 'true')
                 @if(!empty($angestellte))
-                    <div id="friseure">
-                        <table class="table table-responsive table-hover table-borderless">
+                    <div id="friseure" class="table-responsive">
+                        <table class="table table-hover table-borderless">
                             <thead>
                             <tr>
                                 <th scope="col">Kürzel</th>
