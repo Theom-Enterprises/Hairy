@@ -55,7 +55,7 @@
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
                                                 <div class="badge"><span>Gestern</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
-                                                <div class="badge"><span>Gestern</span></div>
+                                                <div class="badge"><span>Vorgestern</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
                                                 <div class="badge"><span>Morgen</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
@@ -91,7 +91,7 @@
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
                                                 <div class="badge"><span>Gestern</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
-                                                <div class="badge"><span>Gestern</span></div>
+                                                <div class="badge"><span>Vorgestern</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
                                                 <div class="badge"><span>Morgen</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
