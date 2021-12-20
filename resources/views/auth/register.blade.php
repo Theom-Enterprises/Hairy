@@ -86,8 +86,6 @@
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit"
                         name="register">{{ __('Registrieren') }}</button>
-
-                <p class="mt-5 mb-3 text-muted">&copy; Hairy 2021–2022</p>
             </form>
         </main>
     </div>

@@ -93,6 +93,8 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+    <p class="mt-5 mb-3 text-muted text-center">&copy; Hairy 2021–2022</p>
 </div>
 </body>
 </html>
