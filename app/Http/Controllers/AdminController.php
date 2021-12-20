@@ -28,11 +28,33 @@ class AdminController extends Controller
         return view('admin', compact('termine', 'angestellte'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin');
+    }
+
     public function delete($id)
     {
         DB::table('termin')
             ->where('id', $id)
             ->delete();
+        return Redirect::back();
+    }
+
+    public function edit(Request $request, $id)
+    {
+        DB::table('termin')
+            ->where('id', $id)
+            ->update([
+                'datum' => $request->input('datum'),
+                'von' => $request->input('von'),
+                'bis' => $request->input('bis'),
+            ]);
         return Redirect::back();
     }
 }
