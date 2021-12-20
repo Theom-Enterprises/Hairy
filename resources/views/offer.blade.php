@@ -7,7 +7,6 @@
 
 @endpush
 @section('content')
-
     <div class="container">
         <h1>
             Unsere Angebote
