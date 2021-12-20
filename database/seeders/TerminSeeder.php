@@ -101,7 +101,7 @@ class TerminSeeder extends Seeder
             'von' => '09:05',
             'bis' => '09:15',
             'user_id' => '2',
-            'angestellter_id' => '3',
+            'angestellter_id' => '4',
             'angebot_id' => '1',
         ]);
     }

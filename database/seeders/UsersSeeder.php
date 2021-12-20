@@ -41,5 +41,14 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('Rennweg'),
             'ist_admin' => 'false',
         ]);
+
+        DB::table('users')->insert([
+            'firstname' => 'Max',
+            'lastname' => 'Mustermann',
+            'telephoneNumber' => '-',
+            'email' => 'max@musterma.nn',
+            'password' => Hash::make('Rennweg'),
+            'ist_admin' => 'false',
+        ]);
     }
 }

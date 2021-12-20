@@ -7,39 +7,39 @@
 @section('content')
     <!-- Überprüfen ob der User angemeldet ist -->
     @guest
-        Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
+        Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
     @else
-        <!-- Überprüfen ob der angemeldete User ein Administrator ist -->
-        @if(Auth::user()->ist_admin == 'false')
-            Dieser Bereich steht ausschließlich Administratoren zur Verfügung.
-        @else
-            @php
-                date_default_timezone_set('Europe/Vienna');
-            @endphp
-            <div class="container">
-                <div id="business-card" class="container gradient-bg">
-                    <h1>ADMINSEITE</h1>
-                    <p>
-                        Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
-                        und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
-                        "Stornieren"-Button kann ein Termin abgesagt / gelöscht werden. In der Friseur-Tabelle lassen
-                        sich
-                        alle wichtigen Informationen auf einen Blick einfangen.
-                    </p>
-                    <div class="float-end">
-                        <a href="#termine">
-                            <button>Termine</button>
-                        </a>
+        @php
+            date_default_timezone_set('Europe/Vienna');
+        @endphp
+        <div class="container">
+            <div id="business-card" class="container gradient-bg">
+                <h1>ADMINSEITE</h1>
+                <p>
+                    Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
+                    und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
+                    "Bearbeiten"-Button kann ein Termin storniert oder bearbeitet werden. In der Friseur-Tabelle
+                    lassen
+                    sich
+                    alle wichtigen Informationen auf einen Blick einfangen.
+                </p>
+                <div class="float-end">
+                    <a href="#termine">
+                        <button>Termine</button>
+                    </a>
+                    @if(Auth::user()->ist_admin == 'true')
                         <a href="#friseure">
                             <button>Friseure</button>
                         </a>
-                    </div>
+                    @endif
                 </div>
+            </div>
 
-                @if(!empty($termine))
-                    <div id="termine" class="container mt-5 mb-3">
-                        <div class="row">
-                            @foreach($termine as $termin)
+            @if(!empty($termine))
+                <div id="termine" class="container mt-5 mb-3">
+                    <div class="row">
+                        @foreach($termine as $termin)
+                            @if(Auth::user()->ist_admin == 'false' && $termin->nachname == Auth::user()->lastname && $termin->vorname == Auth::user()->firstname)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card p-3 mb-2">
                                         <div class="d-flex justify-content-between">
@@ -68,7 +68,42 @@
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-
+                                                <div class="mt-3"><span class="text1">Zugeteilt: <span
+                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @elseif(Auth::user()->ist_admin == 'true')
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card p-3 mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="icon"><i class="bi bi-person-fill"></i></div>
+                                                <div class="ms-2 c-details">
+                                                    <h6 class="mb-0">{{"$termin->firstname $termin->lastname"}}</h6>
+                                                    <span>#{{ $termin->id }}</span>
+                                                </div>
+                                            </div>
+                                            @if($termin->datum == date('Y-m-d'))
+                                                <div class="badge"><span>Heute</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
+                                                <div class="badge"><span>Gestern</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
+                                                <div class="badge"><span>Gestern</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
+                                                <div class="badge"><span>Morgen</span></div>
+                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
+                                                <div class="badge"><span>Übermorgen</span></div>
+                                            @else
+                                                <div class="badge"><span>{{ $termin->datum }}</span></div>
+                                            @endif
+                                        </div>
+                                        <div class="mt-5">
+                                            <h3 class="heading">{{ $termin->bezeichnung }}
+                                                <br>{{ "$termin->von - $termin->bis" }}</h3>
+                                            <div class="mt-5">
                                                 <button type="button" class="btn-modal float-end"
                                                         data-bs-toggle="modal" data-bs-target="#termin-modal">
                                                     Bearbeiten
@@ -88,15 +123,6 @@
                                                                             aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <!--
-                                                                    <div class="mb-3">
-                                                                        <label for="bezeichnung" class="form-label">Dienstleistung</label>
-                                                                        <input class="form-control" id="bezeichnung"
-                                                                               name="bezeichnung"
-                                                                               value="{{ $termin->bezeichnung }}"
-                                                                               required>
-                                                                    </div>
-                                                                    -->
                                                                     <div class="mb-3">
                                                                         <label for="datum"
                                                                                class="form-label">Datum</label>
@@ -144,15 +170,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
-                @else
-                    <div class="alert alert-primary" role="alert">
-                        Es konnten keine Termine gefunden werden.
-                    </div>
-                @endif
+                </div>
+            @else
+                <div class="alert alert-primary" role="alert">
+                    Es konnten keine Termine gefunden werden.
+                </div>
+            @endif
 
+            @if(Auth::user()->ist_admin == 'true')
                 @if(!empty($angestellte))
                     <div id="friseure">
                         <table class="table table-responsive table-hover table-borderless">
@@ -198,7 +226,8 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="kuerzel" class="form-label">Friseurkürzel</label>
-                                                <input class="form-control" id="kuerzel" name="friseurkuerzel" required>
+                                                <input class="form-control" id="kuerzel" name="friseurkuerzel"
+                                                       required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="vorname" class="form-label">Vorname</label>
@@ -219,7 +248,8 @@
                                                        name="passwort" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="erstelldatum" class="form-label">Angestellungsdatum</label>
+                                                <label for="erstelldatum"
+                                                       class="form-label">Angestellungsdatum</label>
                                                 <input class="form-control" id="ertelldatum" name="erstelldatum"
                                                        required>
                                             </div>
@@ -251,7 +281,7 @@
                         Es sind keine Friseure angestellt.
                     </div>
                 @endif
-            </div>
-        @endif
+            @endif
+        </div>
     @endguest
 @endsection

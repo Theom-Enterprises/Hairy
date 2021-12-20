@@ -21,7 +21,7 @@ class AdminController extends Controller
             ->get();
 
         $angestellte = DB::table('angestellter')
-            ->orderBy('friseurkuerzel')
+            ->orderBy('ist_admin', 'DESC')
             ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
             ->get();
 

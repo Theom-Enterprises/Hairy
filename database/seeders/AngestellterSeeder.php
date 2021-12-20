@@ -47,5 +47,16 @@ class AngestellterSeeder extends Seeder
             'erstelldatum' => date('Y-m-d'),
             'friseursalon_id' => '1',
         ]);
+
+        DB::table('angestellter')->insert([
+            'friseurkuerzel' => 'MUS',
+            'vorname' => 'Max',
+            'nachname' => 'Mustermann',
+            'email' => 'max@musterma.nn',
+            'passwort' => Hash::make('Rennweg'),
+            'ist_admin' => 'false',
+            'erstelldatum' => date('Y-m-d'),
+            'friseursalon_id' => '1',
+        ]);
     }
 }
