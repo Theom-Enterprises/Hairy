@@ -229,7 +229,7 @@
                                             <div class="mb-3">
                                                 <label for="kuerzel" class="form-label">Friseurkürzel</label>
                                                 <input class="form-control" id="kuerzel" name="friseurkuerzel"
-                                                       required>
+                                                       minlength="3" maxlength="3" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="vorname" class="form-label">Vorname</label>
@@ -252,12 +252,14 @@
                                             <div class="mb-3">
                                                 <label for="erstelldatum"
                                                        class="form-label">Angestellungsdatum</label>
-                                                <input class="form-control" id="ertelldatum" name="erstelldatum"
+                                                <input type="date" class="form-control" id="ertelldatum"
+                                                       name="erstelldatum"
                                                        required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="friseursalon" class="form-label">Friseursalon ID</label>
-                                                <input class="form-control" id="friseursalon" name="friseursalon_id"
+                                                <input type="number" min="1" class="form-control" id="friseursalon"
+                                                       name="friseursalon_id"
                                                        required>
                                             </div>
                                             <div class="mb-3 form-check">
