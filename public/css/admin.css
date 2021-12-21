@@ -105,6 +105,10 @@
     background-color: #D5AF36;
 }
 
+.line-break {
+    display: none;
+}
+
 @media (max-width: 471.5px) {
     #business-card {
         padding-bottom: 160px;
@@ -114,7 +118,15 @@
         margin-bottom: 15px;
     }
 
-    #business-card h1 {
-        word-break: break-word;
+    #business-card {
+        text-align: center;
+    }
+
+    .line-break {
+        display: inline;
+    }
+
+    .optional {
+        display: none;
     }
 }

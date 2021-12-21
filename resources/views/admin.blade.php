@@ -18,7 +18,7 @@
         @endphp
         <div class="container">
             <div id="business-card" class="container gradient-bg">
-                <h1>ADMINSEITE</h1>
+                <h1>ADMIN<span class="line-break">-</span>SEITE</h1>
                 <p>
                     Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
                     und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
@@ -190,7 +190,7 @@
                             <tr>
                                 <th scope="col">Kürzel</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Anstellungsdatum</th>
+                                <th class="optional" scope="col">Anstellungsdatum</th>
                                 <th scope="col">Admin</th>
                             </tr>
                             </thead>
@@ -199,7 +199,7 @@
                                 <tr>
                                     <td>{{ $angestellter->friseurkuerzel }}</td>
                                     <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
-                                    <td>{{ $angestellter->erstelldatum }}</td>
+                                    <td class="optional">{{ $angestellter->erstelldatum }}</td>
                                     @if($angestellter->ist_admin == 'true')
                                         <td>Ja</td>
                                     @else
