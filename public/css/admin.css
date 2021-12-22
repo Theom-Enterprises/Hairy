@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-#business-card {
+#title-div {
     border-radius: 15px;
     box-shadow: 0 15px 25px -4px rgba(30, 30, 60, 0.25);
     margin: auto auto 45px auto;
@@ -8,18 +8,13 @@
     color: white;
 }
 
-.gradient-bg {
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
-}
-
-#business-card h1 {
+#title-div h1 {
     font-family: Roboto, sans-serif;
     font-size: 50px;
     font-weight: bold;
 }
 
-#business-card button {
+#title-div button {
     border: none;
     border-radius: 40px;
     padding: 20px 40px;
@@ -40,7 +35,7 @@
     border-radius: 20px;
 }
 
-/* CARDS */
+/* TERMINE */
 
 .col-lg-4, .col-md-6, .col-sm-12 {
     margin-bottom: 15px;
@@ -79,12 +74,12 @@
     align-items: center
 }
 
-.text1 {
+.special-text {
     font-size: 14px;
     font-weight: 600
 }
 
-.text2 {
+.special-bold-text {
     color: #a5aec0
 }
 
@@ -110,15 +105,15 @@
 }
 
 @media (max-width: 471.5px) {
-    #business-card {
+    #title-div {
         padding-bottom: 160px;
     }
 
-    #business-card button {
+    #title-div button {
         margin-bottom: 15px;
     }
 
-    #business-card {
+    #title-div {
         text-align: center;
     }
 

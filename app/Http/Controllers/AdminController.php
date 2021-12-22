@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -10,6 +14,7 @@ class AdminController extends Controller
 {
     public function index()
     {
+        // Beinhaltet alle Termine samt Kunden-Name, Angestellter-Name und Bezeichnung der Dienstleistung
         $termine = DB::table('termin')
             ->join('users', 'users.id', '=', 'termin.user_id')
             ->join('angebot', 'angebot.id', '=', 'termin.angebot_id')
@@ -20,24 +25,30 @@ class AdminController extends Controller
             ->select('termin.id', 'datum', 'von', 'bis', 'angebot.bezeichnung', 'users.firstname', 'users.lastname', 'angestellter.vorname', 'angestellter.nachname')
             ->get();
 
+        // Beinhaltet alle Angestellten
         $angestellte = DB::table('angestellter')
             ->orderBy('ist_admin', 'DESC')
             ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
             ->get();
 
-        return view('admin', compact('termine', 'angestellte'));
+        return view('admin')->with(compact('termine', 'angestellte'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
         return view('admin');
     }
 
+    /**
+     * Löscht einen Termin aus der Termin Tabelle und
+     * leitet den Anwender wieder zurück
+     *
+     * @param $id 'Termin ID'
+     * @return RedirectResponse
+     */
     public function delete($id)
     {
         DB::table('termin')
@@ -46,6 +57,13 @@ class AdminController extends Controller
         return Redirect::back();
     }
 
+    /**
+     * Bearbeitet einen Termin aus der Termin Tabelle
+     *
+     * @param Request $request
+     * @param $id 'Termin ID'
+     * @return RedirectResponse
+     */
     public function edit(Request $request, $id)
     {
         DB::table('termin')

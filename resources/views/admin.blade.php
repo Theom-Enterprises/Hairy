@@ -13,11 +13,12 @@
             Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
         </div>
     @else
+        <!-- Setzt die Zeitzone auf Wien -->
         @php
             date_default_timezone_set('Europe/Vienna');
         @endphp
         <div class="container">
-            <div id="business-card" class="container gradient-bg">
+            <div id="title-div" class="container">
                 <h1>ADMIN<span class="line-break">-</span>SEITE</h1>
                 <p>
                     Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
@@ -29,6 +30,7 @@
                     <a href="#termine">
                         <button>Termine</button>
                     </a>
+                    <!-- Überprüft ob der User ein Admin ist -->
                     @if(Auth::user()->ist_admin == 'true')
                         <a href="#friseure">
                             <button>Friseure</button>
@@ -37,10 +39,13 @@
                 </div>
             </div>
 
+            <!-- Überprüft ob der Termine Array leer ist -->
             @if(!empty($termine))
                 <div id="termine" class="container mt-5 mb-3">
                     <div class="row">
-                        @foreach($termine as $termin)
+                        <!-- Iteriert durch den Termine Array -->
+                    @foreach($termine as $termin)
+                        <!-- Überprüft ob der User kein Admin ist und ob der Angestellte, welcher dem Termin zugeordnet wurde, der User ist-->
                             @if(Auth::user()->ist_admin == 'false' && $termin->nachname == Auth::user()->lastname && $termin->vorname == Auth::user()->firstname)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card p-3 mb-2">
@@ -52,6 +57,7 @@
                                                     <span>#{{ $termin->id }}</span>
                                                 </div>
                                             </div>
+                                            <!-- Ersetzt das Datum-Badge durch ein Wort-->
                                             @if($termin->datum == date('Y-m-d'))
                                                 <div class="badge"><span>Heute</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
@@ -70,8 +76,8 @@
                                             <h3 class="heading">{{ $termin->bezeichnung }}
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
-                                                <div class="mt-3"><span class="text1">Zugeteilt: <span
-                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                <div class="mt-3"><span class="special-text">Zugeteilt: <span
+                                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,6 +94,7 @@
                                                     <span>#{{ $termin->id }}</span>
                                                 </div>
                                             </div>
+                                            <!-- Ersetzt das Datum-Badge durch ein Wort-->
                                             @if($termin->datum == date('Y-m-d'))
                                                 <div class="badge"><span>Heute</span></div>
                                             @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
@@ -113,6 +120,7 @@
                                                 <div class="modal fade" id="termin-modal" tabindex="-1"
                                                      aria-labelledby="exampleModalLabel"
                                                      aria-hidden="true">
+                                                    <!-- Bearbeitet einen Termin beim Formular Submit -->
                                                     <form action="/edit/{{ $termin->id }}" method="post">
                                                         @csrf
                                                         <div class="modal-dialog">
@@ -153,6 +161,7 @@
                                                                             data-bs-dismiss="modal">
                                                                         Schließen
                                                                     </button>
+                                                                    <!-- Löscht den Termin -->
                                                                     <a href="delete/{{$termin->id}}">
                                                                         <button type="button" class="btn-remove">
                                                                             Löschen
@@ -165,8 +174,8 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="mt-3"><span class="text1">Zugeteilt: <span
-                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                <div class="mt-3"><span class="special-text">Zugeteilt: <span
+                                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,7 +191,9 @@
                 </div>
             @endif
 
+        <!-- Überprüft ob der User ein Admin ist -->
             @if(Auth::user()->ist_admin == 'true')
+            <!-- Überprüft ob der Angestellte Array nicht leer ist -->
                 @if(!empty($angestellte))
                     <div id="friseure" class="table-responsive">
                         <table class="table table-hover table-borderless">
@@ -195,10 +206,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <!-- Iteriert durch den Angestellte Array -->
                             @foreach ($angestellte as $angestellter)
                                 <tr>
                                     <td>{{ $angestellter->friseurkuerzel }}</td>
-                                    <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
+                                    <td>{{ "$angestellter->vorname $angestellter->nachname" }}</td>
                                     <td class="optional">{{ $angestellter->erstelldatum }}</td>
                                     @if($angestellter->ist_admin == 'true')
                                         <td>Ja</td>
@@ -216,6 +228,7 @@
                         <div class="modal fade" id="angestellter-modal" tabindex="-1"
                              aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
+                            <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
                             <form action="{{ url('add-angestellter') }}" method="post">
                                 @csrf
                                 <div class="modal-dialog">
