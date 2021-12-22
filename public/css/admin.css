@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 #title-div {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
     border-radius: 15px;
     box-shadow: 0 15px 25px -4px rgba(30, 30, 60, 0.25);
     margin: auto auto 45px auto;
