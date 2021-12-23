@@ -38,153 +38,86 @@
                     @endif
                 </div>
             </div>
-
             <!-- Überprüft ob der Termine Array leer ist -->
-            @if(!empty($termine))
-                <div id="termine" class="container mt-5 mb-3">
-                    <div class="row">
-                        <!-- Iteriert durch den Termine Array -->
-                    @foreach($termine as $termin)
-                        <!-- Überprüft ob der User kein Admin ist und ob der Angestellte, welcher dem Termin zugeordnet wurde, der User ist-->
-                            @if(Auth::user()->ist_admin == 'false' && $termin->nachname == Auth::user()->lastname && $termin->vorname == Auth::user()->firstname)
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <div class="card p-3 mb-2">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <div class="icon"><i class="bi bi-person-fill"></i></div>
-                                                <div class="ms-2 c-details">
-                                                    <h6 class="mb-0">{{"$termin->firstname $termin->lastname"}}</h6>
-                                                    <span>#{{ $termin->id }}</span>
-                                                </div>
-                                            </div>
-                                            <!-- Ersetzt das Datum-Badge durch ein Wort-->
-                                            @if($termin->datum == date('Y-m-d'))
-                                                <div class="badge"><span>Heute</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
-                                                <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
-                                                <div class="badge"><span>Vorgestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
-                                                <div class="badge"><span>Morgen</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
-                                                <div class="badge"><span>Übermorgen</span></div>
-                                            @else
-                                                <div class="badge"><span>{{ $termin->datum }}</span></div>
-                                            @endif
-                                        </div>
-                                        <div class="mt-5">
-                                            <h3 class="heading">{{ $termin->bezeichnung }}
-                                                <br>{{ "$termin->von - $termin->bis" }}</h3>
-                                            <div class="mt-5">
-                                                <div class="mt-3"><span class="special-text">Zugeteilt: <span
-                                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @elseif(Auth::user()->ist_admin == 'true')
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <div class="card p-3 mb-2">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <div class="icon"><i class="bi bi-person-fill"></i></div>
-                                                <div class="ms-2 c-details">
-                                                    <h6 class="mb-0">{{"$termin->firstname $termin->lastname"}}</h6>
-                                                    <span>#{{ $termin->id }}</span>
-                                                </div>
-                                            </div>
-                                            <!-- Ersetzt das Datum-Badge durch ein Wort-->
-                                            @if($termin->datum == date('Y-m-d'))
-                                                <div class="badge"><span>Heute</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
-                                                <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
-                                                <div class="badge"><span>Vorgestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
-                                                <div class="badge"><span>Morgen</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
-                                                <div class="badge"><span>Übermorgen</span></div>
-                                            @else
-                                                <div class="badge"><span>{{ $termin->datum }}</span></div>
-                                            @endif
-                                        </div>
-                                        <div class="mt-5">
-                                            <h3 class="heading">{{ $termin->bezeichnung }}
-                                                <br>{{ "$termin->von - $termin->bis" }}</h3>
-                                            <div class="mt-5">
-                                                <button type="button" class="btn-modal float-end"
-                                                        data-bs-toggle="modal" data-bs-target="#termin-modal">
-                                                    Bearbeiten
-                                                </button>
-                                                <div class="modal fade" id="termin-modal" tabindex="-1"
-                                                     aria-labelledby="exampleModalLabel"
-                                                     aria-hidden="true">
-                                                    <!-- Bearbeitet einen Termin beim Formular Submit -->
-                                                    <form action="/edit/{{ $termin->id }}" method="post">
-                                                        @csrf
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="title">Termin bearbeiten
-                                                                        / stornieren</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="mb-3">
-                                                                        <label for="datum"
-                                                                               class="form-label">Datum</label>
-                                                                        <input type="date" class="form-control"
-                                                                               id="datum" name="datum"
-                                                                               placeholder="yyyy-mm-dd" min="1997-01-01"
-                                                                               max="2030-12-31"
-                                                                               value="{{ $termin->datum }}"
-                                                                               required>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="von" class="form-label">Von</label>
-                                                                        <input type="time" class="form-control" id="von"
-                                                                               name="von" value="{{ $termin->von }}"
-                                                                               required>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="bis" class="form-label">Bis</label>
-                                                                        <input type="time" class="form-control" id="bis"
-                                                                               name="bis" value="{{ $termin->bis }}"
-                                                                               required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">
-                                                                        Schließen
-                                                                    </button>
-                                                                    <!-- Löscht den Termin -->
-                                                                    <a href="delete/{{$termin->id}}">
-                                                                        <button type="button" class="btn-remove">
-                                                                            Löschen
-                                                                        </button>
-                                                                    </a>
-                                                                    <button type="submit" class="btn-modal">Speichern
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="mt-3"><span class="special-text">Zugeteilt: <span
-                                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            @if(sizeof($termine) != 0)
+                <div class="table-admin d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        @if(isset($_GET['ansicht']))
+                            @if($_GET['ansicht'] == 'liste')
+                                <button type="button" id="btn-view" class="btn-modal"
+                                        onclick="window.location.href = '?ansicht=kachel';"><i
+                                        class="bi bi-list-ul">
+                                    </i> Listenansicht
+                                </button>
+                            @elseif($_GET['ansicht'] == 'kachel')
+                                <button type="button" id="btn-view" class="btn-modal"
+                                        onclick="window.location.href = '?ansicht=liste';"><i
+                                        class="bi bi-collection-fill"></i> Kachelansicht
+                                </button>
                             @endif
-                        @endforeach
+                        @else
+                            <button type="button" id="btn-view" class="btn-modal"
+                                    onclick="window.location.href = '?ansicht=liste';"><i
+                                    class="bi bi-collection-fill"></i> Kachelansicht
+                            </button>
+                        @endif
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label id="select-friseur-label" for="select-friseure">Friseur: </label>
+                        <select id="select-friseure" class="form-select">
+                            <option value="Alle">Alle</option>
+                            @foreach($angestellte as $angestellter)
+                                <option
+                                    value="{{ "$angestellter->vorname $angestellter->nachname" }}">{{ "$angestellter->vorname $angestellter->nachname" }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
+                @if(isset($_GET['ansicht']))
+                    @if($_GET['ansicht'] == 'liste')
+                        <div id="termine" class="table-responsive table-admin">
+                            <table class="table table-hover table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Bezeichnung</th>
+                                    <th scope="col">Kunde</th>
+                                    <th scope="col">Friseur</th>
+                                    <th scope="col">Datum</th>
+                                    <th scope="col">Uhrzeit</th>
+                                    <th scope="col">Bearbeiten</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- Iteriert durch den Angestellte Array -->
+                                @foreach ($termine as $termin)
+                                    <tr>
+                                        <td>{{ $termin->id }}</td>
+                                        <td>{{ $termin->bezeichnung }}</td>
+                                        <td>{{ "$termin->firstname $termin->lastname" }}</td>
+                                        <td>{{ "$termin->vorname $termin->nachname" }}</td>
+                                        <td style="padding-left: 0; padding-right: 0;">
+                                            @include('includes.admin_datum')
+                                        </td>
+                                        <td>{{ "$termin->von - $termin->bis" }}</td>
+                                        <td>
+                                            <button type="button" class="btn-modal"
+                                                    data-bs-toggle="modal" data-bs-target="#termin-modal">
+                                                Bearbeiten
+                                            </button>
+                                        </td>
+                                        @include('includes.admin_modal_termine')
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @elseif($_GET['ansicht'] == 'kachel')
+                        @include('includes.admin_kachel')
+                    @endif
+                @else
+                    @include('includes.admin_kachel')
+                @endif
             @else
                 <div class="alert alert-primary" role="alert">
                     Es konnten keine Termine gefunden werden.
@@ -195,7 +128,7 @@
             @if(Auth::user()->ist_admin == 'true')
             <!-- Überprüft ob der Angestellte Array nicht leer ist -->
                 @if(!empty($angestellte))
-                    <div id="friseure" class="table-responsive">
+                    <div id="friseure" class="table-responsive table-admin">
                         <table class="table table-hover table-borderless">
                             <thead>
                             <tr>
@@ -293,12 +226,13 @@
                             </form>
                         </div>
                     </div>
-                @else
-                    <div class="alert alert-primary" role="alert">
-                        Es sind keine Friseure angestellt.
-                    </div>
-                @endif
-            @endif
         </div>
-    @endguest
+        @else
+            <div class="alert alert-primary" role="alert">
+                Es sind keine Friseure angestellt.
+            </div>
+            @endif
+            @endif
+            </div>
+        @endguest
 @endsection

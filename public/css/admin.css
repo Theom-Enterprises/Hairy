@@ -30,8 +30,8 @@
     font-size: 15px;
 }
 
-#friseure {
-    margin: -15px 10px -30px 10px;
+.table-admin {
+    margin: 30px 10px 30px 10px;
     background: white;
     padding: 25px;
     border-radius: 20px;
@@ -104,6 +104,16 @@
 
 .line-break {
     display: none;
+}
+
+.kachelansicht {
+    margin-top: 30px;
+    margin-bottom: -30px;
+!important;
+}
+
+#select-friseur-label {
+    width: 100px;
 }
 
 @media (max-width: 471.5px) {

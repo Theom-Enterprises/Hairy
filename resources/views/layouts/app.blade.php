@@ -94,7 +94,7 @@
         @yield('content')
     </main>
 
-    <p class="mt-5 mb-3 text-muted text-center">&copy; Hairy 2021–2022</p>
+    <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
 </div>
 </body>
 </html>
