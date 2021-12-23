@@ -102,8 +102,8 @@
     background-color: #D5AF36;
 }
 
-.line-break {
-    display: none;
+#title-div h1 {
+    word-break: break-word;
 }
 
 .kachelansicht {
@@ -145,10 +145,6 @@
 
     #title-div {
         text-align: center;
-    }
-
-    .line-break {
-        display: inline;
     }
 
     .optional {

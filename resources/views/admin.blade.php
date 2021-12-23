@@ -19,7 +19,7 @@
         @endphp
         <div class="container">
             <div id="title-div" class="container">
-                <h1>ADMIN<span class="line-break">-</span>SEITE</h1>
+                <h1>VERWALTUNG</h1>
                 <p>
                     Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
                     und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
@@ -72,28 +72,28 @@
                             <table class="table table-hover table-borderless">
                                 <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th class="optional" scope="col">ID</th>
                                     <th scope="col">Bezeichnung</th>
-                                    <th scope="col">Kunde</th>
-                                    <th scope="col">Friseur</th>
+                                    <th class="optional" scope="col">Kunde</th>
+                                    <th class="optional" scope="col">Friseur</th>
                                     <th scope="col">Datum</th>
                                     <th scope="col">Uhrzeit</th>
-                                    <th scope="col">Bearbeiten</th>
+                                    <th class="optional" scope="col">Bearbeiten</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!-- Iteriert durch den Angestellte Array -->
                                 @foreach ($termine as $termin)
                                     <tr>
-                                        <td>{{ $termin->id }}</td>
+                                        <td class="optional">{{ $termin->id }}</td>
                                         <td>{{ $termin->bezeichnung }}</td>
-                                        <td>{{ "$termin->firstname $termin->lastname" }}</td>
-                                        <td>{{ "$termin->vorname $termin->nachname" }}</td>
+                                        <td class="optional">{{ "$termin->firstname $termin->lastname" }}</td>
+                                        <td class="optional">{{ "$termin->vorname $termin->nachname" }}</td>
                                         <td style="padding-left: 0; padding-right: 0;">
                                             @include('includes.admin_datum')
                                         </td>
                                         <td>{{ "$termin->von - $termin->bis" }}</td>
-                                        <td>
+                                        <td class="optional">
                                             <button type="button" class="btn-modal"
                                                     data-bs-toggle="modal" data-bs-target="#termin-modal">
                                                 Bearbeiten
