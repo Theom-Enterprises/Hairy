@@ -9,21 +9,18 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Termin;
 
 class AdminController extends Controller
 {
     public function index()
     {
         // Beinhaltet alle Termine samt Kunden-Name, Angestellter-Name und Bezeichnung der Dienstleistung
-        $termine = DB::table('termin')
-            ->join('users', 'users.id', '=', 'termin.user_id')
+        $termine = Termin::join('users', 'users.id', '=', 'termin.user_id')
             ->join('angebot', 'angebot.id', '=', 'termin.angebot_id')
             ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_id')
-            ->orderBy('datum', 'desc')
-            ->orderBy('von')
-            ->orderBy('von')
             ->select('termin.id', 'datum', 'von', 'bis', 'angebot.bezeichnung', 'users.firstname', 'users.lastname', 'angestellter.vorname', 'angestellter.nachname')
-            ->paginate(6);
+            ->sortable()->paginate(6);
 
         // Beinhaltet alle Angestellten
         $angestellte = DB::table('angestellter')

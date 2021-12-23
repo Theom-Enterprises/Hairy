@@ -2,6 +2,7 @@
 
 @push('stylesheets')
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b4be93d7a3.js" crossorigin="anonymous"></script>
 @endpush
 
 @section('subtitle', 'Administration')
@@ -73,17 +74,17 @@
                             <table class="table table-hover table-borderless">
                                 <thead>
                                 <tr>
-                                    <th class="optional" scope="col">ID</th>
+                                    <th class="optional" scope="col">@sortablelink('id')</th>
                                     <th scope="col">Bezeichnung</th>
                                     <th class="optional" scope="col">Kunde</th>
                                     <th class="optional" scope="col">Friseur</th>
-                                    <th scope="col">Datum</th>
-                                    <th scope="col">Uhrzeit</th>
+                                    <th scope="col">@sortablelink('datum' )</th>
+                                    <th scope="col">Von - Bis</th>
                                     <th class="optional" scope="col">Bearbeiten</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <!-- Iteriert durch den Angestellte Array -->
+                                <!-- Iteriert durch den Termine Array -->
                                 @foreach ($termine as $termin)
                                     <tr>
                                         <td class="optional">{{ $termin->id }}</td>
