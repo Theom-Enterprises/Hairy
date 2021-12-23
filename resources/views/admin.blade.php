@@ -46,19 +46,20 @@
                             @if($_GET['ansicht'] == 'liste')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=kachel';"><i
-                                        class="bi bi-list-ul">
-                                    </i> Listenansicht
+                                        class="bi bi-collection-fill"></i> Kachelansicht
                                 </button>
                             @elseif($_GET['ansicht'] == 'kachel')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=liste';"><i
-                                        class="bi bi-collection-fill"></i> Kachelansicht
+                                        class="bi bi-list-ul">
+                                    </i> Listenansicht
                                 </button>
                             @endif
                         @else
                             <button type="button" id="btn-view" class="btn-modal"
                                     onclick="window.location.href = '?ansicht=liste';"><i
-                                    class="bi bi-collection-fill"></i> Kachelansicht
+                                    class="bi bi-list-ul">
+                                </i> Listenansicht
                             </button>
                         @endif
                     </div>
