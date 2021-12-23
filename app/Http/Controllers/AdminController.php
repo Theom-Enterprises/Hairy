@@ -23,7 +23,7 @@ class AdminController extends Controller
             ->orderBy('von')
             ->orderBy('von')
             ->select('termin.id', 'datum', 'von', 'bis', 'angebot.bezeichnung', 'users.firstname', 'users.lastname', 'angestellter.vorname', 'angestellter.nachname')
-            ->get();
+            ->paginate(6);
 
         // Beinhaltet alle Angestellten
         $angestellte = DB::table('angestellter')

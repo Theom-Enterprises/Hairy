@@ -63,14 +63,7 @@
                         @endif
                     </div>
                     <div class="d-flex align-items-center">
-                        <label id="select-friseur-label" for="select-friseure">Friseur: </label>
-                        <select id="select-friseure" class="form-select">
-                            <option value="Alle">Alle</option>
-                            @foreach($angestellte as $angestellter)
-                                <option
-                                    value="{{ "$angestellter->vorname $angestellter->nachname" }}">{{ "$angestellter->vorname $angestellter->nachname" }}</option>
-                            @endforeach
-                        </select>
+                        {{ $termine->appends(request()->input())->links() }}
                     </div>
                 </div>
                 @if(isset($_GET['ansicht']))
