@@ -21,7 +21,6 @@ class UsersSeeder extends Seeder
             'telephoneNumber' => '+4312345678',
             'email' => '8147@htl.rennweg.at',
             'password' => Hash::make('Rennweg'),
-            'ist_admin' => 'true',
         ]);
 
         DB::table('users')->insert([
@@ -30,7 +29,6 @@ class UsersSeeder extends Seeder
             'telephoneNumber' => '+4312345678',
             'email' => '8142@htl.rennweg.at',
             'password' => Hash::make('Rennweg'),
-            'ist_admin' => 'true',
         ]);
 
         DB::table('users')->insert([
@@ -39,7 +37,6 @@ class UsersSeeder extends Seeder
             'telephoneNumber' => '+4312345678',
             'email' => 'omar.faid@htl.rennweg.at',
             'password' => Hash::make('Rennweg'),
-            'ist_admin' => 'false',
         ]);
 
         DB::table('users')->insert([
@@ -48,7 +45,6 @@ class UsersSeeder extends Seeder
             'telephoneNumber' => '-',
             'email' => 'max@musterma.nn',
             'password' => Hash::make('Rennweg'),
-            'ist_admin' => 'false',
         ]);
     }
 }
