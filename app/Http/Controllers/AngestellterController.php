@@ -32,7 +32,7 @@ class AngestellterController extends Controller
         $angestellter->vorname = $request->input('vorname');
         $angestellter->nachname = $request->input('nachname');
         $angestellter->email = $request->input('email');
-        $angestellter->passwort = Hash::make($request->input('passwort'));
+        $angestellter->password = Hash::make($request->input('passwort'));
         $angestellter->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
         $angestellter->erstelldatum = $request->input('erstelldatum');
         $angestellter->friseursalon_id = $request->input('friseursalon_id');
