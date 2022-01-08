@@ -18,7 +18,8 @@
             <div class="alert alert-danger" role="alert">{{ $message }}</div>
             @enderror
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST"
+                  action="@if(Request::getHost() === 'admin.hairy.test'){{ route('admin.login') }}@else{{route('login')}}@endif">
                 @csrf
 
                 <div class="form-floating">
@@ -37,7 +38,8 @@
                 </div>
 
                 <div class="form-check add-margin" style="text-align: left">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <input class="form-check-input" type="checkbox" name="remember"
+                           id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                     <label class="form-check-label" for="remember">
                         {{ __('Angemeldet bleiben') }}

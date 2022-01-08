@@ -6,9 +6,10 @@
 
 @section('content')
     <!-- Überprüfen ob der User angemeldet ist -->
-    @guest
+    @guest('employee')
         Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
-    @else
+    @endguest
+    @auth('employee')
         @php
             date_default_timezone_set('Europe/Vienna');
         @endphp
@@ -27,7 +28,7 @@
                     <a href="#termine">
                         <button>Termine</button>
                     </a>
-                    @if(Auth::user()->ist_admin == 'true')
+                    @if($employee->ist_admin === 'true')
                         <a href="#friseure">
                             <button>Friseure</button>
                         </a>
@@ -39,7 +40,7 @@
                 <div id="termine" class="container mt-5 mb-3">
                     <div class="row">
                         @foreach($termine as $termin)
-                            @if(Auth::user()->ist_admin == 'false' && $termin->nachname == Auth::user()->lastname && $termin->vorname == Auth::user()->firstname)
+                            @if($employee->ist_admin === 'false' && $termin->nachname === $employee->lastname && $termin->vorname === $employee->firstname)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card p-3 mb-2">
                                         <div class="d-flex justify-content-between">
@@ -50,15 +51,15 @@
                                                     <span>#{{ $termin->id }}</span>
                                                 </div>
                                             </div>
-                                            @if($termin->datum == date('Y-m-d'))
+                                            @if($termin->datum === date('Y-m-d'))
                                                 <div class="badge"><span>Heute</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("-1 days")))
                                                 <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("-2 days")))
                                                 <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("+1 days")))
                                                 <div class="badge"><span>Morgen</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("+2 days")))
                                                 <div class="badge"><span>Übermorgen</span></div>
                                             @else
                                                 <div class="badge"><span>{{ $termin->datum }}</span></div>
@@ -69,13 +70,13 @@
                                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                                             <div class="mt-5">
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
-                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                                class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @elseif(Auth::user()->ist_admin == 'true')
+                            @elseif($employee->ist_admin === 'true')
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card p-3 mb-2">
                                         <div class="d-flex justify-content-between">
@@ -86,15 +87,15 @@
                                                     <span>#{{ $termin->id }}</span>
                                                 </div>
                                             </div>
-                                            @if($termin->datum == date('Y-m-d'))
+                                            @if($termin->datum === date('Y-m-d'))
                                                 <div class="badge"><span>Heute</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-1 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("-1 days")))
                                                 <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("-2 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("-2 days")))
                                                 <div class="badge"><span>Gestern</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+1 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("+1 days")))
                                                 <div class="badge"><span>Morgen</span></div>
-                                            @elseif($termin->datum == date('Y-m-d', strtotime("+2 days")))
+                                            @elseif($termin->datum === date('Y-m-d', strtotime("+2 days")))
                                                 <div class="badge"><span>Übermorgen</span></div>
                                             @else
                                                 <div class="badge"><span>{{ $termin->datum }}</span></div>
@@ -164,7 +165,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="mt-3"><span class="text1">Zugeteilt: <span
-                                                            class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                                class="text2">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,7 +181,7 @@
                 </div>
             @endif
 
-            @if(Auth::user()->ist_admin == 'true')
+            @if($employee->ist_admin === 'true')
                 @if(!empty($angestellte))
                     <div id="friseure">
                         <table class="table table-responsive table-hover table-borderless">
@@ -196,9 +197,9 @@
                             @foreach ($angestellte as $angestellter)
                                 <tr>
                                     <td>{{ $angestellter->friseurkuerzel }}</td>
-                                    <td>{{ "{$angestellter->vorname} {$angestellter->nachname}" }}</td>
+                                    <td>{{ "$angestellter->vorname $angestellter->nachname" }}</td>
                                     <td>{{ $angestellter->erstelldatum }}</td>
-                                    @if($angestellter->ist_admin == 'true')
+                                    @if($angestellter->ist_admin === 'true')
                                         <td>Ja</td>
                                     @else
                                         <td>Nein</td>
@@ -283,5 +284,5 @@
                 @endif
             @endif
         </div>
-    @endguest
+    @endauth
 @endsection

@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+    }
+
     public function index()
     {
         $termine = DB::table('termin')
@@ -24,14 +29,15 @@ class AdminController extends Controller
             ->orderBy('ist_admin', 'DESC')
             ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
             ->get();
+        $employee = Auth::guard('employee')->user();
 
-        return view('admin', compact('termine', 'angestellte'));
+        return view('admin', compact('termine', 'angestellte', 'employee'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
