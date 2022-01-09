@@ -7,10 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Hairy') }}</title>
+    <title>Hairy ● @yield('subtitle')</title>
 
     <!-- Scripts -->
-@stack('scripts')
+    @stack('scripts')
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -56,13 +56,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Anmelden') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrieren') }}</a>
                             </li>
                         @endif
                     @else
@@ -93,6 +93,8 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+    <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
 </div>
 </body>
 </html>

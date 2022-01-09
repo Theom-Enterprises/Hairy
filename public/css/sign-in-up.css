@@ -98,3 +98,7 @@ body {
 #togglePassword {
     font-size: 30px;
 }
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+    border-color: #ced4da !important;
+}

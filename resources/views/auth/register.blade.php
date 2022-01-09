@@ -4,6 +4,8 @@
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
 @endpush
 
+@section('subtitle', 'Registrierung')
+
 @section('content')
     <div id="register-div" class="text-center">
         <main class="form-signin">
@@ -11,23 +13,23 @@
             <h1 class="h3 mb-3 fw-normal">Account erstellen</h1>
 
             @error('firstname')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             @error('lastname')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             @error('telephoneNumber')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             @error('email')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             @error('password')
-            <div class="alert alert-danger" role="alert">{{ $message }}</div>
+            <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             <form method="POST" action="{{ route('register') }}">
@@ -84,8 +86,6 @@
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit"
                         name="register">{{ __('Registrieren') }}</button>
-
-                <p class="mt-5 mb-3 text-muted">&copy; Hairy 2021–2022</p>
             </form>
         </main>
     </div>
