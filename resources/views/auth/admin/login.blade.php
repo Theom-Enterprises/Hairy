@@ -12,20 +12,16 @@
             <img class="mb-4" src="/img/icon.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Willkommen zurück, Angestellter</h1>
 
-            @error('email')
-            <div class="alert alert-primary" role="alert">{{ $message }}</div>
-            @enderror
-
-            @error('password')
+            @error('error')
             <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
             <form method="POST"
-                  action="@if(Request::getHost() === 'admin.hairy.test'){{ route('admin.login') }}@else{{route('admin.login')}}@endif">
+                  action="{{ route('admin.login') }}">
                 @csrf
 
                 <div class="form-floating">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                    <input id="email" type="email" class="form-control @error('error') is-invalid @enderror"
                            name="email" value="{{ old('email') }}" autocomplete="tel"
                            placeholder="E-Mail Adresse">
 
@@ -34,8 +30,8 @@
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="add-margin form-control @error('password') is-invalid @enderror"
-                           name="password" autocomplete="new-password" placeholder="Passwort">
+                           class="add-margin form-control @error('error') is-invalid @enderror"
+                           name="password" autocomplete="password" placeholder="Passwort">
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 

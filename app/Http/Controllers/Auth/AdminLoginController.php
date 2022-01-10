@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AdminLoginController extends Controller
 {
@@ -35,16 +36,22 @@ class AdminLoginController extends Controller
             'password' => 'required|string',
         ];
 
-        $this->validate($request, $rules);
-        $remember = $request->get('remember');
+        $validator = Validator::make($request->all(), $rules);
+
+
+
+        if ($validator->fails()) {
+            return back()->withErrors(['error' => 'Anmeldedaten sind inkorrekt']);
+        }
+
         if (Auth::guard('employee')->attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
-        ], $remember)) {
+        ])) {
             //Authentication passed...
-            return redirect(route('admin'));
+            return redirect(route('admin.home'));
         }
 
-        return redirect()->back()->withError('Credentials doesn\'t match.');
+        return redirect()->back()->withErrors(['error' => 'Anmeldedaten stimmen nicht mit unseren Einträgen überein']);
     }
 }
