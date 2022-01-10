@@ -3,7 +3,7 @@
         <!-- Iteriert durch den Termine Array -->
     @foreach($termine as $termin)
         <!-- Überprüft ob der User kein Admin ist und ob der Angestellte, welcher dem Termin zugeordnet wurde, der User ist-->
-            @if(Auth::user()->ist_admin == 'false' && $termin->nachname == Auth::user()->lastname && $termin->vorname == Auth::user()->firstname)
+            @if($employee->ist_admin === 'false' && $termin->nachname === $employee->lastname && $termin->vorname === $employee->firstname)
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card p-3 mb-2">
                         <div class="d-flex justify-content-between">
@@ -21,13 +21,13 @@
                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                             <div class="mt-5">
                                 <div class="mt-3"><span class="special-text">Zugeteilt: <span
-                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            @elseif(Auth::user()->ist_admin == 'true')
+            @elseif($employee->ist_admin === 'true')
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card p-3 mb-2">
                         <div class="d-flex justify-content-between">
@@ -50,7 +50,7 @@
                                 </button>
                                 @include('includes.admin_modal_termine')
                                 <div class="mt-3"><span class="special-text">Zugeteilt: <span
-                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                                class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                 </div>
                             </div>
                         </div>

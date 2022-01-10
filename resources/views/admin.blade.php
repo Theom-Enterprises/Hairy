@@ -11,7 +11,8 @@
     <!-- Überprüfen ob der User angemeldet ist -->
     @guest('employee')
         <div class="alert alert-primary text-center" role="alert">
-        Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
+            Dieser Bereich steht ausschließlich Friseuren und Administratoren zur Verfügung.
+        </div>
     @endguest
     @auth('employee')
         @php
@@ -21,8 +22,10 @@
             <div id="title-div" class="container">
                 <h1>VERWALTUNG</h1>
                 <p>
-                    Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach Datum
-                    und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf den
+                    Auf der Admin-Seite lassen sich alle Termine und Friseure anzeigen. Die Termine sind nach
+                    Datum
+                    und Uhrzeit sortiert, es scheinen die aktuellsten Aufgaben zuerst auf. Durch das Drücken auf
+                    den
                     "Bearbeiten"-Button kann ein Termin storniert oder bearbeitet werden. In der Friseur-Tabelle
                     lassen sich alle wichtigen Informationen auf einen Blick einfangen.
                 </p>
@@ -39,16 +42,16 @@
                 </div>
             </div>
             <!-- Überprüft ob der Termine Array leer ist -->
-            @if(sizeof($termine) != 0)
+            @if(count($termine) !== 0)
                 <div class="table-admin d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                         @if(isset($_GET['ansicht']))
-                            @if($_GET['ansicht'] == 'liste')
+                            @if($_GET['ansicht'] === 'liste')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=kachel';"><i
                                         class="bi bi-collection-fill"></i> Kachelansicht
                                 </button>
-                            @elseif($_GET['ansicht'] == 'kachel')
+                            @elseif($_GET['ansicht'] === 'kachel')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=liste';"><i
                                         class="bi bi-list-ul">
@@ -68,7 +71,7 @@
                     </div>
                 </div>
                 @if(isset($_GET['ansicht']))
-                    @if($_GET['ansicht'] == 'liste')
+                    @if($_GET['ansicht'] === 'liste')
                         <div id="termine" class="table-responsive table-admin">
                             <table class="table table-hover table-borderless">
                                 <thead>
@@ -106,7 +109,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    @elseif($_GET['ansicht'] == 'kachel')
+                    @elseif($_GET['ansicht'] === 'kachel')
                         @include('includes.admin_kachel')
                     @endif
                 @else
@@ -120,7 +123,7 @@
         <!-- Überprüft ob der User ein Admin ist -->
             @if($employee->ist_admin === 'true')
             <!-- Überprüft ob der Angestellte Array nicht leer ist -->
-                @if(!empty($angestellte))
+                @if(count($angestellte) !== 0)
                     <div id="friseure" class="table-responsive table-admin">
                         <table class="table table-hover table-borderless">
                             <thead>
@@ -172,11 +175,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="vorname" class="form-label">Vorname</label>
-                                                <input class="form-control" id="vorname" name="vorname" required>
+                                                <input class="form-control" id="vorname" name="vorname"
+                                                       required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="nachname" class="form-label">Nachname</label>
-                                                <input class="form-control" id="nachname" name="nachname" required>
+                                                <input class="form-control" id="nachname" name="nachname"
+                                                       required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">E-Mail Adresse</label>
@@ -196,20 +201,24 @@
                                                        required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="friseursalon" class="form-label">Friseursalon ID</label>
-                                                <input type="number" min="1" class="form-control" id="friseursalon"
+                                                <label for="friseursalon" class="form-label">Friseursalon
+                                                    ID</label>
+                                                <input type="number" min="1" class="form-control"
+                                                       id="friseursalon"
                                                        name="friseursalon_id"
                                                        required>
                                             </div>
                                             <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="ist_admin"
                                                        name="ist_admin">
-                                                <label class="form-check-label" for="ist_admin">Der Angestellte ist
+                                                <label class="form-check-label" for="ist_admin">Der Angestellte
+                                                    ist
                                                     ein Admin</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">
                                                 Schließen
                                             </button>
                                             <button type="submit" class="btn-modal">Hinzufügen</button>
@@ -219,12 +228,11 @@
                             </form>
                         </div>
                     </div>
-        </div>
-        @else
-            <div class="alert alert-primary" role="alert">
-                Es sind keine Friseure angestellt.
-            </div>
-            @endif
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        Es sind keine Friseure angestellt.
+                    </div>
+                @endif
             @endif
         </div>
     @endauth
