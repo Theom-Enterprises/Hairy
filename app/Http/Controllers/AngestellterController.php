@@ -38,15 +38,6 @@ class AngestellterController extends Controller
         $angestellter->friseursalon_id = $request->input('friseursalon_id');
         $angestellter->save();
 
-        $user = new User();
-        $user->firstname = $request->input('vorname');
-        $user->lastname = $request->input('nachname');
-        $user->telephoneNumber = '-';
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('passwort'));
-        $user->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
-        $user->save();
-
         return redirect()->back();
     }
 }
