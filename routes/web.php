@@ -14,25 +14,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::domain(env('APP_URL'))
+    ->group(function () {
+        Route::get('/', function () {
+            return view('index');
+        });
+    });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['web'])
+    ->domain('admin.' . env('APP_URL'))
+    ->name('admin.')
+    ->group(function () {
+        Route::auth();
+        Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+        Route::redirect('/', '/admin');
+        Route::post('/adminlogin', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
+        Route::get('/adminlogin', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
+        Route::get('/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+        // Routen um einen Angestellten zu erstellen
+        Route::get('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'create']);
+        Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store']);
 
-// Routen um einen Angestellten zu erstellen
-Route::get('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'create']);
-Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store']);
+        // Route um einen Termin zu löschen
+        Route::get('delete/{id}', '\App\Http\Controllers\AdminController@delete');
 
-// Route um einen Termin zu löschen
-Route::get('delete/{id}', '\App\Http\Controllers\AdminController@delete');
-
-// Route um einen Termin zu aktualisieren
-Route::get('edit/{id}', '\App\Http\Controllers\AdminController@create');
-Route::post('edit/{id}', '\App\Http\Controllers\AdminController@edit');
-
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+        // Route um einen Termin zu aktualisieren
+        Route::get('edit/{id}', '\App\Http\Controllers\AdminController@create');
+        Route::post('edit/{id}', '\App\Http\Controllers\AdminController@edit');
+    });
