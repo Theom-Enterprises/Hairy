@@ -23,9 +23,10 @@ Auth::routes();
 
 Route::middleware(['web'])
     ->group(function () {
+        Route::auth();
+
         //Admin Routen
         Route::name('admin.')->group(function () {
-            Route::auth();
             Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
             Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
