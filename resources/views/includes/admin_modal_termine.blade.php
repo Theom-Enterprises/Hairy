@@ -2,7 +2,7 @@
      aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <!-- Bearbeitet einen Termin beim Formular Submit -->
-    <form action="/edit/{{ $termin->id }}" method="post">
+    <form action="{{ route('termin.edit', ['id' => $termin->id]) }}" method="post">
         @csrf
         <div class="modal-dialog">
             <div class="modal-content">
@@ -49,7 +49,7 @@
                         Schließen
                     </button>
                     <!-- Löscht den Termin -->
-                    <a href="delete/{{$termin->id}}">
+                    <a href="{{ route('termin.delete', ['id' => $termin->id]) }}">
                         <button type="button" class="btn-remove">
                             Löschen
                         </button>

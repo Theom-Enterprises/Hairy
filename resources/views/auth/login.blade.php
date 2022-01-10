@@ -21,7 +21,7 @@
             @enderror
 
             <form method="POST"
-                  action="@if(Request::getHost() === 'admin.hairy.test'){{ route('admin.login') }}@else{{route('login')}}@endif">
+                  action="{{route('login')}}">
                 @csrf
 
                 <div class="form-floating">

@@ -38,8 +38,6 @@ class AdminLoginController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
 
-
-
         if ($validator->fails()) {
             return back()->withErrors(['error' => 'Anmeldedaten sind inkorrekt']);
         }

@@ -49,19 +49,19 @@
                             @if($_GET['ansicht'] === 'liste')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=kachel';"><i
-                                        class="bi bi-collection-fill"></i> Kachelansicht
+                                            class="bi bi-collection-fill"></i> Kachelansicht
                                 </button>
                             @elseif($_GET['ansicht'] === 'kachel')
                                 <button type="button" id="btn-view" class="btn-modal"
                                         onclick="window.location.href = '?ansicht=liste';"><i
-                                        class="bi bi-list-ul">
+                                            class="bi bi-list-ul">
                                     </i> Listenansicht
                                 </button>
                             @endif
                         @else
                             <button type="button" id="btn-view" class="btn-modal"
                                     onclick="window.location.href = '?ansicht=liste';"><i
-                                    class="bi bi-list-ul">
+                                        class="bi bi-list-ul">
                                 </i> Listenansicht
                             </button>
                         @endif
@@ -158,7 +158,7 @@
                              aria-labelledby="exampleModalLabel"
                              aria-hidden="true">
                             <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
-                            <form action="{{ url('add-angestellter') }}" method="post">
+                            <form action="{{ route('employee.store') }}" method="post">
                                 @csrf
                                 <div class="modal-dialog">
                                     <div class="modal-content">

@@ -22,24 +22,31 @@ Route::redirect('/home', '/');
 Auth::routes();
 
 Route::middleware(['web'])
-    ->name('admin.')
     ->group(function () {
-        Route::auth();
-        Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+        //Admin Routen
+        Route::name('admin.')->group(function () {
+            Route::auth();
+            Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
-        Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
-        Route::get('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
+            Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
+            Route::get('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
 
-        Route::get('/admin/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
+            Route::get('/admin/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
+        });
 
-        // Routen um einen Angestellten zu erstellen
-        Route::get('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'create']);
-        Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store']);
+        // Angestellten Routen
+        Route::name('employee.')->group(function () {
+            // Routen um einen Angestellten zu erstellen
+            Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store'])->name('store');
+        });
 
-        // Route um einen Termin zu löschen
-        Route::get('delete/{id}', '\App\Http\Controllers\AdminController@delete');
+        //Termin Routen
+        Route::name('termin.')->group(function () {
+            // Route um einen Termin zu löschen
+            Route::get('delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
 
-        // Route um einen Termin zu aktualisieren
-        Route::get('edit/{id}', '\App\Http\Controllers\AdminController@create');
-        Route::post('edit/{id}', '\App\Http\Controllers\AdminController@edit');
+            // Route um einen Termin zu bearbeiten
+            Route::get('edit/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');
+            Route::post('edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit');
+        });
     });
