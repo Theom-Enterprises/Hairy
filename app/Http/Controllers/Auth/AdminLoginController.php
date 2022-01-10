@@ -24,7 +24,7 @@ class AdminLoginController extends Controller
 
     public function index()
     {
-        return view('auth.login');
+        return view('auth.admin.login');
     }
 
     public function login(Request $request)
@@ -42,7 +42,7 @@ class AdminLoginController extends Controller
             'password' => $request->get('password'),
         ], $remember)) {
             //Authentication passed...
-            return redirect(route('admin.home'));
+            return redirect(route('admin'));
         }
 
         return redirect()->back()->withError('Credentials doesn\'t match.');

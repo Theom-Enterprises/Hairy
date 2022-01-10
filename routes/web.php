@@ -24,14 +24,16 @@ Route::domain(env('APP_URL'))
 Auth::routes();
 
 Route::middleware(['web'])
-    ->domain('admin.' . env('APP_URL'))
-    ->name('admin.')
+    // TODO Subdomain .admin
     ->group(function () {
         Route::auth();
-        Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+        Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
         Route::redirect('/', '/admin');
-        Route::post('/adminlogin', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
-        Route::get('/adminlogin', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
+
+        Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('admin.login');
+        Route::get('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('admin.login');
+
+        Route::get('/admin/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
         Route::get('/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
 
         // Routen um einen Angestellten zu erstellen

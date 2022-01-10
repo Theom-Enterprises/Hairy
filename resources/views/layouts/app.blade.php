@@ -53,6 +53,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
+                    <!-- TODO Auf der Admin Seite wird "Anmelden" oder "Registrieren" in der Navbar angezeigt obwohl der Angestellte angemeldet ist -->
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
