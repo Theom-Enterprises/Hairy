@@ -25,12 +25,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
     @auth
         <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
     @endauth
     @stack('stylesheets')
-
 </head>
 <body>
 <div id="app">
