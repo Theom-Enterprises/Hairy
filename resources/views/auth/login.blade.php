@@ -12,11 +12,7 @@
             <img class="mb-4" src="/img/icon.svg" alt="Hairy Logo" width="70" height="70">
             <h1 class="h3 mb-3 fw-normal">Willkommen zurück</h1>
 
-            @error('email')
-            <div class="alert alert-primary" role="alert">{{ $message }}</div>
-            @enderror
-
-            @error('password')
+            @error('error')
             <div class="alert alert-primary" role="alert">{{ $message }}</div>
             @enderror
 
@@ -25,8 +21,8 @@
                 @csrf
 
                 <div class="form-floating">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                           name="email" value="{{ old('email') }}" autocomplete="tel"
+                    <input id="email" type="email" class="form-control @error('error') is-invalid @enderror"
+                           name="email" value="{{ old('email') }}" autocomplete="email"
                            placeholder="E-Mail Adresse">
 
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
@@ -34,7 +30,7 @@
 
                 <div class="form-floating">
                     <input id="password" type="password"
-                           class="add-margin form-control @error('password') is-invalid @enderror"
+                           class="add-margin form-control @error('error') is-invalid @enderror"
                            name="password" autocomplete="new-password" placeholder="Passwort">
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>

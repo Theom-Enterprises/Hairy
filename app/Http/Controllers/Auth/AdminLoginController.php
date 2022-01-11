@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,6 +29,13 @@ class AdminLoginController extends Controller
         return view('auth.admin.login');
     }
 
+    /**
+     * Handle a login request to the application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Routing\Redirector|RedirectResponse
+     *
+     */
     public function login(Request $request)
     {
         //validation rules.
@@ -39,7 +47,7 @@ class AdminLoginController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return back()->withErrors(['error' => 'Anmeldedaten sind inkorrekt']);
+            return back()->withInput()->withErrors(['error' => 'Anmeldedaten sind inkorrekt']);
         }
 
         if (Auth::guard('employee')->attempt([
@@ -50,6 +58,6 @@ class AdminLoginController extends Controller
             return redirect(route('admin.home'));
         }
 
-        return redirect()->back()->withErrors(['error' => 'Anmeldedaten stimmen nicht mit unseren Einträgen überein']);
+        return back()->withInput()->withErrors(['error' => 'Anmeldedaten stimmen nicht mit unseren Einträgen überein']);
     }
 }
