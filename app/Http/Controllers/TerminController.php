@@ -36,7 +36,7 @@ class TerminController
 
         $termin = new Termin();
         $termin->datum = $request->input('datum');
-        $termin->von = $request->input('von');
+        $termin->von = $request->input('uhrzeit');
         $termin->bis = date('H:s', strtotime("+20 minutes"));
         $termin->user_id = Auth::guard('web')->user()->id;
         $termin->angestellter_id = random_int(1, count($angestellte));

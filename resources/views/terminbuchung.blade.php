@@ -39,11 +39,11 @@
                                required>
                     </div>
                     <div class="mb-3">
-                        <label for="von"
-                               class="form-label">Von</label>
+                        <label for="uhrzeit"
+                               class="form-label">Uhrzeit</label>
                         <input type="time" class="form-control"
-                               id="von"
-                               name="von"
+                               id="uhrzeit"
+                               name="uhrzeit"
                                required>
                     </div>
                     <div class="mb-3">
