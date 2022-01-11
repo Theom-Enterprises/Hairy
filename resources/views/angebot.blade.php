@@ -51,8 +51,8 @@
                 </table>
             </div>
             <div class="col m-2 d-flex justify-content-start align-items-center">
-                <button type="button" id="btn-buchung" class="btn btn-primary">
-                    <a href="#">Termin buchen</a>
+                <button type="button" id="btn-buchung" class="btn btn-primary"
+                        onclick="window.location.href='terminbuchung';">Termin buchen
                 </button>
             </div>
         </div>
