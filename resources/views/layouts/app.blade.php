@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     @stack('scripts')
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>
@@ -34,13 +33,15 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="bi bi-list" style="font-size: 1.3rem;"></i>
+            </button>
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Hairy') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -91,11 +92,61 @@
         </div>
     </nav>
 
-    <main class="py-4">
+@auth
+    <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>
+                    Dashboard
+                </h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="{{route('home')}}">
+                        <i class="bi bi-house-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="bi bi-calendar3"></i>
+                        Termine buchen
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('angebot.show')}}">
+                        <i class="bi bi-basket3-fill"></i>
+                        Angebote
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="bi bi-person-circle"></i>
+                        Profil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @endauth
+
+    <main class="py-4 @auth content @endauth">
         @yield('content')
     </main>
 
     <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
 </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+@auth
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                // open or close navbar
+                $('#sidebar, .content').toggleClass('active');
+            });
+        });
+    </script>
+@endauth
 </body>
 </html>

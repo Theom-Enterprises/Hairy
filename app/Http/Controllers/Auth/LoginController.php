@@ -63,6 +63,7 @@ class LoginController extends Controller
             return back()->withInput()->withErrors(['error' => 'Anmeldedaten sind inkorrekt']);
         }
 
+
         if (Auth::guard('web')->attempt([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
