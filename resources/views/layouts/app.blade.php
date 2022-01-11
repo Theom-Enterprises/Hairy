@@ -134,9 +134,10 @@
 
     <main class="py-4 @auth content @endauth">
         @yield('content')
+        <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
     </main>
 
-    <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
+
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
