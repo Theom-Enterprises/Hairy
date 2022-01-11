@@ -53,27 +53,38 @@
                     <!-- Authentication Links -->
                     @guest('web')
                         @guest('employee')
-                            <li class="navbar-text">
-                                Benutzer Log in:
-                            </li>
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Anmelden') }}</a>
-                                </li>
-                            @endif
+                            @if(!(Request::is('admin') || Request::is('admin/login')))
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Anmelden') }}</a>
+                                    </li>
+                                @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrieren') }}</a>
-                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Registrieren') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                                @if (Route::has('admin.login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Anmelden') }}</a>
+                                    </li>
+                                @endif
+
+                                @if (Route::has('home'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                                    </li>
+                                @endif
                             @endif
                         @endguest
                     @endguest
 
                     @if(Auth::guard('employee')->user() !== null)
-                        @include('includes.admin_logout')
+                        @include('includes.admin_nav_dropdown')
                     @elseif(Auth::guard('web')->user() !== null)
-                        @include('includes.user_logout')
+                        @include('includes.user_nav_dropdown')
                     @endif
                 </ul>
             </div>

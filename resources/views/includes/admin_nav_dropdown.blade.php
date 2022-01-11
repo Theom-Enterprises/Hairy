@@ -6,7 +6,10 @@
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="{{ route('admin.logout') }}">
-        {{ __('Logout') }}
+            {{ __('Abmelden') }}
+        </a>
+        <a class="dropdown-item" href="{{ route('home') }}">
+            {{ __('Home') }}
         </a>
     </div>
 </li>
