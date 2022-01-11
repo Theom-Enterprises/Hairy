@@ -111,7 +111,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}">
+                    <a href="{{route('terminbuchung')}}">
                         <i class="bi bi-calendar3"></i>
                         Termine buchen
                     </a>

@@ -35,6 +35,9 @@ Route::middleware(['web'])
             Route::get('/admin/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->name('logout');
         });
 
+        // Terminbuchung Routen
+        Route::get('/terminbuchung', [App\Http\Controllers\TerminController::class, 'index'])->name('terminbuchung');
+
         // Angestellten Routen
         Route::name('employee.')->group(function () {
             // Routen um einen Angestellten zu erstellen
@@ -45,6 +48,7 @@ Route::middleware(['web'])
         Route::name('termin.')->group(function () {
             // Route um einen Termin zu löschen
             Route::get('delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
+            Route::post('add-termin', [App\Http\Controllers\TerminController::class, 'store'])->name('store');
 
             // Route um einen Termin zu bearbeiten
             Route::get('edit/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');

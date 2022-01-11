@@ -9,6 +9,8 @@ class Termin extends Model
 {
     use Sortable;
 
+    public $timestamps = false;
+
     protected $table = 'termin';
 
     protected $fillable = ['datum', 'von', 'bis'];
