@@ -33,9 +33,11 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list" style="font-size: 1.3rem;"></i>
-            </button>
+            @auth
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="bi bi-list" style="font-size: 1.3rem;"></i>
+                </button>
+            @endauth
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Hairy') }}
             </a>
