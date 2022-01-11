@@ -50,4 +50,10 @@ Route::middleware(['web'])
             Route::get('edit/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');
             Route::post('edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit');
         });
+
+        //Angebot Routen
+        Route::name('angebot.')->group(function () {
+            //Angebote anzeigen
+            Route::get('/angebot', [App\Http\Controllers\AngebotController::class, 'index'])->name('show');
+        });
     });

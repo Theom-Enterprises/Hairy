@@ -20,7 +20,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        // Beinhaltet alle Termine samt Kunden-Name, Angestellter-Name und Bezeichnung der Dienstleistung
+        // Beinhaltet alle Termine samt Kunden-Name, Angestellter-Name und Bezeichnung des Angebots
         $termine = Termin::join('users', 'users.id', '=', 'termin.user_id')
             ->join('angebot', 'angebot.id', '=', 'termin.angebot_id')
             ->join('angestellter', 'angestellter.id', '=', 'termin.angestellter_id')
