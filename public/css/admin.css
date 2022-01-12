@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-#business-card {
+#title-div {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
     border-radius: 15px;
     box-shadow: 0 15px 25px -4px rgba(30, 30, 60, 0.25);
     margin: auto auto 45px auto;
@@ -8,18 +10,13 @@
     color: white;
 }
 
-.gradient-bg {
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
-}
-
-#business-card h1 {
+#title-div h1 {
     font-family: Roboto, sans-serif;
     font-size: 50px;
     font-weight: bold;
 }
 
-#business-card button {
+#title-div button {
     border: none;
     border-radius: 40px;
     padding: 20px 40px;
@@ -33,14 +30,14 @@
     font-size: 15px;
 }
 
-#friseure {
-    margin: -15px 10px 25px 10px;
+.table-admin {
+    margin: 30px 10px 20px 10px;
     background: white;
     padding: 25px;
     border-radius: 20px;
 }
 
-/* CARDS */
+/* TERMINE */
 
 .col-lg-4, .col-md-6, .col-sm-12 {
     margin-bottom: 15px;
@@ -79,12 +76,12 @@
     align-items: center
 }
 
-.text1 {
+.special-text {
     font-size: 14px;
     font-weight: 600
 }
 
-.text2 {
+.special-bold-text {
     color: #a5aec0
 }
 
@@ -105,12 +102,57 @@
     background-color: #D5AF36;
 }
 
-@media (max-width: 455px) {
-    #business-card {
+#title-div h1 {
+    word-break: break-word;
+}
+
+.kachelansicht {
+    margin-top: 30px;
+    margin-bottom: -30px;
+!important;
+}
+
+.pagination {
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.page-link {
+    color: black;
+}
+
+.page-link:hover {
+    color: #eec43e;
+}
+
+.page-item.active .page-link {
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
+    color: white;
+    border-color: #dee2e6;
+!important;
+}
+
+#friseure thead tr th a {
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 471.5px) {
+    #title-div {
         padding-bottom: 160px;
     }
 
-    #business-card button {
+    #title-div button {
         margin-bottom: 15px;
+    }
+
+    #title-div {
+        text-align: center;
+    }
+
+    .optional {
+        display: none;
     }
 }

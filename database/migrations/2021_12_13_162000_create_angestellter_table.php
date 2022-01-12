@@ -20,8 +20,8 @@ class CreateAngestellterTable extends Migration
             $table->string('vorname');
             $table->string('nachname');
             $table->string('email');
-            $table->string('passwort');
-            $table->boolean('ist_admin');
+            $table->string('password');
+            $table->boolean('ist_admin')->nullable();
             $table->date('erstelldatum');
             $table->bigInteger('friseursalon_id')->index();
 

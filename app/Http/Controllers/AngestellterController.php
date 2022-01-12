@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Angestellter;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AngestellterController extends Controller
@@ -32,20 +33,11 @@ class AngestellterController extends Controller
         $angestellter->vorname = $request->input('vorname');
         $angestellter->nachname = $request->input('nachname');
         $angestellter->email = $request->input('email');
-        $angestellter->passwort = Hash::make($request->input('passwort'));
+        $angestellter->password = Hash::make($request->input('passwort'));
         $angestellter->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
         $angestellter->erstelldatum = $request->input('erstelldatum');
         $angestellter->friseursalon_id = $request->input('friseursalon_id');
         $angestellter->save();
-
-        $user = new User();
-        $user->firstname = $request->input('vorname');
-        $user->lastname = $request->input('nachname');
-        $user->telephoneNumber = '-';
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('passwort'));
-        $user->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
-        $user->save();
 
         return redirect()->back();
     }

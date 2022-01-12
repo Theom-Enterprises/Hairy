@@ -52,6 +52,20 @@ body {
 }
 
 .btn-hairy {
+    border: none;
+    border-radius: 25px;
+    padding: 14px;
+    color: white;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background-color: #D5AF36;
+}
+
+.btn-hairy:hover {
+    border: none;
+    border-radius: 25px;
+    padding: 14px;
+    color: white;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
     background-color: #D5AF36;
 }
 
@@ -97,4 +111,8 @@ body {
 
 #togglePassword {
     font-size: 30px;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+    border-color: #ced4da !important;
 }

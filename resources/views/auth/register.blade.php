@@ -4,6 +4,8 @@
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
 @endpush
 
+@section('subtitle', 'Registrierung')
+
 @section('content')
     <div id="register-div" class="text-center">
         <main class="form-signin">
@@ -82,10 +84,8 @@
                     <label for="password-confirm">{{ __('Passwort bestätigen') }}</label>
                 </div>
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit"
+                <button class="w-100 btn btn-lg btn-primary btn-hairy" type="submit"
                         name="register">{{ __('Registrieren') }}</button>
-
-                <p class="mt-5 mb-3 text-muted">&copy; Hairy 2021–2022</p>
             </form>
         </main>
     </div>

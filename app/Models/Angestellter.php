@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Angestellter extends Model
+class Angestellter extends Authenticatable
 {
     use HasFactory;
 
@@ -23,7 +23,7 @@ class Angestellter extends Model
         'vorname',
         'nachname',
         'email',
-        'passwort',
+        'password',
         'ist_admin',
         'erstelldatum',
         'friseursalon_id',
