@@ -7,6 +7,9 @@
 
 @push('body-js')
 @endpush
+
+@section('subtitle', 'Profil')
+
 @section('content')
     <div id="register-div" class="text-center my-2">
         <h1 class="h3 mb-3 fw-normal">Profil Einstellungen</h1>
