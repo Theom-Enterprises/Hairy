@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="form-floating col no-left-right-padding">
                             <input id="firstname" type="text"
-                                   class="no-bottom-border form-control "
+                                   class="no-bottom-border form-control"
                                    name="firstname" value="{{ old('firstname') ?? $user->firstname }}"
                                    placeholder="firstname"
                                    autofocus style="border-top-right-radius: 0;">
@@ -54,26 +54,18 @@
 
                 <div class="form-floating">
                     <input id="telephone-number" type="tel"
-                           class="no-border form-control"
+                           class="form-control" style="border-radius: 0"
                            name="telephoneNumber"
                            value="{{ old('telephoneNumber') ?? $user->telephoneNumber }}" placeholder="Telefonnummer">
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
 
                 <div class="form-floating">
-                    <input id="email" type="email" class="no-border no-bottom-border form-control"
+                    <input id="email" type="email" class="no-top-border form-control"
                            name="email" value="{{ old('email') ?? $user->email }}"
                            placeholder="E-Mail Adresse">
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
                 </div>
-            <!--
-            <div class="form-floating">
-                <input id="password" type="password"
-                       class="form-control"
-                       name="password" placeholder="Passwort"
-                       style="border-radius: 0 0 .25rem .25rem">
-                <label for="password">{{ __('Passwort') }}</label>
-            </div>-->
 
                 @if(count($termine) !== 0)
                     <div id="termine" class="table-responsive table-profil mt-4">
@@ -100,8 +92,8 @@
                         </table>
                     </div>
                 @else
-                    <div class="alert alert-primary" role="alert">
-                        Es stehen Ihnen keine Termine bevor.
+                    <div id="error-no-termine" class="alert alert-primary" role="alert">
+                        Es stehen Ihnen keine Termine bevor
                     </div>
                 @endif
                 <div class="row mt-4">
@@ -128,11 +120,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger" role="alert">
-                        <h4>Achtung!</h4>
-                    </div>
-                    <div class="alert alert-primary" role="alert">
-                        Sie sind dabei ihr Profil bei Hairy zu löschen
-                        <i class="bi bi-exclamation-triangle"></i>
+                        <h4><i class="bi bi-exclamation-triangle"></i> Achtung!</h4>
+                        Sie sind dabei ihr Profil bei Hairy zu löschen.
                         <br>
                         Ihre Daten werden nach dem Bestätigen unwiederuflich gelöscht.
                     </div>
@@ -140,8 +129,8 @@
                 <div class="modal-footer">
                     <form method="post" action="{{route('profil.delete', $user->id)}}">
                         @csrf
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abrechen</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Abbrechen</button>
+                        <button type="submit" class="btn btn-danger">
                             Bestätigen
                         </button>
                     </form>

@@ -9,9 +9,10 @@
 }
 
 .btn-danger {
-    color: white;
     border: none;
+    border-radius: 25px;
     padding: 14px;
+    color: white;
     background-color: #d9534f;
 }
 
@@ -22,6 +23,7 @@
 
 #btn-speichern {
     border: none;
+    border-radius: 25px;
     padding: 14px;
     color: white;
     background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
@@ -33,4 +35,8 @@
     max-width: 500px;
     padding: 20px;
     margin: auto;
+}
+
+#error-no-termine {
+    margin-top: 25px;
 }
