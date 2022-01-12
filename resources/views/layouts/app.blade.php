@@ -31,20 +31,16 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
         <div class="container">
             @auth
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <button type="button" id="sidebarCollapse" class="btn">
                     <i class="bi bi-list" style="font-size: 1.3rem;"></i>
                 </button>
             @endauth
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Hairy') }}
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
@@ -123,7 +119,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}">
+                    <a href="{{route('profil.show')}}">
                         <i class="bi bi-person-circle"></i>
                         Profil
                     </a>
@@ -146,7 +142,7 @@
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 // open or close navbar
-                $('#sidebar, .content').toggleClass('active');
+                $('.content, #sidebar ').toggleClass('active');
             });
         });
     </script>

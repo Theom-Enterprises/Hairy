@@ -60,4 +60,16 @@ Route::middleware(['web'])
             //Angebote anzeigen
             Route::get('/angebot', [App\Http\Controllers\AngebotController::class, 'index'])->name('show');
         });
+
+        //Profil Routen
+        Route::name('profil.')->group(function () {
+            //Profil Anzeigen
+            Route::get('/profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('show');
+
+            //Profil Löschen
+            Route::post('/profil/delete/{user_id}', [App\Http\Controllers\ProfilController::class, 'delete'])->name('delete');
+
+            //Profil Aktualisieren
+            Route::post('/profil/update/{user_id}', [App\Http\Controllers\ProfilController::class, 'update'])->name('update');
+        });
     });

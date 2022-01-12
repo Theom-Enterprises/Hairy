@@ -97,8 +97,10 @@ a[aria-expanded="true"] {
         margin-left: 0;
     }
 
-    #content {
+    .content {
         width: 100%;
+        position: relative;
+        right: auto;
     }
 
     #content.active {
