@@ -18,9 +18,9 @@
         </h1>
 
         <div id="title-div">
-            @if(session()->has('erfolgreich'))
+            @if(Session::has('erfolgreich'))
                 <div class="alert alert-primary" role="alert">
-                    {{ session()->get('erfolgreich') }}
+                    {{ Session::get('erfolgreich') }}
                 </div>
             @endif
 
