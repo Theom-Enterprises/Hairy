@@ -1,4 +1,4 @@
-<div class="modal fade" id="termin-modal" tabindex="-1"
+<div class="modal fade" id="termin-modal-{{ $termin->id }}" tabindex="-1"
      aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <!-- Bearbeitet einen Termin beim Formular Submit -->

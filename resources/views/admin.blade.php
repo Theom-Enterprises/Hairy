@@ -99,7 +99,8 @@
                                         <td>{{ "$termin->von - $termin->bis" }}</td>
                                         <td class="optional">
                                             <button type="button" class="btn-modal"
-                                                    data-bs-toggle="modal" data-bs-target="#termin-modal">
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#termin-modal-{{ $termin->id }}">
                                                 Bearbeiten
                                             </button>
                                         </td>

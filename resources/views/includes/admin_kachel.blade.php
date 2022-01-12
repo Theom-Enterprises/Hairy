@@ -45,12 +45,12 @@
                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                             <div class="mt-5">
                                 <button type="button" class="btn-modal float-end"
-                                        data-bs-toggle="modal" data-bs-target="#termin-modal">
+                                        data-bs-toggle="modal" data-bs-target="#termin-modal-{{ $termin->id }}">
                                     Bearbeiten
                                 </button>
                                 @include('includes.admin_modal_termine')
                                 <div class="mt-3"><span class="special-text">Zugeteilt: <span
-                                                class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
+                                            class="special-bold-text">{{ "$termin->vorname $termin->nachname" }}</span></span>
                                 </div>
                             </div>
                         </div>
