@@ -106,8 +106,8 @@
                 @endif
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <button id="btn-speichern" class="btn mx-2" type="submit">Profil spreichern</button>
-                        <button class="btn btn-danger mx-2" type="button" data-bs-toggle="modal"
+                        <button class="btn btn-hairy-primary mx-2" type="submit">Profil spreichern</button>
+                        <button class="btn btn-hairy-danger mx-2" type="button" data-bs-toggle="modal"
                                 data-bs-target="#deleteAccount">
                             Profil löschen
                         </button>
@@ -141,7 +141,7 @@
                     <form method="post" action="{{route('profil.delete', $user->id)}}">
                         @csrf
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abrechen</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-hairy-primary">
                             Bestätigen
                         </button>
                     </form>

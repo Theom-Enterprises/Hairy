@@ -24,6 +24,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hairy.css') }}" rel="stylesheet">
     @auth
         <link href="{{ asset('css/sidebar.css')}}" rel="stylesheet">
     @endauth
@@ -35,7 +36,7 @@
         <div class="container">
             @auth
                 <button type="button" id="sidebarCollapse" class="btn">
-                    <i class="bi bi-list" style="font-size: 1.3rem;"></i>
+                    <i class="bi bi-layout-sidebar" style="font-size: 1.3rem;"></i>
                 </button>
             @endauth
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -132,8 +133,6 @@
         @yield('content')
         <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
     </main>
-
-
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>

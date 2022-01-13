@@ -51,8 +51,8 @@
                 </table>
             </div>
             <div class="col m-2 d-flex justify-content-start align-items-center">
-                <button type="button" id="btn-buchung" class="btn btn-primary"
-                        onclick="window.location.href='terminbuchung';">Termin buchen
+                <button type="button" id="btn-buchung" class="btn btn-hairy-primary">
+                    <a href="{{route('terminbuchung')}}">Termin buchen</a>
                 </button>
             </div>
         </div>
