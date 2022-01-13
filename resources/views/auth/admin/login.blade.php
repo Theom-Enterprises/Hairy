@@ -35,7 +35,7 @@
                     <label for="password">{{ __('Passwort') }}</label>
                 </div>
 
-                <button class="w-100 btn btn-lg btn-hairy" type="submit"
+                <button class="w-100 btn-lg btn-hairy-primary" type="submit"
                         name="login">{{ __('Anmelden') }}</button>
             </form>
         </main>

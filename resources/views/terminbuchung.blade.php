@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @push('stylesheets')
-    <link href="{{ asset('css/angebot.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
-    <script defer src="/js/angebot.js"></script>
 @endpush
 
 @section('subtitle', 'Terminbuchung')
@@ -56,7 +54,7 @@
                         </select>
                     </div>
                     <div class="col m-2 d-flex justify-content-start align-items-center">
-                        <button type="submit" id="btn-buchung" class="btn btn-primary">Buchen</button>
+                        <button type="submit" class="btn btn-hairy-primary">Buchen</button>
                     </div>
                 </form>
             </div>

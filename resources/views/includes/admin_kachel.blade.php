@@ -44,7 +44,7 @@
                             <h3 class="heading">{{ $termin->bezeichnung }}
                                 <br>{{ "$termin->von - $termin->bis" }}</h3>
                             <div class="mt-5">
-                                <button type="button" class="btn-modal float-end"
+                                <button type="button" class="btn-hairy-primary float-end"
                                         data-bs-toggle="modal" data-bs-target="#termin-modal">
                                     Bearbeiten
                                 </button>

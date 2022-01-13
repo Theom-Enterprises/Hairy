@@ -47,19 +47,19 @@
                     <div class="d-flex align-items-center">
                         @if(isset($_GET['ansicht']))
                             @if($_GET['ansicht'] === 'liste')
-                                <button type="button" id="btn-view" class="btn-modal"
+                                <button type="button" id="btn-view" class="btn-hairy-primary"
                                         onclick="window.location.href = '?ansicht=kachel';"><i
                                             class="bi bi-collection-fill"></i> Kachelansicht
                                 </button>
                             @elseif($_GET['ansicht'] === 'kachel')
-                                <button type="button" id="btn-view" class="btn-modal"
+                                <button type="button" id="btn-view" class="btn-hairy-primary"
                                         onclick="window.location.href = '?ansicht=liste';"><i
                                             class="bi bi-list-ul">
                                     </i> Listenansicht
                                 </button>
                             @endif
                         @else
-                            <button type="button" id="btn-view" class="btn-modal"
+                            <button type="button" id="btn-view" class="btn-hairy-primary"
                                     onclick="window.location.href = '?ansicht=liste';"><i
                                         class="bi bi-list-ul">
                                 </i> Listenansicht
@@ -98,7 +98,7 @@
                                         </td>
                                         <td>{{ "$termin->von - $termin->bis" }}</td>
                                         <td class="optional">
-                                            <button type="button" class="btn-modal"
+                                            <button type="button" class="btn-hairy-primary"
                                                     data-bs-toggle="modal" data-bs-target="#termin-modal">
                                                 Bearbeiten
                                             </button>
@@ -150,7 +150,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <button type="button" class="btn-modal" data-bs-toggle="modal"
+                        <button type="button" class="btn-hairy-primary" data-bs-toggle="modal"
                                 data-bs-target="#angestellter-modal">
                             Hinzufügen
                         </button>
@@ -221,7 +221,8 @@
                                                     data-bs-dismiss="modal">
                                                 Schließen
                                             </button>
-                                            <button type="submit" class="btn-modal">Hinzufügen</button>
+                                            <button type="submit" class="btn-hairy-primary">Hinzufügen
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

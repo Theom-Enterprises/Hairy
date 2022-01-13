@@ -50,11 +50,11 @@
                     </button>
                     <!-- Löscht den Termin -->
                     <a href="{{ route('termin.delete', ['id' => $termin->id]) }}">
-                        <button type="button" class="btn-remove">
+                        <button type="button" class="btn-hairy-danger">
                             Löschen
                         </button>
                     </a>
-                    <button type="submit" class="btn-modal">
+                    <button type="submit" class="btn-hairy-primary">
                         Speichern
                     </button>
                 </div>
