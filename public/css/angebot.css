@@ -5,17 +5,8 @@
     border-radius: 20px;
 }
 
-#btn-buchung, .table-angebot {
+.table-angebot {
     border-radius: 20px;
-}
-
-#btn-buchung {
-    border: none;
-    border-radius: 25px;
-    padding: 14px;
-    color: white;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
 }
 
 #search-bar-input {

@@ -51,11 +51,6 @@ section {
     opacity 250ms linear;
 }
 
-.btn:hover,
-.btn:focus {
-    transform: scale(1.1);
-    opacity: .9;
-}
 
 .primary-title {
     font-size: clamp(2rem, calc(5vw + 1rem), 4.5rem);
