@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Angestellter;
-use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AngestellterController extends Controller
 {
@@ -18,6 +19,16 @@ class AngestellterController extends Controller
     public function create()
     {
         return view('admin');
+    }
+
+    public function rules($user_id): array
+    {
+        return [
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'telephoneNumber' => ['required', 'string', 'max:255,' . Rule::unique('users')->ignore($user_id)],
+            'email' => ['required', 'string', 'email', 'max:255,' . Rule::unique('users')->ignore($user_id)],
+        ];
     }
 
     /**
@@ -40,5 +51,39 @@ class AngestellterController extends Controller
         $angestellter->save();
 
         return redirect()->back();
+    }
+
+    public function update(Request $request, $angestellter_id): RedirectResponse
+    {
+        $angestellter = (new Angestellter)->findOrFail($angestellter_id);
+
+        /*$validator = Validator::make($request->all(), $this->rules($angestellter_id));
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors(['error' => 'Eingegebene Daten konnten nicht validiert werden']);
+        }*/
+
+        $angestellter->friseurkuerzel = $request->get('friseurkuerzel');
+        $angestellter->vorname = $request->get('vorname');
+        $angestellter->nachname = $request->get('nachname');
+        $angestellter->email = $request->get('email');
+        $angestellter->ist_admin = $request->get('ist_admin') ? 'true' : 'false';
+        $angestellter->erstelldatum = $request->get('erstelldatum');
+        $angestellter->save();
+
+        return back()->with(['erfolgreich' => 'Deine Daten wurden aktualisiert']);
+    }
+
+    public function delete(Request $request, $angesteller_id): RedirectResponse
+    {
+        $angesteller = (new Angestellter())->find($angesteller_id);
+        Auth::guard('employee')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        if ($angesteller->delete()) {
+            return back()->with(['sucess', 'Der Angestellte wurde gelöscht']);
+        }
+
+        return back()->withErrors(['fehlgeschlagen', 'Ihr Profil konnte nicht gelöscht werden']);
     }
 }

@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +27,7 @@ class AdminController extends Controller
         // Beinhaltet alle Angestellten
         $angestellte = DB::table('angestellter')
             ->orderBy('ist_admin', 'DESC')
-            ->select('friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
+            ->select('id', 'email', 'friseurkuerzel', 'vorname', 'nachname', 'erstelldatum', 'ist_admin')
             ->get();
         $employee = Auth::guard('employee')->user();
 

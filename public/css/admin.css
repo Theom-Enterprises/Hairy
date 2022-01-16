@@ -85,14 +85,6 @@
     color: #a5aec0
 }
 
-.btn-remove {
-    border: none;
-    border-radius: 25px;
-    padding: 14px;
-    background: rgba(220, 53, 69, 0.82);
-    color: white;
-}
-
 #title-div h1 {
     word-break: break-word;
 }
@@ -130,7 +122,7 @@
     color: black;
 }
 
-@media (max-width: 471.5px) {
+@media (max-width: 768px) {
     #title-div {
         padding-bottom: 160px;
     }

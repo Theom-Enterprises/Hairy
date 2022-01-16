@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', static function () {
     return view('index');
 })->name('home');
 Route::redirect('/home', '/');
@@ -42,6 +42,9 @@ Route::middleware(['web'])
         Route::name('employee.')->group(function () {
             // Routen um einen Angestellten zu erstellen
             Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store'])->name('store');
+
+            Route::post('update-angestellter/{angestellter_id}', [App\Http\Controllers\AngestellterController::class, 'update'])->name('update');
+            Route::post('delete-angestellter/{angestellter_id}', [App\Http\Controllers\AngestellterController::class, 'delete'])->name('delete');
         });
 
         //Termin Routen

@@ -133,6 +133,7 @@
                                 <th scope="col">Name</th>
                                 <th class="optional" scope="col">Anstellungsdatum</th>
                                 <th scope="col">Admin</th>
+                                <th class="optional" scope="col">Bearbeiten</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -147,6 +148,108 @@
                                     @else
                                         <td>Nein</td>
                                     @endif
+                                    <td class="optional">
+                                        <button type="button" class="btn-hairy-primary"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#angestellter-modal-{{ $angestellter->id }}">
+                                            Bearbeiten
+                                        </button>
+                                        <div class="modal fade" id="angestellter-modal-{{$angestellter->id}}"
+                                             tabindex="-1"
+                                             aria-labelledby="exampleModalLabel"
+                                             aria-hidden="true">
+                                            <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="{{ route('employee.update', ['angestellter_id' => $employee->id]) }}"
+                                                          method="post">
+                                                        @csrf
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Angestellten
+                                                                bearbeiten</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="mb-3">
+                                                                <label for="kuerzel-{{$angestellter->id}}"
+                                                                       class="form-label">Friseurkürzel</label>
+                                                                <input class="form-control"
+                                                                       id="kuerzel-{{$angestellter->id}}"
+                                                                       name="friseurkuerzel"
+                                                                       minlength="3" maxlength="3"
+                                                                       value="{{ old('friseurkuerzel') ?? $angestellter->friseurkuerzel }}"
+                                                                       required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="vorname-{{$angestellter->id}}"
+                                                                       class="form-label">Vorname</label>
+                                                                <input class="form-control"
+                                                                       id="vorname-{{$angestellter->id}}" name="vorname"
+                                                                       value="{{ old('vorname') ?? $angestellter->vorname }}"
+                                                                       required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="nachname-{{$angestellter->id}}"
+                                                                       class="form-label">Nachname</label>
+                                                                <input class="form-control"
+                                                                       id="nachname-{{$angestellter->id}}"
+                                                                       name="nachname"
+                                                                       value="{{ old('nachname') ?? $angestellter->nachname }}"
+                                                                       required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="email-{{$angestellter->id}}"
+                                                                       class="form-label">E-Mail
+                                                                    Adresse</label>
+                                                                <input type="email" class="form-control"
+                                                                       id="email-{{$angestellter->id}}"
+                                                                       name="email"
+                                                                       value="{{ old('email') ?? $angestellter->email }}"
+                                                                       required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="erstelldatum-{{$angestellter->id}}"
+                                                                       class="form-label">Angestellungsdatum</label>
+                                                                <input type="date" class="form-control"
+                                                                       id="ertelldatum-{{$angestellter->id}}"
+                                                                       name="erstelldatum"
+                                                                       value="{{ old('erstelldatum') ?? $angestellter->erstelldatum }}"
+                                                                       required>
+                                                            </div>
+                                                            <div class="mb-3 form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                       id="ist_admin-{{$angestellter->id}}"
+                                                                       name="ist_admin"
+                                                                       @if($angestellter->ist_admin === true)
+                                                                       checked
+                                                                        @endif
+                                                                >
+                                                                <label class="form-check-label"
+                                                                       for="ist_admin-{{$angestellter->id}}">Der
+                                                                    Angestellte
+                                                                    ist
+                                                                    ein Admin</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn"
+                                                                    data-bs-dismiss="modal">
+                                                                Schließen
+                                                            </button>
+                                                            <button type="submit" class="btn-hairy-primary">Speichern
+                                                            </button>
+                                                            <button type="submit"
+                                                                    formaction="{{route('employee.delete', ['angestellter_id'=> $angestellter->id])}}"
+                                                                    class="btn-hairy-danger">Löschen
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
