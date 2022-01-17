@@ -30,8 +30,8 @@
     @endauth
     @stack('stylesheets')
 </head>
-<body>
-<div id="app">
+<body class=" d-flex flex-column">
+<div id="app" class="flex-grow-1 flex-shrink-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-0">
         <div class="container-fluid mx-5">
             @auth
@@ -131,6 +131,8 @@
         <main class="mainContent @auth content @endauth">
             @yield('content')
         </main>
+
+
 </div>
 
 <footer class="flex-shrink-0">

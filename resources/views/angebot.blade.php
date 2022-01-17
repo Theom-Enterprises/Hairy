@@ -12,7 +12,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         <h1>
             Unsere Angebote
         </h1>
