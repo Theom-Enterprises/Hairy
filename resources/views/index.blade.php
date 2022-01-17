@@ -11,7 +11,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #f3f4f5">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="" width="56" height="56"></a>
+            <a class="navbar-brand" href="#"><img src="img/logo.svg" alt="" width="56" height="56"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -159,8 +159,8 @@
                         verfolgen, einplanen und bearbeiten.
                     </p>
                 </div>
-                <div class="col-md-5"><img src="../img/Calendar_Two Color.svg" alt=""></div>
-                <div class="col-md-5"><img src="../img/Chart_Two Color.svg" alt=""></div>
+                <div class="col-md-5"><img src="img/Calendar_Two Color.svg" alt=""></div>
+                <div class="col-md-5"><img src="img/Chart_Two Color.svg" alt=""></div>
                 <div class="col-md-5">
                     <h1>Erreichen Sie mehr Menschen</h1>
                     <p>Stärken Sie die Beziehung zu Ihren Kunden. Beschreiben Sie einfach Ihre Leistungen, zeigen Sie an, wann diese verfügbar sind und Sie werden
@@ -174,7 +174,7 @@
                         Sie haben dadurch mehr Zeit, um sich hauptsächlich auf Ihre Kunden zu fokussieren.
                     </p>
                 </div>
-                <div class="col-md-5"><img src="../img/Bank note_Two Color.svg" alt=""></div>
+                <div class="col-md-5"><img src="img/Bank note_Two Color.svg" alt=""></div>
             </div>
         </div>
     </section>

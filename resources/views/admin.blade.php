@@ -158,10 +158,10 @@
                                              tabindex="-1"
                                              aria-labelledby="exampleModalLabel"
                                              aria-hidden="true">
-                                            <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
+                                            <!-- Aktualisiert einen Angestellten -->
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('employee.update', ['angestellter_id' => $employee->id]) }}"
+                                                    <form action="{{ route('employee.update', ['angestellter_id' => $angestellter->id]) }}"
                                                           method="post">
                                                         @csrf
                                                         <div class="modal-header">
@@ -222,7 +222,7 @@
                                                                 <input type="checkbox" class="form-check-input"
                                                                        id="ist_admin-{{$angestellter->id}}"
                                                                        name="ist_admin"
-                                                                       @if($angestellter->ist_admin === true)
+                                                                       @if($angestellter->ist_admin === 'true')
                                                                        checked
                                                                         @endif
                                                                 >
