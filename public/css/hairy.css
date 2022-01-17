@@ -9,7 +9,7 @@ body {
 }
 
 .mainContent {
-    margin-top: calc(70px + 1rem);
+    margin-top: 66px;
 }
 
 .btn-hairy-primary {
@@ -42,4 +42,11 @@ body {
 a {
     text-decoration: none;
     color: white;
+}
+
+footer {
+    margin-top: auto;
+    color: black;
+    font-size: 1rem;
+    padding: 0.5rem
 }

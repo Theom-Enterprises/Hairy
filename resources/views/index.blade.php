@@ -170,10 +170,4 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container-fluid text-center">
-            <span>Made in Austria with love</span>
-            <p class="mt-1 mb-3">&copy; Hairy 2021–2022</p>
-        </div>
-    </footer>
 @endsection

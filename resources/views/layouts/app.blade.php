@@ -128,11 +128,17 @@
         </nav>
     @endauth
 
-    <main class="mainContent @auth content @endauth">
-        @yield('content')
-        <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
-    </main>
+        <main class="mainContent @auth content @endauth">
+            @yield('content')
+        </main>
 </div>
+
+<footer class="flex-shrink-0">
+    <div class="container-fluid text-muted text-center">
+        <span>Made in Austria with love</span>
+        <p class="mt-1 mb-3">&copy; Hairy 2021–2022</p>
+    </div>
+</footer>
 
 <script src="{{ asset('js/app.js') }}"></script>
 @auth

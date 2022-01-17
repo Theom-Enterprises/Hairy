@@ -18,7 +18,7 @@
         @php
             date_default_timezone_set('Europe/Vienna');
         @endphp
-        <div class="container">
+        <div class="container mt-2">
             <div id="title-div" class="container">
                 <h1>VERWALTUNG</h1>
                 <p>
