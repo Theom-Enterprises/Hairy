@@ -1,3 +1,17 @@
+body {
+    height: 100%;
+    scroll-behavior: smooth;
+    font-size: 1rem;
+}
+
+.navbar {
+    height: 66px;
+}
+
+.mainContent {
+    margin-top: calc(70px + 1rem);
+}
+
 .btn-hairy-primary {
     border: none;
     border-radius: 25px;
@@ -23,4 +37,9 @@
     padding: 14px;
     color: white;
     background: rgba(220, 53, 69, 0.82);
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }

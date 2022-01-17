@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-body {
-    height: 100%;
-    font-size: 1rem;
-    color: white;
-}
-
 .gradient {
     background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
     background-color: #D5AF36;
@@ -15,15 +9,14 @@ body {
     color: white;
     background:
         radial-gradient(#444,#111);
-
-
 }
 
 .page-header {
-    margin-top: 4rem;
-    font-size: 1.25rem;
     color: white;
+    font-size: 1.25rem;
     font-family: 'Lato', sans-serif;
+    background: radial-gradient(#444, #111);
+    min-height: 100vh;
 }
 
 .feature {
@@ -41,14 +34,6 @@ body {
     background-repeat: no-repeat;
     line-height: 1.5rem;
     margin-bottom: 1rem;
-}
-
-button {
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
-    text-transform: uppercase;
-    font-size: 1.125rem;
-    border-radius: .25em;
 }
 
 .icon {
@@ -76,9 +61,4 @@ footer {
     font-size: 1rem;
     margin: 0;
     padding: 1rem
-}
-
-a {
-    color: black;
-    text-decoration: none;
 }

@@ -32,24 +32,23 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-0">
+        <div class="container-fluid mx-5">
             @auth
                 <button type="button" id="sidebarCollapse" class="btn">
                     <i class="bi bi-layout-sidebar" style="font-size: 1.3rem;"></i>
                 </button>
             @endauth
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Hairy') }}
-            </a>
+            <a class="navbar-brand" href="{{route('home')}}"><img src="/img/logo.svg" alt="" width="56" height="56"></a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-                </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
+            <!-- Right Side of Navbar (Links) -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
                     <!-- Authentication Links -->
                     @guest('web')
                         @guest('employee')
@@ -129,7 +128,7 @@
         </nav>
     @endauth
 
-    <main class="py-4 @auth content @endauth">
+    <main class="mainContent @auth content @endauth">
         @yield('content')
         <p id="copyright-note" class="text-muted text-center">&copy; Hairy 2021–2022</p>
     </main>
