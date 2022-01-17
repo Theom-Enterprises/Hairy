@@ -238,11 +238,11 @@
                                                                     data-bs-dismiss="modal">
                                                                 Schließen
                                                             </button>
-                                                            <button type="submit" class="btn-hairy-primary">Speichern
-                                                            </button>
                                                             <button type="submit"
                                                                     formaction="{{route('employee.delete', ['angestellter_id'=> $angestellter->id])}}"
                                                                     class="btn-hairy-danger">Löschen
+                                                            </button>
+                                                            <button type="submit" class="btn-hairy-primary">Speichern
                                                             </button>
                                                         </div>
                                                     </form>
