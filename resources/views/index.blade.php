@@ -110,7 +110,7 @@
                     </p>
                     <ul>
                         <li>Terminbuchung</li>
-                        <li>Kalendarmanagement</li>
+                        <li>Kalendermanagement</li>
                         <li>Admin-Funktionen</li>
                         <li>Kundenmanagement</li>
                     </ul>
