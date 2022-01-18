@@ -17,8 +17,8 @@ html,body {
     border: none;
     border-radius: 25px;
     padding: 14px;
-    color: white;
-    background-color: #3d3d3d;
+    color: black;
+    background-color: white;
 }
 
 .btn-hairy-primary:hover {
