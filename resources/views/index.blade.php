@@ -5,8 +5,10 @@
 @endpush
 
 @push('body-js')
-
 @endpush
+
+@section('subtitle', 'Home')
+
 @section('content')
     <header class="page-header d-flex flex-column">
         <div class="container h-100 d-flex align-items-center justify-content-center flex-grow-1 flex-shrink-0">
