@@ -3,6 +3,7 @@
 @push('stylesheets')
     <link href="{{ asset('css/sign-in-up.css')}}" rel="stylesheet">
     <link href="{{ asset('css/profil.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/hairy.css')}}" rel="stylesheet">
 @endpush
 
 @push('body-js')
@@ -57,14 +58,14 @@
 
                 <div class="form-floating">
                     <input id="telephone-number" type="tel"
-                           class="no-border form-control"
+                           class="form-control" style="border-radius: 0"
                            name="telephoneNumber"
                            value="{{ old('telephoneNumber') ?? $user->telephoneNumber }}" placeholder="Telefonnummer">
                     <label for="telephone-number">{{ __('Telefonnummer') }}</label>
                 </div>
 
                 <div class="form-floating">
-                    <input id="email" type="email" class="no-border no-bottom-border form-control"
+                    <input id="email" type="email" class="no-top-border form-control"
                            name="email" value="{{ old('email') ?? $user->email }}"
                            placeholder="E-Mail Adresse">
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
@@ -95,7 +96,7 @@
                         </table>
                     </div>
                 @else
-                    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-secondary" role="alert" style="margin-top: 25px;">
                         Es stehen Ihnen keine Termine bevor.
                     </div>
                 @endif
@@ -123,20 +124,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger" role="alert">
-                        <h4>Achtung!</h4>
-                    </div>
-                    <div class="alert alert-primary" role="alert">
-                        Sie sind dabei ihr Profil bei Hairy zu löschen
-                        <i class="bi bi-exclamation-triangle"></i>
+                        <h4><i class="bi bi-exclamation-triangle"></i> Achtung!</h4>
+                        Sie sind dabei ihr Profil bei Hairy zu löschen.
                         <br>
-                        Ihre Daten werden nach dem Bestätigen unwiederuflich gelöscht.
+                        Ihre Daten werden nach dem Bestätigen unwiderruflich gelöscht.
                     </div>
                 </div>
                 <div class="modal-footer">
                     <form method="post" action="{{route('profil.delete', $user->id)}}">
                         @csrf
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abrechen</button>
-                        <button type="submit" class="btn btn-hairy-primary">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Abrechen</button>
+                        <button type="submit" class="btn btn-hairy-danger">
                             Bestätigen
                         </button>
                     </form>
