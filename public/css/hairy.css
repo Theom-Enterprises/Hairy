@@ -18,8 +18,7 @@ html,body {
     border-radius: 25px;
     padding: 14px;
     color: white;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
+    background-color: #3d3d3d;
 }
 
 .btn-hairy-primary:hover {
@@ -27,8 +26,7 @@ html,body {
     border-radius: 25px;
     padding: 14px;
     color: white;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
+    background-color: #2f2f2f;
 }
 
 

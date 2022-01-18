@@ -7,6 +7,9 @@
 
 @push('body-js')
 @endpush
+
+@section('subtitle', 'Profil')
+
 @section('content')
     <div id="register-div" class="text-center my-2">
         <h1 class="h3 mb-3 fw-normal">Profil Einstellungen</h1>
@@ -66,14 +69,6 @@
                            placeholder="E-Mail Adresse">
                     <label for="email">{{ __('E-Mail Adresse') }}</label>
                 </div>
-            <!--
-            <div class="form-floating">
-                <input id="password" type="password"
-                       class="form-control"
-                       name="password" placeholder="Passwort"
-                       style="border-radius: 0 0 .25rem .25rem">
-                <label for="password">{{ __('Passwort') }}</label>
-            </div>-->
 
                 @if(count($termine) !== 0)
                     <div id="termine" class="table-responsive table-profil mt-4">
@@ -106,11 +101,11 @@
                 @endif
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <button class="btn btn-hairy-primary mx-2" type="submit">Profil spreichern</button>
                         <button class="btn btn-hairy-danger mx-2" type="button" data-bs-toggle="modal"
                                 data-bs-target="#deleteAccount">
-                            Profil löschen
+                            Löschen
                         </button>
+                        <button class="btn btn-hairy-primary mx-2" type="submit">Speichern</button>
                     </div>
                 </div>
             </form>

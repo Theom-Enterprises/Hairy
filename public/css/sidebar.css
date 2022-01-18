@@ -15,8 +15,7 @@ a:focus {
     left: 0;
     height: 100%;
     z-index: 999;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    background-color: #D5AF36;
+    background-color: #3d3d3d;
     color: #F5F5F5;
     transition: all 0.3s;
 }
@@ -40,10 +39,6 @@ a:focus {
     font-size: 1.4rem;
 }
 
-#sidebar ul.components {
-    border-bottom: 1px solid #c0930a;
-}
-
 #sidebar ul li a {
     padding: 15px 20px;
     font-size: 1.1em;
@@ -56,7 +51,7 @@ a:focus {
 
 #sidebar ul li a:hover {
     color: #F5F5F5;
-    background: #efce78;
+    background: #2c2c2c;
 }
 
 #sidebar ul li.active > a {

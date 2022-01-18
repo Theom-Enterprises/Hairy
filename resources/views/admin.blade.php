@@ -44,7 +44,7 @@
             <!-- Überprüft ob der Termine Array leer ist -->
             @if(count($termine) !== 0)
                 <div class="table-admin d-flex justify-content-between">
-                    <div class="d-flex align-items-center">
+                    <div id="termine" class="d-flex align-items-center">
                         @if(isset($_GET['ansicht']))
                             @if($_GET['ansicht'] === 'liste')
                                 <button type="button" id="btn-view" class="btn-hairy-primary"
@@ -72,7 +72,7 @@
                 </div>
                 @if(isset($_GET['ansicht']))
                     @if($_GET['ansicht'] === 'liste')
-                        <div id="termine" class="table-responsive table-admin">
+                        <div class="table-responsive table-admin">
                             <table class="table table-hover table-borderless">
                                 <thead>
                                 <tr>
