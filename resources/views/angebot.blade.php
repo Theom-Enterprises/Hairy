@@ -2,6 +2,7 @@
 
 @push('stylesheets')
     <link href="{{ asset('css/angebot.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hairy.css')}}" rel="stylesheet">
 @endpush
 
 @push('scripts')
@@ -25,7 +26,7 @@
                                class="form-control input-text"
                                placeholder="Nach Angebot suchen..."
                                aria-label="Nach Angebot suchen" aria-describedby="searchButton">
-                        <i class="btn btn-outline-warning btn-lg bi bi-search"></i>
+                        <i class="btn btn-lg bi bi-search"></i>
                     </div>
                 </div>
             </div>

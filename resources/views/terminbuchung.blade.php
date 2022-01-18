@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @push('stylesheets')
+    <link href="{{ asset('css/hairy.css')}}" rel="stylesheet">
 @endpush
 
 @push('scripts')
