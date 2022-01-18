@@ -84,6 +84,6 @@ class AngestellterController extends Controller
             return back()->with(['sucess', 'Der Angestellte wurde gelöscht']);
         }
 
-        return back()->withErrors(['fehlgeschlagen', 'Ihr Profil konnte nicht gelöscht werden']);
+        return back()->withErrors(['fehlgeschlagen', 'Das Profil konnte nicht gelöscht werden']);
     }
 }

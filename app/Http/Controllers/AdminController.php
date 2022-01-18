@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UpdateTerminEmail;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Termin;
 
@@ -68,6 +71,20 @@ class AdminController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $Termin = Termin::findorfail($id);
+        $userId = $Termin->user_id;
+        $user = User::findorfail($userId);
+        $user_mail = $user->email;
+        $data = [
+            'oldTimeVon' => $Termin->von,
+            'newTimeVon' => $request->input('von'),
+            'oldTimeBis' => $Termin->bis,
+            'newTimeBis' => $request->input('bis'),
+            'oldDate' => $Termin->datum,
+            'newDate' => $request->input('datum'),
+            'nachname' => $user->lastname,
+        ];
+
         DB::table('termin')
             ->where('id', $id)
             ->update([
@@ -75,6 +92,9 @@ class AdminController extends Controller
                 'von' => $request->input('von'),
                 'bis' => $request->input('bis'),
             ]);
+
+        Mail::to($user_mail)->send(new UpdateTerminEmail($data));
+
         return Redirect::back();
     }
 }
