@@ -107,9 +107,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('terminbuchung')}}">
-                        <i class="bi bi-calendar3"></i>
-                        Termine buchen
+                    <a href="{{route('profil.show')}}">
+                        <i class="bi bi-person-circle"></i>
+                        Profil
                     </a>
                 </li>
                 <li>
@@ -119,18 +119,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('profil.show')}}">
-                        <i class="bi bi-person-circle"></i>
-                        Profil
+                    <a href="{{route('terminbuchung')}}">
+                        <i class="bi bi-calendar3"></i>
+                        Termine buchen
                     </a>
                 </li>
             </ul>
         </nav>
     @endauth
 
-        <main class="mainContent @auth content @endauth">
-            @yield('content')
-        </main>
+    <main class="mainContent @auth content @endauth">
+        @yield('content')
+    </main>
 
 
 </div>

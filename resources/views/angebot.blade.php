@@ -15,7 +15,7 @@
 
     <div class="container mt-2">
         <h1>
-            Unsere Angebote
+            Unser Angebot
         </h1>
 
         <div id="title-div">

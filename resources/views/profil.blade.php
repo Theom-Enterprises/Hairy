@@ -13,7 +13,7 @@
 
 @section('content')
     <div id="register-div" class="text-center my-2">
-        <h1 class="h3 mb-3 fw-normal">Profil Einstellungen</h1>
+        <h1 class="mb-3 fw-normal">Profil Einstellungen</h1>
         <main id="title-div" class="profil">
             @if(Session::has('erfolgreich'))
                 <div class="alert alert-primary" role="alert">
