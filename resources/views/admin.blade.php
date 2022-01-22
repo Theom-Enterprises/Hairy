@@ -61,7 +61,7 @@
                         @else
                             <button type="button" id="btn-view" class="btn-hairy-primary"
                                     onclick="window.location.href = '?ansicht=liste';"><i
-                                        class="bi bi-list-ul">
+                                    class="bi bi-list-ul">
                                 </i> Listenansicht
                             </button>
                         @endif
@@ -70,6 +70,11 @@
                         {{ $termine->appends(request()->input())->links() }}
                     </div>
                 </div>
+                @if(Session::has('termin-erfolgreich'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('termin-erfolgreich') }}
+                    </div>
+                @endif
                 @if(isset($_GET['ansicht']))
                     @if($_GET['ansicht'] === 'liste')
                         <div class="table-responsive table-admin">
@@ -125,6 +130,11 @@
             @if($employee->ist_admin === 'true')
             <!-- Überprüft ob der Angestellte Array nicht leer ist -->
                 @if(count($angestellte) !== 0)
+                    @if(Session::has('angestellter-erfolgreich'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('angestellter-erfolgreich') }}
+                        </div>
+                    @endif
                     <div id="friseure" class="table-responsive table-admin">
                         <table class="table table-hover table-borderless">
                             <thead>

@@ -50,7 +50,9 @@ class AngestellterController extends Controller
         $angestellter->friseursalon_id = $request->input('friseursalon_id');
         $angestellter->save();
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'angestellter-erfolgreich' => 'Der Angestellte ' . $angestellter->friseurkuerzel . ' wurde erfolgreich erstellt.'
+        ]);
     }
 
     public function update(Request $request, $angestellter_id): RedirectResponse
@@ -70,7 +72,8 @@ class AngestellterController extends Controller
         $angestellter->erstelldatum = $request->get('erstelldatum');
         $angestellter->save();
 
-        return back()->with(['erfolgreich' => 'Deine Daten wurden aktualisiert']);
+        return back()->with(['erfolgreich' => 'Deine Daten wurden aktualisiert'])
+            ->with(['angestellter-erfolgreich' => 'Der Angestellte ' . $angestellter->friseurkuerzel . ' wurde erfolgreich bearbeitet.']);
     }
 
     public function delete(Request $request, $angesteller_id): RedirectResponse
@@ -81,7 +84,8 @@ class AngestellterController extends Controller
         $request->session()->regenerateToken();
 
         if ($angesteller->delete()) {
-            return back()->with(['sucess', 'Der Angestellte wurde gelöscht']);
+            return back()->with(['sucess', 'Der Angestellte wurde gelöscht'])
+                ->with(['angestellter-erfolgreich' => 'Der Angestellte #' . $angesteller_id . ' wurde erfolgreich gelöscht.']);
         }
 
         return back()->withErrors(['fehlgeschlagen', 'Das Profil konnte nicht gelöscht werden']);

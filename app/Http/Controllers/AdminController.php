@@ -59,7 +59,10 @@ class AdminController extends Controller
         DB::table('termin')
             ->where('id', $id)
             ->delete();
-        return Redirect::back();
+
+        return redirect()->back()->with([
+            'termin-erfolgreich' => 'Der Termin #' . $id . ' wurde erfolgreich gelöscht.'
+        ]);
     }
 
     /**
@@ -93,8 +96,10 @@ class AdminController extends Controller
                 'bis' => $request->input('bis'),
             ]);
 
-        Mail::to($user_mail)->send(new UpdateTerminEmail($data));
+//        Mail::to($user_mail)->send(new UpdateTerminEmail($data));
 
-        return Redirect::back();
+        return redirect()->back()->with([
+            'termin-erfolgreich' => 'Der Termin #' . $id . ' wurde erfolgreich bearbeitet.'
+        ]);
     }
 }
