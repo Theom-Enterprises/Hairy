@@ -60,7 +60,10 @@ class AdminController extends Controller
         DB::table('termin')
             ->where('id', $id)
             ->delete();
-        return Redirect::back();
+
+        return redirect()->back()->with([
+            'termin-erfolgreich' => 'Der Termin #' . $id . ' wurde erfolgreich gelöscht.'
+        ]);
     }
 
     /**
@@ -96,6 +99,8 @@ class AdminController extends Controller
 
         //$this->dispatch(new SendEmailJob($data, $user_mail));
 
-        return Redirect::back();
+        return redirect()->back()->with([
+            'termin-erfolgreich' => 'Der Termin #' . $id . ' wurde erfolgreich bearbeitet.'
+        ]);
     }
 }
