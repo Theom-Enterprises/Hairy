@@ -79,13 +79,16 @@ class AngestellterController extends Controller
     public function delete(Request $request, $angesteller_id): RedirectResponse
     {
         $angesteller = (new Angestellter())->find($angesteller_id);
-        Auth::guard('employee')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+
+        if ($angesteller_id === Auth::guard('employee')->id()) {
+            Auth::guard('employee')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
 
         if ($angesteller->delete()) {
             return back()->with(['sucess', 'Der Angestellte wurde gelöscht'])
-                ->with(['angestellter-erfolgreich' => 'Der Angestellte #' . $angesteller_id . ' wurde erfolgreich gelöscht.']);
+                ->with(['angestellter-erfolgreich' => 'Der Angestellte ' . $angesteller->friseurkuerzel . ' wurde erfolgreich gelöscht.']);
         }
 
         return back()->withErrors(['fehlgeschlagen', 'Das Profil konnte nicht gelöscht werden']);
