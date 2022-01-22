@@ -15,13 +15,21 @@ class AngebotSeeder extends Seeder
     public function run()
     {
         DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare schneiden',
+            'bezeichnung' => 'Schneiden',
+            'beschreibung' => 'inkl. Haare stylen',
             'preis' => '20'
         ]);
 
         DB::table('angebot')->insert([
-            'bezeichnung' => 'Haare färben',
-            'preis' => '50'
+            'bezeichnung' => 'Waschen',
+            'beschreibung' => 'inkl. Haare föhnen und stylen',
+            'preis' => '15'
+        ]);
+
+        DB::table('angebot')->insert([
+            'bezeichnung' => 'Färben',
+            'beschreibung' => 'inkl. Haare waschen, föhnen und stylen',
+            'preis' => '70'
         ]);
     }
 }
