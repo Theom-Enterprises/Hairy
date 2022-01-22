@@ -22,6 +22,11 @@
                     {{ Session::get('erfolgreich') }}
                 </div>
             @endif
+            @if(Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    Ein unerwarteter Fehler ist aufgetreten.
+                </div>
+            @endif
 
             <div id="terminbuchung">
                 <!-- Bearbeitet einen Termin beim Formular Submit -->
@@ -51,6 +56,16 @@
                         <select class="form-control" id="angebot" name="angebot" required>
                             @foreach($angebote as $angebot)
                                 <option value="{{ $angebot->id }}">{{ $angebot->bezeichnung }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="friseur"
+                               class="form-label">Friseur</label>
+                        <select class="form-control" id="friseur" name="friseur" required>
+                            @foreach($angestellte as $angestellter)
+                                <option
+                                    value="{{ $angestellter->id }}">{{ $angestellter->vorname }} {{ $angestellter->nachname }}</option>
                             @endforeach
                         </select>
                     </div>
