@@ -35,10 +35,13 @@ class TerminController
      */
     public function store(Request $request)
     {
+        $startTime = $request->input('uhrzeit');
+        $startTimeDate = date_create($startTime);
+
         $termin = new Termin();
         $termin->datum = $request->input('datum');
-        $termin->von = $request->input('uhrzeit');
-        $termin->bis = date('H:s', strtotime("+20 minutes"));
+        $termin->von = $startTime;
+        $termin->bis = date_format(date_add($startTimeDate, date_interval_create_from_date_string("20 minutes")), 'H:i');
         $termin->user_id = Auth::guard('web')->user()->id;
         $termin->angestellter_id = $request->input('friseur');
         $termin->angebot_id = $request->input('angebot');
