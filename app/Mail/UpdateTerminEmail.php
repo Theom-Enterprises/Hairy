@@ -30,6 +30,6 @@ class UpdateTerminEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('UpdateTerminEmail', $this->data);
+        return $this->markdown('UpdateTerminEmail', $this->data)->subject('Terminbearbeitung');
     }
 }

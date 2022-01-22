@@ -47,7 +47,6 @@ Route::middleware('auth.employee')->group(function () {
     Route::name('termin.')->group(function () {
         // Route um einen Termin zu löschen
         Route::get('delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
-        Route::post('add-termin', [App\Http\Controllers\TerminController::class, 'store'])->name('store');
 
         // Route um einen Termin zu bearbeiten
         Route::get('edit/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');

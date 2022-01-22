@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\UpdateTerminEmail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -93,7 +94,7 @@ class AdminController extends Controller
                 'bis' => $request->input('bis'),
             ]);
 
-        Mail::to($user_mail)->send(new UpdateTerminEmail($data));
+        //$this->dispatch(new SendEmailJob($data, $user_mail));
 
         return Redirect::back();
     }
