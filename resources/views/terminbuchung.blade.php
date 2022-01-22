@@ -29,8 +29,8 @@
             @endif
 
             <div id="terminbuchung">
-                <!-- Bearbeitet einen Termin beim Formular Submit -->
-                <form action="{{ route('termin.store') }}" method="post">
+                <!-- Fügt einen Termin beim Formular Submit -->
+                <form action="{{ route('terminbuchung') }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="datum"

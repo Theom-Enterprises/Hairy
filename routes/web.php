@@ -56,6 +56,7 @@ Route::middleware('auth.employee')->group(function () {
 Route::middleware('auth.user')->group(function () {
 // Terminbuchung Routen
     Route::get('/terminbuchung', [App\Http\Controllers\TerminController::class, 'index'])->name('terminbuchung');
+    Route::post('/terminbuchung', [App\Http\Controllers\TerminController::class, 'store'])->name('terminbuchung');
 
 //Angebot Routen
     Route::name('angebot.')->group(function () {
