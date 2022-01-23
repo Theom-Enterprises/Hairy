@@ -99,7 +99,6 @@
                     <p class="my-4">
                         Es gibt Möglichkeiten, Ihr Friseurgeschäft noch effizienter zu gestalten. Unser
                         Online-Buchungssystem für Friseure ist definitiv eine davon.
-                        <!-- TODO Text umschreiben-->
                         Wenn Sie ein spezielles Angebot für Ihre Online-Kunden machen wollen, können Sie dies leicht auf
                         Ihrer Website ankündigen.
                     </p>
