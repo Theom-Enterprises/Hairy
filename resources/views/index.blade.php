@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-4">
-                    <div class="icon gradient mb-4">
+                    <div class="icon background mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="bi bi-calendar-event gradient-icon-size" viewBox="0 0 16 16">
                             <path
@@ -56,7 +56,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <div class="icon gradient mb-4">
+                    <div class="icon background mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="bi bi-shop gradient-icon-size" viewBox="0 0 16 16">
                             <path
@@ -70,7 +70,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <div class="icon gradient mb-4">
+                    <div class="icon background mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="bi bi-person-fill gradient-icon-size" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -100,8 +100,6 @@
                         Es gibt Möglichkeiten, Ihr Friseurgeschäft noch effizienter zu gestalten. Unser
                         Online-Buchungssystem für Friseure ist definitiv eine davon.
                         <!-- TODO Text umschreiben-->
-                        Mit HAIRY können Sie Ihre Kunden bei der Registrierung für die von Ihnen
-                        angebotenen Dienstleistungen bezahlen lassen.
                         Wenn Sie ein spezielles Angebot für Ihre Online-Kunden machen wollen, können Sie dies leicht auf
                         Ihrer Website ankündigen.
                     </p>
@@ -135,7 +133,7 @@
             </div>
         </div>
     </section>
-    <section class="services gradient" id="services">
+    <section class="services background" id="services">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#f3f4f5" fill-opacity="1" d="M0,192L1440,128L1440,0L0,0Z"></path>
         </svg>
