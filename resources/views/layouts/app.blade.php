@@ -112,15 +112,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('profil.show')}}">
-                        <i class="bi bi-person-circle"></i>
-                        Profil
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('angebot.show')}}">
                         <i class="bi bi-basket3-fill"></i>
                         Angebote
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('profil.show')}}">
+                        <i class="bi bi-person-circle"></i>
+                        Profil
                     </a>
                 </li>
                 <li>
