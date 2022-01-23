@@ -45,7 +45,7 @@
                         <tr>
                             <td>{{ $angebot->bezeichnung ?? '-'}}</td>
                             <td>{{ $angebot->beschreibung ?? '-'}}</td>
-                            <td>{{ $angebot->preis ?? '-'}}</td>
+                            <td>{{ $angebot->preis ?? '-'}}€</td>
                         </tr>
                     @endforeach
                     </tbody>
