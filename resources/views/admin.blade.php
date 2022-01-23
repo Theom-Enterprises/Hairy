@@ -96,13 +96,13 @@
                                     </td>
                                     <td>{{ "$termin->von - $termin->bis" }}</td>
                                     <td class="optional">
+                                        @include('includes.admin_modal_termine')
                                         <button type="button" class="btn-hairy-primary"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#termin-modal-{{ $termin->id }}">
                                             Bearbeiten
                                         </button>
                                     </td>
-                                    @include('includes.admin_modal_termine')
                                 </tr>
                             @endforeach
                             </tbody>
