@@ -97,7 +97,7 @@ class AdminController extends Controller
                 'bis' => $request->input('bis'),
             ]);
 
-        //$this->dispatch(new SendEmailJob($data, $user_mail));
+        $this->dispatch(new SendEmailJob($data, $user_mail));
 
         return redirect()->back()->with([
             'termin-erfolgreich' => 'Der Termin #' . $id . ' wurde erfolgreich bearbeitet.'

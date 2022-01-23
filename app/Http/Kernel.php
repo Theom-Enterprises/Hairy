@@ -3,6 +3,10 @@
 namespace App\Http;
 
 use App\Http\Middleware\EmployeeMiddelware;
+use App\Http\Middleware\LogoutEmployeeIfAuthenticated;
+use App\Http\Middleware\LogoutUserIfAuthenticated;
+use App\Http\Middleware\RedirectIfEmployeeAuthenticated;
+use App\Http\Middleware\RedirectIfUserAuthenticated;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,5 +71,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'auth.user' => UserMiddleware::class,
         'auth.employee' => EmployeeMiddelware::class,
+        'user.authenticated' => RedirectIfUserAuthenticated::class,
+        'employee.authenticated' => RedirectIfEmployeeAuthenticated::class,
+        'user.logout' => LogoutUserIfAuthenticated::class,
+        'employee.logout' => LogoutEmployeeIfAuthenticated::class,
     ];
 }

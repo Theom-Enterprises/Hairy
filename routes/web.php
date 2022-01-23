@@ -25,10 +25,12 @@ Route::auth();
 
 //Admin Routen
 Route::name('admin.')->group(function () {
-    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->middleware('auth.employee')->name('home');
 
-    Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
-    Route::get('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
+    Route::middleware(['employee.authenticated', 'user.logout'])->group(function () {
+        Route::post('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'login'])->name('login');
+        Route::get('/admin/login', [App\Http\Controllers\Auth\AdminLoginController::class, 'index'])->name('login');
+    });
 
     Route::get('/admin/logout', [App\Http\Controllers\Auth\AdminLogoutController::class, 'logout'])->middleware('auth.employee')->name('logout');
 });
@@ -75,4 +77,8 @@ Route::middleware('auth.user')->group(function () {
         //Profil Aktualisieren
         Route::post('/profil/update/{user_id}', [App\Http\Controllers\ProfilController::class, 'update'])->name('update');
     });
+});
+
+Route::middleware(['user.authenticated', 'employee.logout'])->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 });
