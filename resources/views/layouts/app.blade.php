@@ -39,7 +39,10 @@
                     <i class="bi bi-layout-sidebar" style="font-size: 1.3rem;"></i>
                 </button>
             @endauth
-            <a class="navbar-brand" href="{{route('home')}}"><img src="/img/logo.svg" alt="" width="56" height="56"></a>
+
+            @guest
+                <a class="navbar-brand" href="{{route('home')}}"><img src="/img/logo.svg" alt="" width="56" height="56"></a>
+            @endguest
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
