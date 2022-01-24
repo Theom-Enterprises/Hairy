@@ -334,6 +334,11 @@
             @endif
         @endif
 
+        @if(Session::has('angebot-erfolgreich'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('angebot-erfolgreich') }}
+            </div>
+        @endif
         @if(count($angebote) !== 0)
             <div id="angebote" class="table-responsive table-admin">
                 <table class="table table-hover table-borderless">

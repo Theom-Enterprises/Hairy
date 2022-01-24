@@ -85,7 +85,7 @@ class AngebotController extends Controller
         $angebot->save();
 
         return back()
-            ->with(['angestellter-erfolgreich' => 'Das Angebot ' . $angebot->bezeichnung . ' wurde erfolgreich bearbeitet.']);
+            ->with(['angebot-erfolgreich' => 'Das Angebot ' . $angebot->bezeichnung . ' wurde erfolgreich bearbeitet.']);
     }
 
     /**
