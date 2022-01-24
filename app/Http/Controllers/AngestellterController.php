@@ -48,7 +48,7 @@ class AngestellterController extends Controller
         $angestellter->password = Hash::make($request->input('passwort'));
         $angestellter->ist_admin = $request->has('ist_admin') ? 'true' : 'false';
         $angestellter->erstelldatum = $request->input('erstelldatum');
-        $angestellter->friseursalon_id = $request->input('friseursalon_id');
+        $angestellter->friseursalon_id = 1;
         $angestellter->save();
 
         return redirect()->back()->with([

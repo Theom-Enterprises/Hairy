@@ -306,14 +306,6 @@
                                                    name="erstelldatum"
                                                    required>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="friseursalon" class="form-label">Friseursalon
-                                                ID</label>
-                                            <input type="number" min="1" class="form-control"
-                                                   id="friseursalon"
-                                                   name="friseursalon_id"
-                                                   required>
-                                        </div>
                                         <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="ist_admin"
                                                    name="ist_admin">
@@ -487,4 +479,5 @@
             </div>
         @endif
     </div>
+    @include('includes.footer')
 @endsection
