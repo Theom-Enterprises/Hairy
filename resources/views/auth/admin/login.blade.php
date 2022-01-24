@@ -40,4 +40,5 @@
             </form>
         </main>
     </div>
+    @include('includes.footer')
 @endsection

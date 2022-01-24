@@ -336,4 +336,5 @@
             @endif
         @endif
     </div>
+    @include('includes.footer')
 @endsection
