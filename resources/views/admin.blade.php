@@ -42,19 +42,19 @@
                         @if($_GET['ansicht'] === 'liste')
                             <button type="button" id="btn-view" class="btn-hairy-primary"
                                     onclick="window.location.href = '?ansicht=kachel';"><i
-                                    class="bi bi-collection-fill"></i> Kachelansicht
+                                        class="bi bi-collection-fill"></i> Kachelansicht
                             </button>
                         @elseif($_GET['ansicht'] === 'kachel')
                             <button type="button" id="btn-view" class="btn-hairy-primary"
                                     onclick="window.location.href = '?ansicht=liste';"><i
-                                    class="bi bi-list-ul">
+                                        class="bi bi-list-ul">
                                 </i> Listenansicht
                             </button>
                         @endif
                     @else
                         <button type="button" id="btn-view" class="btn-hairy-primary"
                                 onclick="window.location.href = '?ansicht=liste';"><i
-                                class="bi bi-list-ul">
+                                    class="bi bi-list-ul">
                             </i> Listenansicht
                         </button>
                     @endif
@@ -87,15 +87,15 @@
                             <!-- Iteriert durch den Termine Array -->
                             @foreach ($termine as $termin)
                                 <tr>
-                                    <td class="optional">{{ $termin->id }}</td>
-                                    <td>{{ $termin->bezeichnung }}</td>
-                                    <td class="optional">{{ "$termin->firstname $termin->lastname" }}</td>
-                                    <td class="optional">{{ "$termin->vorname $termin->nachname" }}</td>
-                                    <td style="padding-left: 0; padding-right: 0;">
+                                    <td class="optional align-middle">{{ $termin->id }}</td>
+                                    <td class="align-middle">{{ $termin->bezeichnung }}</td>
+                                    <td class="optional align-middle">{{ "$termin->firstname $termin->lastname" }}</td>
+                                    <td class="optional align-middle">{{ "$termin->vorname $termin->nachname" }}</td>
+                                    <td class="align-middle" style="padding-left: 0; padding-right: 0;">
                                         @include('includes.admin_datum')
                                     </td>
-                                    <td>{{ "$termin->von - $termin->bis" }}</td>
-                                    <td class="optional">
+                                    <td class="align-middle">{{ "$termin->von - $termin->bis" }}</td>
+                                    <td class="optional align-middle">
                                         @include('includes.admin_modal_termine')
                                         <button type="button" class="btn-hairy-primary"
                                                 data-bs-toggle="modal"
@@ -143,15 +143,15 @@
                         <!-- Iteriert durch den Angestellte Array -->
                         @foreach ($angestellte as $angestellter)
                             <tr>
-                                <td>{{ $angestellter->friseurkuerzel }}</td>
-                                <td>{{ "$angestellter->vorname $angestellter->nachname" }}</td>
-                                <td class="optional">{{ $angestellter->erstelldatum }}</td>
+                                <td class="align-middle">{{ $angestellter->friseurkuerzel }}</td>
+                                <td class="align-middle">{{ "$angestellter->vorname $angestellter->nachname" }}</td>
+                                <td class="optional align-middle">{{ $angestellter->erstelldatum }}</td>
                                 @if($angestellter->ist_admin === 'true')
-                                    <td>Ja</td>
+                                    <td class="align-middle">Ja</td>
                                 @else
-                                    <td>Nein</td>
+                                    <td class="align-middle">Nein</td>
                                 @endif
-                                <td class="optional">
+                                <td class="optional align-middle">
                                     <button type="button" class="btn-hairy-primary"
                                             data-bs-toggle="modal"
                                             data-bs-target="#angestellter-modal-{{ $angestellter->id }}">
@@ -159,14 +159,13 @@
                                     </button>
                                     <div class="modal fade" id="angestellter-modal-{{$angestellter->id}}"
                                          tabindex="-1"
-                                         aria-labelledby="exampleModalLabel"
                                          aria-hidden="true">
                                         <!-- Aktualisiert einen Angestellten -->
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <form
-                                                    action="{{ route('employee.update', ['angestellter_id' => $angestellter->id]) }}"
-                                                    method="post">
+                                                        action="{{ route('employee.update', ['angestellter_id' => $angestellter->id]) }}"
+                                                        method="post">
                                                     @csrf
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Angestellten
@@ -228,7 +227,7 @@
                                                                    name="ist_admin"
                                                                    @if($angestellter->ist_admin === 'true')
                                                                    checked
-                                                                @endif
+                                                                    @endif
                                                             >
                                                             <label class="form-check-label"
                                                                    for="ist_admin-{{$angestellter->id}}">Der
@@ -263,7 +262,6 @@
                         Hinzufügen
                     </button>
                     <div class="modal fade" id="angestellter-modal" tabindex="-1"
-                         aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
                         <form action="{{ route('employee.store') }}" method="post">
@@ -342,6 +340,151 @@
                     Es sind keine Friseure angestellt.
                 </div>
             @endif
+        @endif
+
+        @if(count($angebote) !== 0)
+            <div id="angebote" class="table-responsive table-admin">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">Bezeichnung</th>
+                        <th scope="col">Beschreibung</th>
+                        <th scope="col">Preis</th>
+                        @if($employee->ist_admin === 'true')
+                            <th class="optional" scope="col">Bearbeiten</th>
+                        @endif
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Iteriert durch den Angestellte Array -->
+                    @foreach ($angebote as $angebot)
+                        <tr>
+                            <td class="align-middle">{{ $angebot->bezeichnung }}</td>
+                            <td class="align-middle">{{ $angebot->beschreibung}}</td>
+                            <td class="align-middle">{{ $angebot->preis }}€</td>
+                            <td class="optional align-middle">
+                                <button type="button" class="btn-hairy-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#angebot-modal-{{ $angebot->id }}">
+                                    Bearbeiten
+                                </button>
+                                <div class="modal fade" id="angebot-modal-{{$angebot->id}}"
+                                     tabindex="-1"
+                                     aria-hidden="true">
+                                    <!-- Aktualisiert ein Angebot -->
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form
+                                                    action="{{ route('angebot.update', ['angebot_id' => $angebot->id]) }}"
+                                                    method="post">
+                                                @csrf
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Angebot bearbeiten
+                                                    </h5>
+                                                    <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="bezeichnung-{{$angebot->id}}"
+                                                               class="form-label">Bezeichnung</label>
+                                                        <input class="form-control"
+                                                               id="bezeichnung-{{$angebot->id}}" name="bezeichnung"
+                                                               value="{{ old('bezeichnung') ?? $angebot->bezeichnung }}"
+                                                               required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="beschreibung-{{$angebot->id}}"
+                                                               class="form-label">Beschreibung</label>
+                                                        <input class="form-control"
+                                                               id="beschreibung-{{$angebot->id}}"
+                                                               name="beschreibung"
+                                                               value="{{ old('beschreibung') ?? $angebot->beschreibung }}"
+                                                               required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="preis-{{$angebot->id}}"
+                                                               class="form-label">Preis</label>
+                                                        <input class="form-control"
+                                                               type="number"
+                                                               id="preis-{{$angebot->id}}"
+                                                               name="preis"
+                                                               value="{{ old('preis') ?? $angebot->preis }}"
+                                                               required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn"
+                                                            data-bs-dismiss="modal">
+                                                        Schließen
+                                                    </button>
+                                                    <button type="submit"
+                                                            formaction="{{route('angebot.delete', ['angebot_id'=> $angebot->id])}}"
+                                                            class="btn-hairy-danger">Löschen
+                                                    </button>
+                                                    <button type="submit" class="btn-hairy-primary">Speichern
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                <button type="button" class="btn-hairy-primary" data-bs-toggle="modal"
+                        data-bs-target="#angebot-modal">
+                    Hinzufügen
+                </button>
+                <div class="modal fade" id="angebot-modal" tabindex="-1"
+                     aria-hidden="true">
+                    <!-- Fügt einen Angestellten beim Formular Submit der Datenbank hinzu -->
+                    <form action="{{ route('angebot.store') }}" method="post">
+                        @csrf
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="title">Angebot erstellen</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="bezeichnung" class="form-label">Bezeichnung</label>
+                                        <input class="form-control" id="bezeichnung" name="bezeichnung"
+                                               required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="beschreibung" class="form-label">Beschreibung</label>
+                                        <input class="form-control" id="beschreibung" name="beschreibung"
+                                               required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="preis" class="form-label">Preis</label>
+                                        <input class="form-control" type="number" id="preis" name="preis"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn"
+                                            data-bs-dismiss="modal">
+                                        Schließen
+                                    </button>
+                                    <button type="submit" class="btn-hairy-primary">Hinzufügen
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @else
+            <div class="alert alert-primary" role="alert">
+                Es stehen keine Angebote zur Verfügung.
+            </div>
         @endif
     </div>
 @endsection

@@ -36,7 +36,7 @@ Route::name('admin.')->group(function () {
 });
 
 Route::middleware('auth.employee')->group(function () {
-// Angestellten Routen
+    // Angestellten Routen
     Route::name('employee.')->group(function () {
         // Routen um einen Angestellten zu erstellen
         Route::post('add-angestellter', [App\Http\Controllers\AngestellterController::class, 'store'])->name('store');
@@ -45,28 +45,43 @@ Route::middleware('auth.employee')->group(function () {
         Route::post('delete-angestellter/{angestellter_id}', [App\Http\Controllers\AngestellterController::class, 'delete'])->name('delete');
     });
 
-//Termin Routen
+    //Termin Routen
     Route::name('termin.')->group(function () {
         // Route um einen Termin zu löschen
-        Route::get('delete/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
+        Route::post('delete-termin/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('delete');
 
         // Route um einen Termin zu bearbeiten
-        Route::get('edit/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');
-        Route::post('edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit');
+        Route::get('update-termin/{id}', [App\Http\Controllers\AdminController::class, 'create'])->name('create');
+        Route::post('update-termin/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit');
+    });
+
+    //Angebot Routen
+    Route::name('angebot.')->group(function () {
+        // Route um ein Angebot zu löschen
+        Route::post('delete-angebot/{angebot_id}', [App\Http\Controllers\AngebotController::class, 'delete'])->name('delete');
+
+        // Route um ein Angebot zu erstellen
+        Route::get('add-angebot', [App\Http\Controllers\AngebotController::class, 'store'])->name('store');
+        Route::post('add-angebot', [App\Http\Controllers\AngebotController::class, 'store'])->name('store');
+
+        // Route um ein Angebot zu bearbeiten
+        Route::post('update-angebot/{angebot_id}', [App\Http\Controllers\AngebotController::class, 'update'])->name('update');
     });
 });
+
+
 Route::middleware('auth.user')->group(function () {
-// Terminbuchung Routen
+    // Terminbuchung Routen
     Route::get('/terminbuchung', [App\Http\Controllers\TerminController::class, 'index'])->name('terminbuchung');
     Route::post('/terminbuchung', [App\Http\Controllers\TerminController::class, 'store'])->name('terminbuchung');
 
-//Angebot Routen
+    //Angebot Routen
     Route::name('angebot.')->group(function () {
         //Angebote anzeigen
         Route::get('/angebot', [App\Http\Controllers\AngebotController::class, 'index'])->name('show');
     });
 
-//Profil Routen
+    //Profil Routen
     Route::name('profil.')->group(function () {
         //Profil Anzeigen
         Route::get('/profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('show');

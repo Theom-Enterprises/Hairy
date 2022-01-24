@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class AngestellterController extends Controller
@@ -21,13 +22,13 @@ class AngestellterController extends Controller
         return view('admin');
     }
 
-    public function rules($user_id): array
+    public function rules($angestellter_id): array
     {
         return [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'telephoneNumber' => ['required', 'string', 'max:255,' . Rule::unique('users')->ignore($user_id)],
-            'email' => ['required', 'string', 'email', 'max:255,' . Rule::unique('users')->ignore($user_id)],
+            'friseurkuerzel' => ['required', 'string', 'size:3'],
+            'vorname' => ['required', 'string', 'max:255'],
+            'nachname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255,' . Rule::unique('angestellter')->ignore($angestellter_id)],
         ];
     }
 
@@ -57,12 +58,12 @@ class AngestellterController extends Controller
 
     public function update(Request $request, $angestellter_id): RedirectResponse
     {
-        $angestellter = (new Angestellter)->findOrFail($angestellter_id);
+        $angestellter = Angestellter::findOrFail($angestellter_id);
 
-        /*$validator = Validator::make($request->all(), $this->rules($angestellter_id));
+        $validator = Validator::make($request->all(), $this->rules($angestellter_id));
         if ($validator->fails()) {
             return back()->withInput()->withErrors(['error' => 'Eingegebene Daten konnten nicht validiert werden']);
-        }*/
+        }
 
         $angestellter->friseurkuerzel = $request->get('friseurkuerzel');
         $angestellter->vorname = $request->get('vorname');

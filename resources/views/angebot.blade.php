@@ -43,9 +43,9 @@
                     <!-- Iteriert durch das Angebote Array -->
                     @foreach($angebote as $angebot)
                         <tr>
-                            <td>{{ $angebot->bezeichnung ?? '-'}}</td>
-                            <td>{{ $angebot->beschreibung ?? '-'}}</td>
-                            <td>{{ $angebot->preis ?? '-'}}€</td>
+                            <td class="align-middle">{{ $angebot->bezeichnung ?? '-'}}</td>
+                            <td class="align-middle">{{ $angebot->beschreibung ?? '-'}}</td>
+                            <td class="align-middle">{{ $angebot->preis ?? '-'}}€</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Angebot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AngebotController extends Controller
 {
@@ -23,36 +25,42 @@ class AngebotController extends Controller
         return view('angebot')->with(compact('angebote'));
     }
 
+    public function rules($angebot_id): array
+    {
+        return [
+            'bezeichnung' => ['required', 'string', 'max:255'],
+            'beschreibung' => ['required', 'string', 'max:255'],
+            'preis' => ['required', 'numeric', 'max:255'],
+        ];
+    }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view(route('admin.home'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
-    }
+        $angebot = new Angebot();
+        $angebot->bezeichnung = $request->input('bezeichnung');
+        $angebot->beschreibung = $request->input('beschreibung');
+        $angebot->preis = $request->input('preis');
+        $angebot->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Angebot $angebot
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Angebot $angebot)
-    {
-        //
+        return redirect()->back()->with([
+            'angebot-erfolgreich' => 'Das Angebot ' . $angebot->bezeichnung . ' wurde erfolgreich erstellt.'
+        ]);
     }
 
     /**
@@ -60,21 +68,41 @@ class AngebotController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Angebot $angebot
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Angebot $angebot)
+    public function update(Request $request, $angebot_id)
     {
-        //
+        $angebot = Angebot::find($angebot_id);
+
+        $validator = Validator::make($request->all(), $this->rules($angebot_id));
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors(['error' => 'Eingegebene Daten konnten nicht validiert werden']);
+        }
+
+        $angebot->bezeichnung = $request->get('bezeichnung');
+        $angebot->beschreibung = $request->get('beschreibung');
+        $angebot->preis = $request->get('preis');
+        $angebot->save();
+
+        return back()
+            ->with(['angestellter-erfolgreich' => 'Das Angebot ' . $angebot->bezeichnung . ' wurde erfolgreich bearbeitet.']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Angebot $angebot
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete(Angebot $angebot)
+    public function delete($angebot_id)
     {
-        //
+        $angebot = Angebot::find($angebot_id);
+
+        if ($angebot->delete()) {
+            return back()->with(['sucess', 'Das Angebot wurde gelöscht'])
+                ->with(['angebot-erfolgreich' => 'Das Angebot ' . $angebot->bezeichung . ' wurde erfolgreich gelöscht.']);
+        }
+
+        return back()->withErrors(['fehlgeschlagen', 'Das Angebot konnte nicht gelöscht werden']);
     }
 }

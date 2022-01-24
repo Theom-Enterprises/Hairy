@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendEmailJob;
-use App\Mail\UpdateTerminEmail;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
 use App\Models\Termin;
 
 class AdminController extends Controller
@@ -35,7 +32,12 @@ class AdminController extends Controller
             ->get();
         $employee = Auth::guard('employee')->user();
 
-        return view('admin')->with(compact('termine', 'angestellte', 'employee'));
+        $angebote = DB::table('angebot')
+            ->orderBy('bezeichnung')
+            ->select('id','bezeichnung', 'beschreibung', 'preis')
+            ->get();
+
+        return view('admin')->with(compact('termine', 'angestellte', 'employee', 'angebote'));
     }
 
     /**

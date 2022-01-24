@@ -1,10 +1,8 @@
-<div class="modal fade" id="termin-modal-{{ $termin->id }}" tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="termin-modal-{{ $termin->id }}" tabindex="-1" aria-hidden="true">
     <!-- Bearbeitet einen Termin beim Formular Submit -->
     <form action="{{ route('termin.edit', ['id' => $termin->id]) }}" method="post">
         @csrf
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="title">Termin
@@ -49,11 +47,10 @@
                         Schließen
                     </button>
                     <!-- Löscht den Termin -->
-                    <a href="{{ route('termin.delete', ['id' => $termin->id]) }}">
-                        <button type="button" class="btn-hairy-danger">
-                            Löschen
-                        </button>
-                    </a>
+                    <button type="submit" formaction="{{ route('termin.delete', ['id' => $termin->id]) }}"
+                            class="btn-hairy-danger">
+                        Löschen
+                    </button>
                     <button type="submit" class="btn-hairy-primary">
                         Speichern
                     </button>

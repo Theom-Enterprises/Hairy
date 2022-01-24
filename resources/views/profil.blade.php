@@ -86,10 +86,10 @@
                             <!-- Iteriert durch das Angebote Array -->
                             @foreach($termine as $termin)
                                 <tr>
-                                    <td>{{$termin->bezeichnung}}</td>
-                                    <td>{{$termin->friseurkuerzel}}</td>
-                                    <td>{{$termin->datum}}</td>
-                                    <td>{{"$termin->von - $termin->bis"}}</td>
+                                    <td class="align-middle">{{$termin->bezeichnung}}</td>
+                                    <td class="align-middle">{{$termin->friseurkuerzel}}</td>
+                                    <td class="align-middle">{{$termin->datum}}</td>
+                                    <td class="align-middle">{{"$termin->von - $termin->bis"}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
